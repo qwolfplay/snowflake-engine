@@ -11,11 +11,12 @@ Bow::Bow(
         std::string name,
         std::string description,
         float price,
+        type type,
         rarity rarity,
         float damage,
         float armorPenetration,
         float attackSpeed
-        ) : Weapon(std::move(name), std::move(description), price, rarity, damage, armorPenetration, attackSpeed) {};
+        ) : Weapon(std::move(name), std::move(description), price, type, rarity, damage, armorPenetration, attackSpeed) {};
 
 Bow::~Bow() = default;
 

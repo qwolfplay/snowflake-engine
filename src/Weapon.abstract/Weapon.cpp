@@ -4,15 +4,18 @@
 
 #include "Weapon.h"
 
+#include <utility>
+
 Weapon::Weapon(
         std::string name,
         std::string description,
         float price,
+        type type,
         rarity rarity,
         float damage,
         float armorPenetration,
         float attackSpeed
-    ) : Item(name, description, price, rarity),
+    ) : Item(std::move(name), std::move(description), price, type, rarity),
         _damage(damage),
         _armorPenetration(armorPenetration),
         _attackSpeed(attackSpeed) {};
