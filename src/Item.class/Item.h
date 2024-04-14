@@ -17,6 +17,13 @@ public:
         LEGENDARY
     };
 
+    enum type {
+        WEAPON,
+        ARMOR,
+        CONSUMABLE,
+        MATERIAL
+    };
+
     static std::string to_string(rarity rarity) {
         switch (rarity) {
             case COMMON:
@@ -38,16 +45,18 @@ private:
     const std::string   _name;
     const std::string   _description;
     const rarity        _rarity;
+    const type          _type;
     float               _price;
 
 public:
-    Item(std::string name, std::string description, float price, rarity rarity);
+    Item(std::string name, std::string description, float price, type type, rarity rarity);
     ~Item() = default;
 
-    std::string getName() const;
-    std::string getDescription() const;
-    float getPrice() const;
-    rarity getRarity() const;
+    [[nodiscard]] std::string getName() const;
+    [[nodiscard]] std::string getDescription() const;
+    [[nodiscard]] float getPrice() const;
+    [[nodiscard]] type getType() const;
+    [[nodiscard]] rarity getRarity() const;
 
     void setPrice(float price);
 };

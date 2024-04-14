@@ -7,87 +7,103 @@
 
 #include "Player.h"
 
-Player::Player(std::string name, float health, float armor, int maxItemInventorySize, int maxWeaponInventorySize) :
-    _name(std::move(name)),
-    _health(health),
-    _maxHealth(health),
-    _armor(armor),
-    _maxItemInventorySize(maxItemInventorySize),
-    _maxWeaponInventorySize(maxWeaponInventorySize)
-{};
+Player::Player(std::string name, float health, float armor, unsigned short int maxInventorySize) :
+        _name(std::move(name)),
+        _maxHealth(health),
+        _armor(armor),
+        _maxItemInventorySize(maxInventorySize)
+{
+    _health = _maxHealth;
+    _inventory = new InventorySlot[maxInventorySize];
+    _itemCount = 0;
+    for (int i = 0; i < maxInventorySize; i++) {
+        _inventory[i].itemPtr = nullptr;
+        _inventory[i].isOccupied = false;
+    }
+}
 
-Player::~Player() = default;
+Player::~Player()
+{
+    delete[] _inventory;
+}
 
-std::string Player::getName() {
+std::string Player::getName()
+{
     return _name;
 }
 
-float Player::getHealth() const {
+float Player::getHealth() const
+{
     return _health;
 }
 
-float Player::getMaxHealth() const {
+float Player::getMaxHealth() const
+{
     return _maxHealth;
 }
 
-float Player::getArmor() const {
+float Player::getArmor() const
+{
     return _armor;
 }
 
-void Player::addItemToInventory(Item* item) {
-    if (_itemInventory.size() < _maxItemInventorySize) {
-        _itemInventory.push_back(item);
+void Player::addItemToInventory(Item *item)
+{
+    if (_itemCount < _maxItemInventorySize) {
+        for (int i = 0; i < _maxItemInventorySize; i++) {
+            if (!_inventory[i].isOccupied) {
+                _inventory[i].itemPtr = item;
+                _inventory[i].isOccupied = true;
+                _itemCount++;
+                break;
+            }
+        }
     } else {
-        throw std::exception("Inventory is full");
+        throw SlotEmptyException();
     }
 }
 
-void Player::addWeaponToInventory(Weapon* weapon) {
-    if (_weaponInventory.size() < _maxWeaponInventorySize) {
-        _weaponInventory.push_back(weapon);
+
+void Player::removeItemFromInventory(unsigned short int index)
+{
+//    _itemInventory.erase(_itemInventory.begin() + index);
+    if (_inventory[index].isOccupied) {
+        _inventory[index].itemPtr = nullptr;
+        _inventory[index].isOccupied = false;
+        _itemCount--;
     } else {
-        throw std::exception("Inventory is full");
+        throw SlotEmptyException();
     }
 }
 
-void Player::removeItemFromInventory(int index) {
-    _itemInventory.erase(_itemInventory.begin() + index);
-}
 
-void Player::removeWeaponFromInventory(int index) {
-    _weaponInventory.erase(_weaponInventory.begin() + index);
-}
-
-int Player::getItemCount() {
-    return _itemInventory.size();
-}
-
-int Player::getWeaponCount() {
-    return _weaponInventory.size();
-}
-
-Item* Player::getItem(int index) {
-    return _itemInventory[index];
-}
-
-Weapon* Player::getWeapon(int index) {
-    return _weaponInventory[index];
+int Player::getItemCount()
+{
+    return _itemCount;
 }
 
 
-void Player::equipItem(int index) {
-    _equippedItem = _itemInventory[index];
+Item *Player::getItem(int index)
+{
+    return _inventory[index].itemPtr;
 }
 
-void Player::equipWeapon(int index) {
-    _equippedWeapon = _weaponInventory[index];
+void Player::equipWeapon(int index)
+{
+    if (!_inventory[index].isOccupied) {
+        throw SlotEmptyException();
+    } else {
+        if (_inventory[index].itemPtr->getType() == Item::type::WEAPON) {
+            _equippedWeapon = (Weapon *) (_inventory[index].itemPtr);
+        } else {
+            throw WrongItemTypeException();
+        }
+
+    }
+
 }
 
-Item* Player::getEquippedItem() {
-    return _equippedItem;
-}
-
-Weapon* Player::getEquippedWeapon() {
+Weapon *Player::getEquippedWeapon()
+{
     return _equippedWeapon;
 }
-
