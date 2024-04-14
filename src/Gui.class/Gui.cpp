@@ -58,6 +58,7 @@ void Gui::mainMenu(Player *player) {
     try {
         menu(static_cast<menus>(option), player);
     } catch (std::invalid_argument &e) {
+        std::cout << "\n" << e.what() << "\n";
         mainMenu(player);
     }
 }
@@ -74,19 +75,20 @@ void Gui::shopMenu(Player *player) {
     try {
         switch (option) {
             case 1:
-                player->addWeaponToInventory(new Sword("Miecz", ":3", 25.6, Item::COMMON, 20, 15, 3));
+                player->addItemToInventory(new Sword("Miecz", ":3", 25.6, Item::WEAPON, Item::COMMON, 20, 15, 3));
                 break;
             case 2:
-                player->addWeaponToInventory(new Bow("Łuk", "UwU", 35.1, Item::RARE, 8, 5, 1));
+                player->addItemToInventory(new Bow("Łuk", "UwU", 35.1, Item::WEAPON, Item::RARE, 8, 5, 1));
                 break;
             case 3:
-                player->addWeaponToInventory(new Wand("Różdżka", "OwO", 45.3, Item::EPIC, 15, 10, 2));
+                player->addItemToInventory(new Wand("Różdżka", "OwO", 45.3, Item::WEAPON, Item::EPIC, 15, 10, 2));
                 break;
             default:
                 throw std::invalid_argument("Zły wybór");
         }
 
     } catch (std::invalid_argument &e) {
+        std::cout << e.what() << "\n";
         menu(SHOP_MENU, player);
     }
     menu(MAIN_MENU, player);
@@ -95,8 +97,8 @@ void Gui::shopMenu(Player *player) {
 void Gui::inventoryMenu(Player *player) {
     std::cout << "Ekwipunek" << "\n\n";
 
-    for (int i = 0; i < player->getWeaponCount(); i++) {
-        printWeapon(player->getWeapon(i));
+    for (int i = 0; i < player->getItemCount(); i++) {
+        printWeapon((Weapon *)(player->getItem(i)));
         std::cout << "\n";
     }
 
@@ -132,8 +134,8 @@ void Gui::attackScreen(Player *player, Enemy *enemy) {
 void Gui::simulationMenu(Player *player) {
     std::cout << "Symulacja ataku" << "\n\n";
 
-    for (int i = 0; i < player->getWeaponCount(); i++) {
-        printWeapon(player->getWeapon(i));
+    for (int i = 0; i < player->getItemCount(); i++) {
+        printWeapon((Weapon *)(player->getItem(i)));
         std::cout << "\n";
     }
 

@@ -15,6 +15,7 @@ public:
         std::string name,
         std::string description,
         float price,
+        type type,
         rarity rarity,
         float damage,
         float armorPenetration,
