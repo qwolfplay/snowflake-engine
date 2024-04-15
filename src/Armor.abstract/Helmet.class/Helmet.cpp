@@ -19,10 +19,10 @@ Helmet::~Helmet() = default;
 
 float Helmet::calculateMeleeDamageReduction(float damage) const
 {
-    return (damage - (damage * (getBaseDefence() / 100.0))) * 0.45;
+    return (damage - (damage * (getBaseDefence() / 100.0))) * 0.225;
 }
 
 float Helmet::calculateMagicDamageReduction(float damage) const
 {
-    return (damage - (damage * (getBaseResistance() / 100.0))) * 0.49;
+    return (damage - (damage * (getBaseResistance() / 100.0))) * 0.35;
 }

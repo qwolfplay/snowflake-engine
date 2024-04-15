@@ -13,10 +13,10 @@ Leggings::~Leggings() = default;
 
 float Leggings::calculateMeleeDamageReduction(float damage) const
 {
-    return (damage - (damage * (getBaseDefence() / 100.0))) * 0.45;
+    return (damage - (damage * (getBaseDefence() / 100.0))) * 0.325;
 }
 
 float Leggings::calculateMagicDamageReduction(float damage) const
 {
-    return (damage - (damage * (getBaseResistance() / 100.0))) * 0.49;
+    return (damage - (damage * (getBaseResistance() / 100.0))) * 0.16;
 }
