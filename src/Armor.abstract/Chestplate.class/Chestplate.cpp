@@ -19,10 +19,10 @@ Chestplate::~Chestplate() = default;
 
 float Chestplate::calculateMeleeDamageReduction(float damage) const
 {
-    return (damage - (damage * (getBaseDefence() / 100.0))) * 0.4;
+    return (damage - (damage * (getBaseDefence() / 100.0))) * 0.45;
 }
 
 float Chestplate::calculateMagicDamageReduction(float damage) const
 {
-    return (damage - (damage * (getBaseResistance() / 100.0))) * 0.3;
+    return (damage - (damage * (getBaseResistance() / 100.0))) * 0.49;
 }
