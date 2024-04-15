@@ -10,7 +10,7 @@
 Player::Player(std::string name, float health, float armor, unsigned short int maxInventorySize) :
         _name(std::move(name)),
         _maxHealth(health),
-        _maxItemInventorySize(maxInventorySize)
+        _inventorySize(maxInventorySize)
 {
     _health = _maxHealth;
     _inventory = new InventorySlot[maxInventorySize];
@@ -56,8 +56,8 @@ float Player::getArmor() const
 
 void Player::addItemToInventory(Item *item)
 {
-    if (_itemCount < _maxItemInventorySize) {
-        for (int i = 0; i < _maxItemInventorySize; i++) {
+    if (_itemCount < _inventorySize) {
+        for (int i = 0; i < _inventorySize; i++) {
             if (!_inventory[i].isOccupied) {
                 _inventory[i].itemPtr = item;
                 _inventory[i].isOccupied = true;
@@ -113,4 +113,107 @@ void Player::equipWeapon(int index)
 Weapon *Player::getEquippedWeapon()
 {
     return _equippedWeapon;
+}
+
+void Player::equipHelmet(int index)
+{
+    if (!_inventory[index].isOccupied) { throw SlotEmptyException(); }
+    if (_inventory[index].itemPtr->getType() != Item::type::ARMOR ||
+        ((Armor *) _inventory[index].itemPtr)->getArmorType() != Armor::HELMET) {
+        throw WrongItemTypeException();
+    }
+
+    _armor->helmet = (Helmet *) _inventory[index].itemPtr;
+    _inventory[index].itemPtr = nullptr;
+    _inventory[index].isOccupied = false;
+}
+
+void Player::equipChestplate(int index)
+{
+    if (!_inventory[index].isOccupied) { throw SlotEmptyException(); }
+    if (_inventory[index].itemPtr->getType() != Item::type::ARMOR ||
+        ((Armor *) _inventory[index].itemPtr)->getArmorType() != Armor::CHESTPLATE) {
+        throw WrongItemTypeException();
+    }
+
+    _armor->chestplate = (Chestplate *) _inventory[index].itemPtr;
+    _inventory[index].itemPtr = nullptr;
+    _inventory[index].isOccupied = false;
+}
+
+void Player::equipLeggings(int index)
+{
+    if (!_inventory[index].isOccupied) { throw SlotEmptyException(); }
+    if (_inventory[index].itemPtr->getType() != Item::type::ARMOR ||
+        ((Armor *) _inventory[index].itemPtr)->getArmorType() != Armor::LEGGINGS) {
+        throw WrongItemTypeException();
+    }
+
+    _armor->leggings = (Leggings *) _inventory[index].itemPtr;
+    _inventory[index].itemPtr = nullptr;
+    _inventory[index].isOccupied = false;
+}
+
+void Player::unequipHelmet()
+{
+    if (!_armor->isHelmetEquipped) { throw SlotEmptyException(); }
+
+    if (_itemCount >= _inventorySize) {
+        throw InventoryFullException();
+    }
+
+    short int emptySlotIndex = 0;
+    for (int i = 0; i < _inventorySize; ++i) {
+        if (!_inventory[i].isOccupied) {
+            emptySlotIndex = i;
+            break;
+        }
+    }
+
+    _inventory[emptySlotIndex].itemPtr = (Item *) _armor->helmet;
+    _armor->helmet = nullptr;
+    _armor->isHelmetEquipped = false;
+
+}
+
+void Player::unequipChestplate()
+{
+    if (!_armor->isChestplateEquipped) { throw SlotEmptyException(); }
+
+    if (_itemCount >= _inventorySize) {
+        throw InventoryFullException();
+    }
+
+    short int emptySlotIndex = 0;
+    for (int i = 0; i < _inventorySize; ++i) {
+        if (!_inventory[i].isOccupied) {
+            emptySlotIndex = i;
+            break;
+        }
+    }
+
+    _inventory[emptySlotIndex].itemPtr = (Item *) _armor->chestplate;
+    _armor->chestplate = nullptr;
+    _armor->isChestplateEquipped = false;
+}
+
+void Player::unequipLeggings()
+{
+    if (!_armor->isLeggingsEquipped) { throw SlotEmptyException(); }
+
+    if (_itemCount >= _inventorySize) {
+        throw InventoryFullException();
+    }
+
+    short int emptySlotIndex = 0;
+    for (int i = 0; i < _inventorySize; ++i) {
+        if (!_inventory[i].isOccupied) {
+            emptySlotIndex = i;
+            break;
+        }
+    }
+
+    _inventory[emptySlotIndex].itemPtr = (Item *) _armor->leggings;
+    _armor->leggings = nullptr;
+    _armor->isLeggingsEquipped = false;
 }

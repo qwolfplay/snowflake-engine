@@ -38,7 +38,7 @@ class Player
     const std::string _name;
     float _health;
     const float _maxHealth;
-    const int _maxItemInventorySize;
+    const int _inventorySize;
 
     unsigned short int _itemCount = 0;
 
@@ -60,6 +60,16 @@ public:
     class SlotEmptyException : public std::exception
     {
         std::string _message = "Slot is empty";
+    public:
+        [[nodiscard]] const char *what() const noexcept override
+        {
+            return _message.c_str();
+        }
+    };
+
+    class SlotAlreadyOccupiedException : public std::exception
+    {
+        std::string _message = "Slot is occupied";
     public:
         [[nodiscard]] const char *what() const noexcept override
         {
@@ -98,6 +108,18 @@ public:
     Item *getItem(int index);
 
     void equipWeapon(int index);
+
+    void equipHelmet(int index);
+
+    void equipChestplate(int index);
+
+    void equipLeggings(int index);
+
+    void unequipHelmet();
+
+    void unequipChestplate();
+
+    void unequipLeggings();
 
     Weapon *getEquippedWeapon();
 };
