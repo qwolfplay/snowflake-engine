@@ -10,7 +10,6 @@
 Player::Player(std::string name, float health, float armor, unsigned short int maxInventorySize) :
         _name(std::move(name)),
         _maxHealth(health),
-        _armor(armor),
         _maxItemInventorySize(maxInventorySize)
 {
     _health = _maxHealth;
@@ -20,6 +19,14 @@ Player::Player(std::string name, float health, float armor, unsigned short int m
         _inventory[i].itemPtr = nullptr;
         _inventory[i].isOccupied = false;
     }
+
+    _armor->helmet = nullptr;
+    _armor->chestplate = nullptr;
+    _armor->leggings = nullptr;
+    _armor->isHelmetEquipped = false;
+    _armor->isChestplateEquipped = false;
+    _armor->isLeggingsEquipped = false;
+
 }
 
 Player::~Player()

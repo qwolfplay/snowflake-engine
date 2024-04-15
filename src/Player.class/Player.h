@@ -12,6 +12,9 @@
 
 #include "Item.class/item.h"
 #include "Weapon.abstract/Weapon.h"
+#include "Armor.abstract/Helmet.class/Helmet.h"
+#include "Armor.abstract/Chestplate.class/Chestplate.h"
+#include "Armor.abstract/Leggings.class/Leggings.h"
 
 class Player
 {
@@ -21,16 +24,26 @@ class Player
         bool isOccupied;
     } InventorySlot;
 
+    typedef struct
+    {
+        Helmet *helmet;
+        Chestplate *chestplate;
+        Leggings *leggings;
+
+        bool isHelmetEquipped;
+        bool isChestplateEquipped;
+        bool isLeggingsEquipped;
+    } ArmorSet;
+
     const std::string _name;
     float _health;
     const float _maxHealth;
-    float _armor;
     const int _maxItemInventorySize;
 
     unsigned short int _itemCount = 0;
 
     InventorySlot *_inventory;
-
+    ArmorSet *_armor;
     Weapon *_equippedWeapon{};
 
 public:
