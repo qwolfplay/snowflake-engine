@@ -37,6 +37,8 @@ public:
 
     [[nodiscard]] float getBaseResistance() const;
 
+    [[nodiscard]] armorType getArmorType() const;
+
     virtual float calculateMeleeDamageReduction(float damage) const;
 
     virtual float calculateMagicDamageReduction(float damage) const;

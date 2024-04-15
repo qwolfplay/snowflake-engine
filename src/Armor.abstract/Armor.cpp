@@ -30,6 +30,11 @@ float Armor::getBaseResistance() const {
     return _baseResistance;
 }
 
+Armor::armorType Armor::getArmorType() const
+{
+    return _type;
+}
+
 float Armor::calculateMeleeDamageReduction(float damage) const {
     return damage * (_baseDefence / 100.0);
 }
