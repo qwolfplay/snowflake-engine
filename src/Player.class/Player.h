@@ -15,6 +15,12 @@
 
 class Player
 {
+    typedef struct
+    {
+        Item *itemPtr;
+        bool isOccupied;
+    } InventorySlot;
+
     const std::string _name;
     float _health;
     const float _maxHealth;
@@ -22,13 +28,9 @@ class Player
     const int _maxItemInventorySize;
 
     unsigned short int _itemCount = 0;
-    typedef struct
-    {
-        Item *itemPtr;
-        bool isOccupied;
-    } InventorySlot;
 
     InventorySlot *_inventory;
+
     Weapon *_equippedWeapon{};
 
 public:
