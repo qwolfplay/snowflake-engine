@@ -7,15 +7,16 @@
 Armor::Armor(std::string name,
         std::string description,
         float price,
-        type type,
+             armorType type,
         rarity rarity,
         float baseDefence,
         float baseResistance)
     : Item(std::move(name),
             std::move(description),
             price,
-            type,
+           Item::ARMOR,
             rarity),
+      _type(type),
         _baseDefence(baseDefence),
         _baseResistance(baseResistance) {};
 

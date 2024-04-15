@@ -9,6 +9,16 @@
 
 class Armor : public Item
 {
+public:
+    enum armorType
+    {
+        HELMET,
+        CHESTPLATE,
+        LEGGINGS
+    };
+
+private:
+    const armorType _type;
     const float _baseDefence;
     const float _baseResistance;
 
@@ -16,7 +26,7 @@ public:
     Armor(std::string name,
           std::string description,
           float price,
-          type type,
+          armorType type,
           rarity rarity,
           float baseDefence,
           float baseResistance);
