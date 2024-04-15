@@ -1,9 +1,6 @@
 #include <iostream>
 
 #include "Player.class/Player.h"
-#include "Weapon.abstract/Weapon.h"
-#include "Weapon.abstract/Sword.class/Sword.h"
-#include "Weapon.abstract/Bow.class/Bow.h"
 #include "Gui.class/Gui.h"
 
 int main()
