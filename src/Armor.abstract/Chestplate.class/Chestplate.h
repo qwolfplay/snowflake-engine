@@ -20,9 +20,9 @@ public:
 
     ~Chestplate();
 
-    float calculateMeleeDamageReduction(float damage) const override;
+    [[nodiscard]] float calculateMeleeDamageReduction(float damage) const override;
 
-    float calculateMagicDamageReduction(float damage) const override;
+    [[nodiscard]] float calculateMagicDamageReduction(float damage) const override;
 };
 
 
