@@ -10,13 +10,14 @@
 class Helmet : public Armor
 {
 public:
-    Helmet(std::string name,
-           std::string description,
-           float price,
-           type type,
-           rarity rarity,
-           float baseDefence,
-           float baseResistance);
+    Helmet(
+            std::string name,
+            std::string description,
+            float price,
+            rarity rarity,
+            float baseDefence,
+            float baseResistance
+    );
 
     ~Helmet();
 

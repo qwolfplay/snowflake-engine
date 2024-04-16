@@ -4,16 +4,23 @@
 
 #include "Chestplate.h"
 
-Chestplate::Chestplate(std::string name,
-                       std::string description,
-                       float price,
-                       type type,
-                       rarity rarity,
-                       float baseDefence,
-                       float baseResistance)
-        : Armor(name, description, price, type, rarity, baseDefence, baseResistance)
-{
-}
+Chestplate::Chestplate(
+        std::string name,
+        std::string description,
+        float price,
+        rarity rarity,
+        float baseDefence,
+        float baseResistance
+) : Armor(
+        name,
+        description,
+        price,
+        Armor::CHESTPLATE,
+        rarity,
+        baseDefence,
+        baseResistance
+)
+{}
 
 Chestplate::~Chestplate() = default;
 

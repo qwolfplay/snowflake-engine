@@ -13,7 +13,6 @@ public:
     Chestplate(std::string name,
           std::string description,
           float price,
-          type type,
           rarity rarity,
           float baseDefence,
           float baseResistance);

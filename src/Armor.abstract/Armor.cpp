@@ -4,21 +4,25 @@
 
 #include "Armor.h"
 
-Armor::Armor(std::string name,
+Armor::Armor(
+        std::string name,
         std::string description,
         float price,
-             armorType type,
+        armorType type,
         rarity rarity,
         float baseDefence,
-        float baseResistance)
-    : Item(std::move(name),
+        float baseResistance
+) : Item(
+        std::move(name),
             std::move(description),
             price,
            Item::ARMOR,
-            rarity),
-      _type(type),
+        rarity
+),
+    _type(type),
         _baseDefence(baseDefence),
-        _baseResistance(baseResistance) {};
+    _baseResistance(baseResistance)
+{}
 
 Armor::~Armor() = default;
 
