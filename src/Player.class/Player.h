@@ -9,6 +9,7 @@
 #include <string>
 #include <exception>
 #include <stdexcept>
+#include <vector>
 
 #include "Item.class/item.h"
 #include "Weapon.abstract/Weapon.h"
@@ -103,7 +104,7 @@ public:
 
     int getItemCount();
 
-    Item *getItem(int index);
+    [[nodiscard]] std::vector<unsigned short int> getFreeSlots() const;
 
     Item *getItemPtr(unsigned short int index);
 

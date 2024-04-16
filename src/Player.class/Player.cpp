@@ -4,6 +4,7 @@
 
 #include <stdexcept>
 #include <string>
+#include <vector>
 
 #include "Player.h"
 
@@ -26,7 +27,6 @@ Player::Player(std::string name, float health, float armor, unsigned short int m
     _armor->isHelmetEquipped = false;
     _armor->isChestplateEquipped = false;
     _armor->isLeggingsEquipped = false;
-
 }
 
 Player::~Player()
@@ -84,8 +84,23 @@ int Player::getItemCount()
     return _itemCount;
 }
 
+std::vector<unsigned short int> Player::getFreeSlots() const
+{
+    if (_itemCount >= _inventorySize) {
+        throw InventoryFullException();
+    }
 
-Item *Player::getItem(int index)
+    std::vector<unsigned short int> freeSlots{};
+
+    for (int i = 0; i < _inventorySize; i++) {
+        if (!_inventory[i].isOccupied) {
+            freeSlots.push_back(i);
+        }
+    }
+
+    return freeSlots;
+}
+
 Item *Player::getItemPtr(unsigned short int index)
 {
     return _inventory[index].itemPtr;
