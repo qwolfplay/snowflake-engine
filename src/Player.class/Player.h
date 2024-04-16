@@ -112,7 +112,9 @@ public:
 
     void equipHelmet(unsigned short int index);
 
-    void equipLeggings(int index);
+    void equipChestplate(unsigned short int index);
+
+    void equipLeggings(unsigned short int index);
 
     void unequipHelmet();
 
