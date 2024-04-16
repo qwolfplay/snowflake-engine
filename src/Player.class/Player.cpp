@@ -86,6 +86,7 @@ int Player::getItemCount()
 
 
 Item *Player::getItem(int index)
+Item *Player::getItemPtr(unsigned short int index)
 {
     return _inventory[index].itemPtr;
 }

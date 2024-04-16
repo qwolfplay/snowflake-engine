@@ -105,7 +105,7 @@ public:
 
     Item *getItem(int index);
 
-    void equipWeapon(int index);
+    Item *getItemPtr(unsigned short int index);
 
     void equipWeapon(unsigned short int index);
 
