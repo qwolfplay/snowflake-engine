@@ -109,9 +109,9 @@ public:
 
     void equipWeapon(int index);
 
-    void equipHelmet(int index);
+    void equipWeapon(unsigned short int index);
 
-    void equipChestplate(int index);
+    void equipHelmet(unsigned short int index);
 
     void equipLeggings(int index);
 
