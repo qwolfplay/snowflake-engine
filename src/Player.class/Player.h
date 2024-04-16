@@ -97,8 +97,6 @@ public:
 
     [[nodiscard]] float getMaxHealth() const;
 
-    [[nodiscard]] float getArmor() const;
-
     void addItemToInventory(Item *item);
 
     void removeItemFromInventory(unsigned short int index);
