@@ -25,6 +25,8 @@ int main()
 {
     Player player("Player", 50, 10, 27);
 
+    std::cout << "Max HP: " << player.getMaxHealth() << std::endl;
+
     player.addItemToInventory(new Sword("Sword", "A sword", 10, Item::type::WEAPON, Item::rarity::COMMON, 10, 25, 5));
 
     // TODO: test new armor functionality
@@ -69,6 +71,8 @@ int main()
     }
 
     std::cout << std::endl;
+
+    player.removeItemFromInventory(0);
 
     player.unequipHelmet();
     player.unequipChestplate();
