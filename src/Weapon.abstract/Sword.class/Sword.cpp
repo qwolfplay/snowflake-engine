@@ -3,6 +3,7 @@
 //
 
 #include <utility>
+#include <cmath>
 
 #include "Enemy.class/Enemy.h"
 #include "Weapon.abstract/Weapon.h"
