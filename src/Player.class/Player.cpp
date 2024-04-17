@@ -197,6 +197,24 @@ void Player::equipLeggings(unsigned short int index)
     _inventory[index].isOccupied = false;
 }
 
+Helmet *Player::getHelmetPtr() const
+{
+    if (_armor->isHelmetEquipped) { throw SlotEmptyException(); }
+    return _armor->helmet;
+}
+
+Chestplate *Player::getChestplatePtr() const
+{
+    if (_armor->isChestplateEquipped) { throw SlotEmptyException(); }
+    return _armor->chestplate;
+}
+
+Leggings *Player::getLeggingsPtr() const
+{
+    if (_armor->isLeggingsEquipped) { throw SlotEmptyException(); }
+    return _armor->leggings;
+}
+
 void Player::unequipHelmet()
 {
     if (!_armor->isHelmetEquipped) { throw SlotEmptyException(); }

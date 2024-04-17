@@ -120,6 +120,12 @@ public:
 
     void equipLeggings(unsigned short int index);
 
+    Helmet *getHelmetPtr() const;
+
+    Chestplate *getChestplatePtr() const;
+
+    Leggings *getLeggingsPtr() const;
+
     void unequipHelmet();
 
     void unequipChestplate();
