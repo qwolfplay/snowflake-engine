@@ -9,29 +9,45 @@
 #include <string>
 #include <exception>
 #include <stdexcept>
+#include <vector>
 
 #include "Item.class/item.h"
 #include "Weapon.abstract/Weapon.h"
+#include "Armor.abstract/Helmet.class/Helmet.h"
+#include "Armor.abstract/Chestplate.class/Chestplate.h"
+#include "Armor.abstract/Leggings.class/Leggings.h"
 
 class Player
 {
-    const std::string _name;
-    float _health;
-    const float _maxHealth;
-    float _armor;
-    const int _maxItemInventorySize;
-
-    unsigned short int _itemCount = 0;
     typedef struct
     {
         Item *itemPtr;
         bool isOccupied;
     } InventorySlot;
 
+    typedef struct
+    {
+        Helmet *helmet;
+        Chestplate *chestplate;
+        Leggings *leggings;
+
+        bool isHelmetEquipped;
+        bool isChestplateEquipped;
+        bool isLeggingsEquipped;
+    } ArmorSet;
+
+    const std::string _name;
+    float _health;
+    const float _maxHealth;
+
+    unsigned short int _itemCount = 0;
+
     InventorySlot *_inventory;
+    ArmorSet *_armor;
     Weapon *_equippedWeapon{};
 
 public:
+    const unsigned short int _inventorySize;
     class InventoryFullException : public std::exception
     {
         std::string _message = "Inventory is full";
@@ -52,6 +68,16 @@ public:
         }
     };
 
+    class SlotAlreadyOccupiedException : public std::exception
+    {
+        std::string _message = "Slot is occupied";
+    public:
+        [[nodiscard]] const char *what() const noexcept override
+        {
+            return _message.c_str();
+        }
+    };
+
     class WrongItemTypeException : public std::exception
     {
         std::string _message = "Item is not a weapon";
@@ -62,7 +88,7 @@ public:
         }
     };
 
-    Player(std::string name, float health, float armor, unsigned short int maxInventorySize);
+    Player(std::string name, float health, unsigned short int maxInventorySize);
 
     ~Player();
 
@@ -72,17 +98,39 @@ public:
 
     [[nodiscard]] float getMaxHealth() const;
 
-    [[nodiscard]] float getArmor() const;
-
     void addItemToInventory(Item *item);
 
     void removeItemFromInventory(unsigned short int index);
 
-    int getItemCount();
+    float getEffectiveDefence();
 
-    Item *getItem(int index);
+    float getEffectiveResistance();
 
-    void equipWeapon(int index);
+    [[nodiscard]] int getItemCount() const;
+
+    [[nodiscard]] std::vector<unsigned short int> getFreeSlots() const;
+
+    Item *getItemPtr(unsigned short int index);
+
+    void equipWeapon(unsigned short int index);
+
+    void equipHelmet(unsigned short int index);
+
+    void equipChestplate(unsigned short int index);
+
+    void equipLeggings(unsigned short int index);
+
+    [[nodiscard]] Helmet *getHelmetPtr() const;
+
+    [[nodiscard]] Chestplate *getChestplatePtr() const;
+
+    [[nodiscard]] Leggings *getLeggingsPtr() const;
+
+    void unequipHelmet();
+
+    void unequipChestplate();
+
+    void unequipLeggings();
 
     Weapon *getEquippedWeapon();
 };

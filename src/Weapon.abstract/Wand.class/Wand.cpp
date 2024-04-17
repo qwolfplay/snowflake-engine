@@ -13,16 +13,16 @@ Wand::Wand(
         float damage,
         float armorPenetration,
         float attackSpeed
-    ): Weapon(
-            std::move(name),
-            std::move(description),
-            price,
-            type,
-            rarity,
-            damage,
-            armorPenetration,
-            attackSpeed
-            ) {};
+): Weapon(
+        std::move(name),
+        std::move(description),
+        price,
+        type,
+        rarity,
+        damage,
+        armorPenetration,
+        attackSpeed
+) {}
 
 Wand::~Wand() = default;
 

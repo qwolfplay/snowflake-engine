@@ -98,7 +98,7 @@ void Gui::inventoryMenu(Player *player) {
     std::cout << "Ekwipunek" << "\n\n";
 
     for (int i = 0; i < player->getItemCount(); i++) {
-        printWeapon((Weapon *)(player->getItem(i)));
+        printWeapon((Weapon *) (player->getItemPtr(i)));
         std::cout << "\n";
     }
 
@@ -106,7 +106,7 @@ void Gui::inventoryMenu(Player *player) {
 }
 
 void Gui::attackScreen(Player *player, Enemy *enemy) {
-    std::cout << "\n" << player->getName() << ": " << player->getHealth() << " | " << player->getArmor() << "\n";
+    std::cout << "\n" << player->getName() << ": " << player->getHealth() << "\n";
     std::cout << "Przeciwnik: " << enemy->getHealth() << " | " << enemy->getArmor() << "\n\n";
 
     std::cout << "1. Atak" << "\n"
@@ -135,7 +135,7 @@ void Gui::simulationMenu(Player *player) {
     std::cout << "Symulacja ataku" << "\n\n";
 
     for (int i = 0; i < player->getItemCount(); i++) {
-        printWeapon((Weapon *)(player->getItem(i)));
+        printWeapon((Weapon *) (player->getItemPtr(i)));
         std::cout << "\n";
     }
 
