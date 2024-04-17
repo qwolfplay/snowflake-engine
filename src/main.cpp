@@ -16,8 +16,8 @@ void describeArmor(Armor *item)
     std::cout << "Desc: " << item->getDescription() << std::endl;
     std::cout << "Price: " << item->getPrice() << std::endl;
     std::cout << "Rarity: " << item->getRarity() << std::endl;
-    std::cout << "DEF: " << item->getBaseDefence() << std::endl;
-    std::cout << "RES: " << item->getBaseResistance() << std::endl;
+    std::cout << "DEF: " << item->getEffectiveDefence() << std::endl;
+    std::cout << "RES: " << item->getEffectiveResistance() << std::endl;
     std::cout << std::endl;
 }
 
@@ -50,6 +50,37 @@ int main()
     player.equipLeggings(3);
 
     std::cout << "DEF: " << player.getEffectiveDefence() << " | RES: " << player.getEffectiveResistance() << std::endl;
+
+    std::cout << "\nHelmet:\n";
+    describeArmor(player.getHelmetPtr());
+
+    std::cout << "\nChestplate:\n";
+    describeArmor(player.getChestplatePtr());
+
+    std::cout << "\nLeggings: ";
+    describeArmor(player.getLeggingsPtr());
+
+    for (int i = 0; i < player._inventorySize; i++) {
+        try {
+            std::string name = player.getItemPtr(i)->getName();
+            std::cout << "Index: " << i << " | Item: " << name << std::endl;
+        } catch (std::exception &e) {
+        }
+    }
+
+    std::cout << std::endl;
+
+    player.unequipHelmet();
+    player.unequipChestplate();
+    player.unequipLeggings();
+
+    for (int i = 0; i < player._inventorySize; i++) {
+        try {
+            std::string name = player.getItemPtr(i)->getName();
+            std::cout << "Index: " << i << " | Item: " << name << std::endl;
+        } catch (std::exception &e) {
+        }
+    }
 
     return 0;
 }
