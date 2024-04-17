@@ -14,13 +14,13 @@ Armor::Armor(
         float baseResistance
 ) : Item(
         std::move(name),
-            std::move(description),
-            price,
-           Item::ARMOR,
+        std::move(description),
+        price,
+       Item::ARMOR,
         rarity
 ),
     _type(type),
-        _baseDefence(baseDefence),
+    _baseDefence(baseDefence),
     _baseResistance(baseResistance)
 {}
 

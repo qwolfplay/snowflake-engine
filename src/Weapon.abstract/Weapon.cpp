@@ -15,10 +15,17 @@ Weapon::Weapon(
         float damage,
         float armorPenetration,
         float attackSpeed
-    ) : Item(std::move(name), std::move(description), price, type, rarity),
+) : Item(
+        std::move(name),
+        std::move(description),
+        price,
+        type,
+        rarity
+),
         _damage(damage),
         _armorPenetration(armorPenetration),
-        _attackSpeed(attackSpeed) {};
+        _attackSpeed(attackSpeed)
+{}
 
 float Weapon::getDamage() const {
     return _damage;
