@@ -15,14 +15,13 @@ Player::Player(std::string name, float health, float armor, unsigned short int m
 {
     _health = _maxHealth;
     _inventory = new InventorySlot[maxInventorySize];
-    _itemCount = 0;
     for (int i = 0; i < maxInventorySize; i++) {
         _inventory[i].itemPtr = nullptr;
         _inventory[i].isOccupied = false;
     }
+    _itemCount = 0;
 
     _armor = new ArmorSet;
-
     _armor->helmet = nullptr;
     _armor->chestplate = nullptr;
     _armor->leggings = nullptr;
