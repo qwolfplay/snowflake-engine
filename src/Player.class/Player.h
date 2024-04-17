@@ -39,7 +39,6 @@ class Player
     const std::string _name;
     float _health;
     const float _maxHealth;
-    const int _inventorySize;
 
     unsigned short int _itemCount = 0;
 
@@ -48,6 +47,7 @@ class Player
     Weapon *_equippedWeapon{};
 
 public:
+    const unsigned short int _inventorySize;
     class InventoryFullException : public std::exception
     {
         std::string _message = "Inventory is full";
