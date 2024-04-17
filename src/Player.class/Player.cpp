@@ -232,6 +232,7 @@ void Player::unequipHelmet()
     }
 
     _inventory[emptySlotIndex].itemPtr = (Item *) _armor->helmet;
+    _inventory[emptySlotIndex].isOccupied = true;
     _armor->helmet = nullptr;
     _armor->isHelmetEquipped = false;
 
@@ -254,6 +255,7 @@ void Player::unequipChestplate()
     }
 
     _inventory[emptySlotIndex].itemPtr = (Item *) _armor->chestplate;
+    _inventory[emptySlotIndex].isOccupied = true;
     _armor->chestplate = nullptr;
     _armor->isChestplateEquipped = false;
 }
@@ -275,6 +277,7 @@ void Player::unequipLeggings()
     }
 
     _inventory[emptySlotIndex].itemPtr = (Item *) _armor->leggings;
+    _inventory[emptySlotIndex].isOccupied = true;
     _armor->leggings = nullptr;
     _armor->isLeggingsEquipped = false;
 }
