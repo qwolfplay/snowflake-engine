@@ -81,6 +81,26 @@ void Player::removeItemFromInventory(unsigned short int index)
 }
 
 
+float Player::getEffectiveDefence()
+{
+    float effective = 0;
+    if (_armor->isHelmetEquipped)       { effective += _armor->helmet->getEffectiveDefence(); }
+    if (_armor->isChestplateEquipped)   { effective += _armor->chestplate->getEffectiveDefence(); }
+    if (_armor->isLeggingsEquipped)     { effective += _armor->leggings->getEffectiveDefence(); }
+
+    return effective;
+}
+
+float Player::getEffectiveResistance()
+{
+    float effective = 0;
+    if (_armor->isHelmetEquipped)       { effective += _armor->helmet->getEffectiveResistance(); }
+    if (_armor->isChestplateEquipped)   { effective += _armor->chestplate->getEffectiveResistance(); }
+    if (_armor->isLeggingsEquipped)     { effective += _armor->leggings->getEffectiveResistance(); }
+
+    return effective;
+}
+
 int Player::getItemCount() const
 {
     return _itemCount;

@@ -102,6 +102,10 @@ public:
 
     void removeItemFromInventory(unsigned short int index);
 
+    float getEffectiveDefence();
+
+    float getEffectiveResistance();
+
     int getItemCount() const;
 
     [[nodiscard]] std::vector<unsigned short int> getFreeSlots() const;
