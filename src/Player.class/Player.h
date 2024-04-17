@@ -106,7 +106,7 @@ public:
 
     float getEffectiveResistance();
 
-    int getItemCount() const;
+    [[nodiscard]] int getItemCount() const;
 
     [[nodiscard]] std::vector<unsigned short int> getFreeSlots() const;
 
@@ -120,11 +120,11 @@ public:
 
     void equipLeggings(unsigned short int index);
 
-    Helmet *getHelmetPtr() const;
+    [[nodiscard]] Helmet *getHelmetPtr() const;
 
-    Chestplate *getChestplatePtr() const;
+    [[nodiscard]] Chestplate *getChestplatePtr() const;
 
-    Leggings *getLeggingsPtr() const;
+    [[nodiscard]] Leggings *getLeggingsPtr() const;
 
     void unequipHelmet();
 
