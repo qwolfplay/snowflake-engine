@@ -8,7 +8,7 @@
 
 #include "Player.h"
 
-Player::Player(std::string name, float health, float armor, unsigned short int maxInventorySize) :
+Player::Player(std::string name, float health, unsigned short int maxInventorySize) :
         _name(std::move(name)),
         _maxHealth(health),
         _inventorySize(maxInventorySize)

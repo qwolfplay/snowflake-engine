@@ -88,7 +88,7 @@ public:
         }
     };
 
-    Player(std::string name, float health, float armor, unsigned short int maxInventorySize);
+    Player(std::string name, float health, unsigned short int maxInventorySize);
 
     ~Player();
 

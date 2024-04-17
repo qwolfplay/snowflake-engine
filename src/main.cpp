@@ -23,7 +23,7 @@ void describeArmor(Armor *item)
 
 int main()
 {
-    Player player("Player", 50, 10, 27);
+    Player player("Player", 50, 27);
 
     std::cout << "Max HP: " << player.getMaxHealth() << std::endl;
 
