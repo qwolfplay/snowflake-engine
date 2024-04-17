@@ -23,8 +23,8 @@ private:
     const float _baseResistance;
 
 public:
-    const float defenceMultiplier = 1;
-    const float resistanceMultiplier = 1;
+    const float defenceMultiplier;
+    const float resistanceMultiplier;
 
     Armor(std::string name,
           std::string description,
@@ -42,9 +42,9 @@ public:
 
     [[nodiscard]] armorType getArmorType() const;
 
-    [[nodiscard]] float getEffectiveDefence() const;
+    [[nodiscard]] virtual float getEffectiveDefence();
 
-    [[nodiscard]] float getEffectiveResistance() const;
+    [[nodiscard]] virtual float getEffectiveResistance();
 
     virtual float calculateMeleeDamageReduction(float damage) const;
 

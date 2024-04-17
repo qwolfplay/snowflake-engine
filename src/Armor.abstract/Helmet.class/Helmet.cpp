@@ -19,10 +19,22 @@ Helmet::Helmet(
         rarity,
         baseDefence,
         baseResistance
-)
+),
+    defenceMultiplier(0.225),
+    resistanceMultiplier(0.35)
 {}
 
 Helmet::~Helmet() = default;
+
+float Helmet::getEffectiveDefence()
+{
+    return getBaseDefence() * defenceMultiplier;
+}
+
+float Helmet::getEffectiveResistance()
+{
+    return getBaseResistance() * resistanceMultiplier;
+}
 
 float Helmet::calculateMeleeDamageReduction(float damage) const
 {

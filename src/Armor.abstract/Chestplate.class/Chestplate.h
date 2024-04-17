@@ -10,8 +10,8 @@
 class Chestplate : public Armor
 {
 public:
-    const float defenceMultiplier = 0.45;
-    const float resistanceMultiplier = 0.49;
+    const float defenceMultiplier;
+    const float resistanceMultiplier;
 
     Chestplate(
             std::string name,
@@ -23,6 +23,10 @@ public:
         );
 
     ~Chestplate();
+
+    [[nodiscard]] float getEffectiveDefence() override;
+
+    [[nodiscard]] float getEffectiveResistance() override;
 
     [[nodiscard]] float calculateMeleeDamageReduction(float damage) const override;
 

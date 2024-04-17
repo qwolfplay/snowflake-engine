@@ -21,7 +21,9 @@ Armor::Armor(
 ),
     _type(type),
     _baseDefence(baseDefence),
-    _baseResistance(baseResistance)
+    _baseResistance(baseResistance),
+    defenceMultiplier(1.0),
+    resistanceMultiplier(1.0)
 {}
 
 Armor::~Armor() = default;
@@ -39,12 +41,12 @@ Armor::armorType Armor::getArmorType() const
     return _type;
 }
 
-float Armor::getEffectiveDefence() const
+float Armor::getEffectiveDefence()
 {
     return _baseDefence * defenceMultiplier;
 }
 
-float Armor::getEffectiveResistance() const
+float Armor::getEffectiveResistance()
 {
     return _baseResistance * resistanceMultiplier;
 }

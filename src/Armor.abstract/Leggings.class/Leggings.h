@@ -10,8 +10,8 @@
 class Leggings : public Armor
 {
 public:
-    const float defenceMultiplier = 0.325;
-    const float resistanceMultiplier = 0.16;
+    const float defenceMultiplier;
+    const float resistanceMultiplier;
 
     Leggings(
             std::string name,
@@ -23,6 +23,10 @@ public:
         );
 
     ~Leggings();
+
+    [[nodiscard]] float getEffectiveDefence() override;
+
+    [[nodiscard]] float getEffectiveResistance() override;
 
     [[nodiscard]] float calculateMeleeDamageReduction(float damage) const override;
 

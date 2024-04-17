@@ -19,10 +19,22 @@ Leggings::Leggings(
         rarity,
         baseDefence,
         baseResistance
-)
+),
+    defenceMultiplier(0.325),
+    resistanceMultiplier(0.16)
 {}
 
 Leggings::~Leggings() = default;
+
+float Leggings::getEffectiveDefence()
+{
+    return getBaseDefence() * defenceMultiplier;
+}
+
+float Leggings::getEffectiveResistance()
+{
+    return getBaseResistance() * resistanceMultiplier;
+}
 
 float Leggings::calculateMeleeDamageReduction(float damage) const
 {

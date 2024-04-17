@@ -19,10 +19,22 @@ Chestplate::Chestplate(
         rarity,
         baseDefence,
         baseResistance
-)
+),
+    defenceMultiplier(0.45),
+    resistanceMultiplier(0.49)
 {}
 
 Chestplate::~Chestplate() = default;
+
+float Chestplate::getEffectiveDefence()
+{
+    return getBaseDefence() * defenceMultiplier;
+}
+
+float Chestplate::getEffectiveResistance()
+{
+    return getBaseResistance() * resistanceMultiplier;
+}
 
 float Chestplate::calculateMeleeDamageReduction(float damage) const
 {
