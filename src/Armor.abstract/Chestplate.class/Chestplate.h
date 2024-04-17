@@ -10,12 +10,17 @@
 class Chestplate : public Armor
 {
 public:
-    Chestplate(std::string name,
-          std::string description,
-          float price,
-          rarity rarity,
-          float baseDefence,
-          float baseResistance);
+    const float defenceMultiplier = 0.45;
+    const float resistanceMultiplier = 0.49;
+
+    Chestplate(
+            std::string name,
+            std::string description,
+            float price,
+            rarity rarity,
+            float baseDefence,
+            float baseResistance
+        );
 
     ~Chestplate();
 

@@ -40,9 +40,9 @@ Armor::armorType Armor::getArmorType() const
 }
 
 float Armor::calculateMeleeDamageReduction(float damage) const {
-    return damage * (_baseDefence / 100.0);
+    return (damage * (_baseDefence / 100.0)) * defenceMultiplier;
 }
 
 float Armor::calculateMagicDamageReduction(float damage) const {
-    return damage * (_baseResistance / 100.0);
+    return (damage * (_baseResistance / 100.0)) * resistanceMultiplier;
 }

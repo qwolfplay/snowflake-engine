@@ -10,12 +10,17 @@
 class Leggings : public Armor
 {
 public:
-    Leggings(std::string name,
-             std::string description,
-             float price,
-             rarity rarity,
-             float baseDefence,
-             float baseResistance);
+    const float defenceMultiplier = 0.325;
+    const float resistanceMultiplier = 0.16;
+
+    Leggings(
+            std::string name,
+            std::string description,
+            float price,
+            rarity rarity,
+            float baseDefence,
+            float baseResistance
+        );
 
     ~Leggings();
 

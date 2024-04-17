@@ -23,6 +23,9 @@ private:
     const float _baseResistance;
 
 public:
+    const float defenceMultiplier = 1;
+    const float resistanceMultiplier = 1;
+
     Armor(std::string name,
           std::string description,
           float price,

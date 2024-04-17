@@ -10,6 +10,9 @@
 class Helmet : public Armor
 {
 public:
+    const float defenceMultiplier = 0.225;
+    const float resistanceMultiplier = 0.35;
+
     Helmet(
             std::string name,
             std::string description,
