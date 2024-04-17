@@ -105,7 +105,11 @@ std::vector<unsigned short int> Player::getFreeSlots() const
 
 Item *Player::getItemPtr(unsigned short int index)
 {
-    return _inventory[index].itemPtr;
+    if (_inventory[index].isOccupied) {
+        return _inventory[index].itemPtr;
+    } else {
+        throw SlotEmptyException();
+    }
 }
 
 void Player::equipWeapon(unsigned short int index)
