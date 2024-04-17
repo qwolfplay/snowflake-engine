@@ -21,6 +21,8 @@ Player::Player(std::string name, float health, float armor, unsigned short int m
         _inventory[i].isOccupied = false;
     }
 
+    _armor = new ArmorSet;
+
     _armor->helmet = nullptr;
     _armor->chestplate = nullptr;
     _armor->leggings = nullptr;
