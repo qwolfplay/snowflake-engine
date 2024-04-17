@@ -141,6 +141,8 @@ void Player::equipHelmet(unsigned short int index)
     }
 
     _armor->helmet = (Helmet *) _inventory[index].itemPtr;
+    _armor->isHelmetEquipped = true;
+
     _inventory[index].itemPtr = nullptr;
     _inventory[index].isOccupied = false;
 }
@@ -154,6 +156,8 @@ void Player::equipChestplate(unsigned short int index)
     }
 
     _armor->chestplate = (Chestplate *) _inventory[index].itemPtr;
+    _armor->isChestplateEquipped = true;
+
     _inventory[index].itemPtr = nullptr;
     _inventory[index].isOccupied = false;
 }
@@ -167,6 +171,8 @@ void Player::equipLeggings(unsigned short int index)
     }
 
     _armor->leggings = (Leggings *) _inventory[index].itemPtr;
+    _armor->isLeggingsEquipped = true;
+
     _inventory[index].itemPtr = nullptr;
     _inventory[index].isOccupied = false;
 }
