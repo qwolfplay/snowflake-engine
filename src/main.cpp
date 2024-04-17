@@ -43,7 +43,13 @@ int main()
 
     // TODO: More testing of new armor system
 
+    std::cout << "DEF: " << player.getEffectiveDefence() << " | RES: " << player.getEffectiveResistance() << std::endl;
+
+    player.equipHelmet(1);
     player.equipChestplate(2);
+    player.equipLeggings(3);
+
+    std::cout << "DEF: " << player.getEffectiveDefence() << " | RES: " << player.getEffectiveResistance() << std::endl;
 
     return 0;
 }
