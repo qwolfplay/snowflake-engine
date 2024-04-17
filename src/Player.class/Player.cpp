@@ -199,19 +199,19 @@ void Player::equipLeggings(unsigned short int index)
 
 Helmet *Player::getHelmetPtr() const
 {
-    if (_armor->isHelmetEquipped) { throw SlotEmptyException(); }
+    if (!_armor->isHelmetEquipped) { throw SlotEmptyException(); }
     return _armor->helmet;
 }
 
 Chestplate *Player::getChestplatePtr() const
 {
-    if (_armor->isChestplateEquipped) { throw SlotEmptyException(); }
+    if (!_armor->isChestplateEquipped) { throw SlotEmptyException(); }
     return _armor->chestplate;
 }
 
 Leggings *Player::getLeggingsPtr() const
 {
-    if (_armor->isLeggingsEquipped) { throw SlotEmptyException(); }
+    if (!_armor->isLeggingsEquipped) { throw SlotEmptyException(); }
     return _armor->leggings;
 }
 
