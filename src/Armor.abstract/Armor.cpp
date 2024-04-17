@@ -39,6 +39,16 @@ Armor::armorType Armor::getArmorType() const
     return _type;
 }
 
+float Armor::getEffectiveDefence() const
+{
+    return _baseDefence * defenceMultiplier;
+}
+
+float Armor::getEffectiveResistance() const
+{
+    return _baseResistance * resistanceMultiplier;
+}
+
 float Armor::calculateMeleeDamageReduction(float damage) const {
     return (damage * (_baseDefence / 100.0)) * defenceMultiplier;
 }

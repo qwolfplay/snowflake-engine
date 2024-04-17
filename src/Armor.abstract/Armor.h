@@ -42,6 +42,10 @@ public:
 
     [[nodiscard]] armorType getArmorType() const;
 
+    [[nodiscard]] float getEffectiveDefence() const;
+
+    [[nodiscard]] float getEffectiveResistance() const;
+
     virtual float calculateMeleeDamageReduction(float damage) const;
 
     virtual float calculateMagicDamageReduction(float damage) const;
