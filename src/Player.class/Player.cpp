@@ -222,8 +222,8 @@ void Player::unequipHelmet()
         throw InventoryFullException();
     }
 
-    short int emptySlotIndex = 0;
-    for (int i = 0; i < _inventorySize; ++i) {
+    unsigned short int emptySlotIndex = 0;
+    for (unsigned short int i = 0; i < _inventorySize; ++i) {
         if (!_inventory[i].isOccupied) {
             emptySlotIndex = i;
             break;
@@ -245,8 +245,8 @@ void Player::unequipChestplate()
         throw InventoryFullException();
     }
 
-    short int emptySlotIndex = 0;
-    for (int i = 0; i < _inventorySize; ++i) {
+    unsigned short int emptySlotIndex = 0;
+    for (unsigned short int i = 0; i < _inventorySize; ++i) {
         if (!_inventory[i].isOccupied) {
             emptySlotIndex = i;
             break;
@@ -267,8 +267,8 @@ void Player::unequipLeggings()
         throw InventoryFullException();
     }
 
-    short int emptySlotIndex = 0;
-    for (int i = 0; i < _inventorySize; ++i) {
+    unsigned short int emptySlotIndex = 0;
+    for (unsigned short int i = 0; i < _inventorySize; ++i) {
         if (!_inventory[i].isOccupied) {
             emptySlotIndex = i;
             break;
