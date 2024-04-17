@@ -81,7 +81,7 @@ void Player::removeItemFromInventory(unsigned short int index)
 }
 
 
-int Player::getItemCount()
+int Player::getItemCount() const
 {
     return _itemCount;
 }

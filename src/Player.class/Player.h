@@ -102,7 +102,7 @@ public:
 
     void removeItemFromInventory(unsigned short int index);
 
-    int getItemCount();
+    int getItemCount() const;
 
     [[nodiscard]] std::vector<unsigned short int> getFreeSlots() const;
 
