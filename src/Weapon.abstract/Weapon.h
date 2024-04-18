@@ -5,6 +5,8 @@
 #ifndef POLYMORPHISM_WEAPON_H
 #define POLYMORPHISM_WEAPON_H
 
+#include <random>
+
 #include "Item.class/Item.h"
 #include "Enemy.class/Enemy.h"
 
@@ -13,6 +15,13 @@ private:
     float _damage;
     float _armorPenetration;
     float _attackSpeed;
+    float _critChance;
+    float _critDamageMultiplier;
+
+    std::random_device _rd;
+    std::mt19937 _gen;
+
+    bool isHitCritical();
 
 public:
     Weapon(

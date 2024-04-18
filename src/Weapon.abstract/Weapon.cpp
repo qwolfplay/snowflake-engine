@@ -27,6 +27,17 @@ Weapon::Weapon(
         _attackSpeed(attackSpeed)
 {}
 
+bool Weapon::isHitCritical()
+{
+    std::uniform_int_distribution<> rand(100, 10000);
+
+    if (rand(Weapon::_gen) / 100.0 < Weapon::_critChance) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 float Weapon::getDamage() const {
     return _damage;
 }
