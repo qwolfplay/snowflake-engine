@@ -32,7 +32,9 @@ public:
         rarity rarity,
         float damage,
         float armorPenetration,
-        float attackSpeed
+        float attackSpeed,
+        float critDamage,
+        float critDamagMult
         );
 
     ~Weapon() = default;

@@ -14,7 +14,9 @@ Weapon::Weapon(
         rarity rarity,
         float damage,
         float armorPenetration,
-        float attackSpeed
+        float attackSpeed,
+        float critChance,
+        float critDamageMult
 ) : Item(
         std::move(name),
         std::move(description),
@@ -24,7 +26,9 @@ Weapon::Weapon(
 ),
     _baseDamage(damage),
     _armorPenetration(armorPenetration),
-    _attackSpeed(attackSpeed)
+    _attackSpeed(attackSpeed),
+    _critChance(critChance),
+    _critDamageMultiplier(critDamageMult)
 {}
 
 bool Weapon::isHitCritical()
