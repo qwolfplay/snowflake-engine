@@ -19,7 +19,9 @@ public:
         rarity rarity,
         float damage,
         float armorPenetration,
-        float attackSpeed
+        float attackSpeed,
+        float critChance,
+        float critDamageMult
         );
     ~Sword();
     void attack(Enemy *target) override;
