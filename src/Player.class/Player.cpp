@@ -33,6 +33,7 @@ Player::Player(std::string name, float health, unsigned short int maxInventorySi
 Player::~Player()
 {
     delete[] _inventory;
+    delete _armor;
 }
 
 std::string Player::getName()
