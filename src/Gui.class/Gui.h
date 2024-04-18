@@ -24,7 +24,8 @@ public:
     static void shopMenu(Player *player);
     static void inventoryMenu(Player *player);
     static void simulationMenu(Player *player);
-    static void attackScreen(Player *player, Enemy *enemy);
+
+    static void fightScreen(Player *player, Enemy *enemy);
 };
 
 

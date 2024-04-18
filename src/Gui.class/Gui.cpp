@@ -12,7 +12,8 @@
 #include "Weapon.abstract/Bow.class/Bow.h"
 #include "Weapon.abstract/Wand.class/Wand.h"
 
-void Gui::menu(Gui::menus selectedMenu, Player *player) {
+void Gui::menu(Gui::menus selectedMenu, Player *player)
+{
     switch (selectedMenu) {
         case MAIN_MENU:
             mainMenu(player);
@@ -34,7 +35,8 @@ void Gui::menu(Gui::menus selectedMenu, Player *player) {
     }
 }
 
-void Gui::printWeapon(Weapon *w) {
+void Gui::printWeapon(Weapon *w)
+{
     std::cout << "Name: " << w->getName()
               << " | Desc: " << w->getDescription()
               << " | Price: " << w->getPrice()
@@ -45,7 +47,8 @@ void Gui::printWeapon(Weapon *w) {
               << " | ATKSPD: " << w->getAttackSpeed() << std::endl;
 }
 
-void Gui::mainMenu(Player *player) {
+void Gui::mainMenu(Player *player)
+{
     std::cout << "Polimorfizm" << "\n\n"
               << "1. Sklep" << "\n"
               << "2. Ekwipunek" << "\n"
@@ -63,9 +66,10 @@ void Gui::mainMenu(Player *player) {
     }
 }
 
-void Gui::shopMenu(Player *player) {
+void Gui::shopMenu(Player *player)
+{
     std::cout << "Sklep" << "\n\n"
-              << "1. Miecz"<< "\n"
+            << "1. Miecz" << "\n"
               << "2. Łuk" << "\n"
               << "3. Różdżka" << "\n\n";
 
@@ -94,7 +98,8 @@ void Gui::shopMenu(Player *player) {
     menu(MAIN_MENU, player);
 }
 
-void Gui::inventoryMenu(Player *player) {
+void Gui::inventoryMenu(Player *player)
+{
     std::cout << "Ekwipunek" << "\n\n";
 
     for (int i = 0; i < player->getItemCount(); i++) {
@@ -105,7 +110,8 @@ void Gui::inventoryMenu(Player *player) {
     menu(MAIN_MENU, player);
 }
 
-void Gui::attackScreen(Player *player, Enemy *enemy) {
+void Gui::fightScreen(Player *player, Enemy *enemy)
+{
     std::cout << "\n" << player->getName() << ": " << player->getHealth() << "\n";
     std::cout << "Przeciwnik: " << enemy->getHealth() << " | " << enemy->getArmor() << "\n\n";
 
@@ -120,18 +126,19 @@ void Gui::attackScreen(Player *player, Enemy *enemy) {
         case 1:
             player->getEquippedWeapon()->attack(enemy);
             std::cout << "Zadano obrażenia" << "\n";
-            attackScreen(player, enemy);
+            fightScreen(player, enemy);
             break;
         case 2:
             mainMenu(player);
             break;
         default:
-            attackScreen(player, enemy);
+            fightScreen(player, enemy);
     }
 
 }
 
-void Gui::simulationMenu(Player *player) {
+void Gui::simulationMenu(Player *player)
+{
     std::cout << "Symulacja ataku" << "\n\n";
 
     Item *itemPtr = nullptr;
@@ -165,6 +172,6 @@ void Gui::simulationMenu(Player *player) {
     float enemyHealth, enemyArmor;
     std::cin >> enemyHealth >> enemyArmor;
 
-    Gui::attackScreen(player, new Enemy(enemyHealth, enemyArmor));
+    Gui::fightScreen(player, new Enemy(enemyHealth, enemyArmor));
 }
 
