@@ -149,10 +149,17 @@ void Gui::simulationMenu(Player *player) {
         }
     }
 
+    selectWeapon:
     std::cout << "Wybierz broń: ";
     int option;
     std::cin >> option;
-    player->equipWeapon(option);
+    try {
+        player->equipWeapon(option);
+    } catch (Player::SlotEmptyException &e) {
+        std::cout << "Error: " << e.what() << std::endl;
+        // TODO: Change looping to method to a method that doesn't use goto (if possible)
+        goto selectWeapon;
+    }
 
     std::cout << "Utwórz przeciwnika (hp, armor): ";
     float enemyHealth, enemyArmor;
