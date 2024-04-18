@@ -134,9 +134,19 @@ void Gui::attackScreen(Player *player, Enemy *enemy) {
 void Gui::simulationMenu(Player *player) {
     std::cout << "Symulacja ataku" << "\n\n";
 
-    for (int i = 0; i < player->getItemCount(); i++) {
-        printWeapon((Weapon *) (player->getItemPtr(i)));
-        std::cout << "\n";
+    Item *itemPtr = nullptr;
+
+    for (int i = 0; i < player->_inventorySize; i++) {
+        try {
+            itemPtr = player->getItemPtr(i);
+            if (itemPtr->getType() == Item::WEAPON) {
+                std::cout << "Index: " << i << std::endl;
+                printWeapon((Weapon *) (player->getItemPtr(i)));
+                std::cout << "\n";
+            }
+        } catch (std::exception &e) {
+            continue;
+        }
     }
 
     std::cout << "Wybierz broń: ";
