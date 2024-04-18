@@ -12,7 +12,7 @@
 
 class Weapon : public Item {
 private:
-    float _damage;
+    float _baseDamage;
     float _armorPenetration;
     float _attackSpeed;
     float _critChance;

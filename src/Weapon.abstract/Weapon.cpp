@@ -22,9 +22,9 @@ Weapon::Weapon(
         type,
         rarity
 ),
-        _damage(damage),
-        _armorPenetration(armorPenetration),
-        _attackSpeed(attackSpeed)
+    _baseDamage(damage),
+    _armorPenetration(armorPenetration),
+    _attackSpeed(attackSpeed)
 {}
 
 bool Weapon::isHitCritical()
@@ -39,7 +39,7 @@ bool Weapon::isHitCritical()
 }
 
 float Weapon::getDamage() const {
-    return _damage;
+    return _baseDamage;
 }
 
 float Weapon::getArmorPenetration() const {
