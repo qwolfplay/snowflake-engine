@@ -54,7 +54,10 @@ float Weapon::getAttackSpeed() const {
     return _attackSpeed;
 }
 
-void Weapon::attack(Enemy *target) {
-    // TODO: expand function to include armor calculations
-    target->takeDamage(_damage);
+float Weapon::attack(Enemy *target)
+{
+    float resultingDamage = Weapon::_baseDamage;
+    if (Weapon::isHitCritical()) { resultingDamage *= Weapon::_critDamageMultiplier; }
+
+    return resultingDamage;
 }
