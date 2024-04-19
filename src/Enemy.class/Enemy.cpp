@@ -65,8 +65,15 @@ Leggings *Enemy::getLeggingsPtr() const
     return _armor->leggings;
 }
 
-void Enemy::takeDamage(float damage) {
+void Enemy::takeDamage(float damage, float armorPenetration)
+{
     // TODO: expand this function to include armor calculations
-    _health -= damage;
+    float resultingDamage = damage;
+    float damageReductionFactor = armor - (armor * armorPenetration / 100.0)
+
 }
 
+void Enemy::takeRawDamage(float damage)
+{
+    _health -= damage;
+}

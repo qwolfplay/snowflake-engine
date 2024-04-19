@@ -43,7 +43,7 @@ public:
     [[nodiscard]] float getArmorPenetration() const;
     [[nodiscard]] float getAttackSpeed() const;
 
-    virtual float attack(Enemy *target);
+    virtual void attack(Enemy *target);
 };
 
 

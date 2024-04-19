@@ -20,7 +20,6 @@ public:
 
     [[nodiscard]] unsigned int getMaxHealth() const;
 
-    void takeDamage(float damage);
     float getEffectiveDefence();
 
     float getEffectiveResistance();
@@ -30,6 +29,10 @@ public:
     [[nodiscard]] Chestplate *getChestplatePtr() const;
 
     [[nodiscard]] Leggings *getLeggingsPtr() const;
+
+    void takeDamage(float damage, float armorPenetration);
+
+    void takeRawDamage(float damage);
 };
 
 
