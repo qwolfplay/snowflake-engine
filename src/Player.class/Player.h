@@ -19,6 +19,7 @@
 
 class Player
 {
+public:
     typedef struct
     {
         Item *itemPtr;
@@ -36,6 +37,7 @@ class Player
         bool isLeggingsEquipped;
     } ArmorSet;
 
+private:
     const std::string _name;
     float _health;
     const float _maxHealth;
