@@ -37,6 +37,26 @@ public:
         bool isLeggingsEquipped;
     } ArmorSet;
 
+    class SlotEmptyException : public std::exception
+    {
+        std::string _message = "Slot is empty";
+    public:
+        [[nodiscard]] const char *what() const noexcept override
+        {
+            return _message.c_str();
+        }
+    };
+
+    class SlotAlreadyOccupiedException : public std::exception
+    {
+        std::string _message = "Slot is occupied";
+    public:
+        [[nodiscard]] const char *what() const noexcept override
+        {
+            return _message.c_str();
+        }
+    };
+
 private:
     const std::string _name;
     float _health;
@@ -53,26 +73,6 @@ public:
     class InventoryFullException : public std::exception
     {
         std::string _message = "Inventory is full";
-    public:
-        [[nodiscard]] const char *what() const noexcept override
-        {
-            return _message.c_str();
-        }
-    };
-
-    class SlotEmptyException : public std::exception
-    {
-        std::string _message = "Slot is empty";
-    public:
-        [[nodiscard]] const char *what() const noexcept override
-        {
-            return _message.c_str();
-        }
-    };
-
-    class SlotAlreadyOccupiedException : public std::exception
-    {
-        std::string _message = "Slot is occupied";
     public:
         [[nodiscard]] const char *what() const noexcept override
         {

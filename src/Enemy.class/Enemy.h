@@ -5,20 +5,31 @@
 #ifndef POLYMORPHISM_ENEMY_H
 #define POLYMORPHISM_ENEMY_H
 
+#include "Player.class/Player.h"
+
 class Enemy {
     float _health;
     unsigned int _maxHealth;
-    unsigned int _armor;
+    Player::ArmorSet *_armor;
 
 public:
-    Enemy(unsigned int health, unsigned int armor);
+    Enemy(float health);
     ~Enemy() = default;
 
     [[nodiscard]] float getHealth() const;
-    [[nodiscard]] unsigned int getArmor() const;
+
     [[nodiscard]] unsigned int getMaxHealth() const;
 
     void takeDamage(float damage);
+    float getEffectiveDefence();
+
+    float getEffectiveResistance();
+
+    [[nodiscard]] Helmet *getHelmetPtr() const;
+
+    [[nodiscard]] Chestplate *getChestplatePtr() const;
+
+    [[nodiscard]] Leggings *getLeggingsPtr() const;
 };
 
 
