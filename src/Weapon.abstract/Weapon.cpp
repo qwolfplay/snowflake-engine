@@ -59,5 +59,5 @@ void Weapon::attack(Enemy *target)
     float resultingDamage = Weapon::_baseDamage;
     if (Weapon::isHitCritical()) { resultingDamage *= Weapon::_critDamageMultiplier; }
 
-    enemy -
+    target->takeDamage(resultingDamage, Weapon::_armorPenetration);
 }
