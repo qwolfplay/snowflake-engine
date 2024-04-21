@@ -37,10 +37,5 @@ Sword::Sword(
 Sword::~Sword() = default;
 
 void Sword::attack(Enemy *target) {
-    // TODO: Figure out a way to calculate armor penetration without damaging target in fucntion (if possible)
-    // * Maybe 1: Pass weapon to target and calc it on the target side
-    // * Maybe 2: Pass armor of target into Weapon::attack() (like its now)
-
-    double damageAfterArmorPenetrationCalc = target->getArmor() * (Sword::getArmorPenetration() / 100.0);
-    target->takeDamage(pow(getDamage() - (getDamage() * damageAfterArmorPenetrationCalc / 86.0), 1.15));
+    target->takeDamage(Sword::getDamage(), Sword::getArmorPenetration());
 }
