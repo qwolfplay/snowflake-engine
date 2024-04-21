@@ -24,7 +24,8 @@ public:
         float critDamageMult
         );
     ~Sword();
-    void attack(Enemy *target) override;
+
+    void attack(Enemy *target);
 };
 
 
