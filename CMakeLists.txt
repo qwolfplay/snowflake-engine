@@ -4,20 +4,20 @@ project(rpg)
 set(CMAKE_CXX_STANDARD 23)
 
 set(SOURCE_FILES
-        src/Weapon.abstract/Bow.class/Bow.cpp
         src/Item.class/Food.class/Food.cpp
         src/Item.class/Item.cpp
-        src/Weapon.abstract/Sword.class/Sword.cpp
-        src/Weapon.abstract/Wand.class/Wand.cpp
-        src/Weapon.abstract/Weapon.cpp
         src/Enemy.class/Enemy.cpp
-        src/Player.class/Player.cpp
-        src/Gui.class/Gui.cpp
         src/Armor.abstract/Armor.cpp
         src/Armor.abstract/Chestplate.class/Chestplate.cpp
         src/Armor.abstract/Helmet.class/Helmet.cpp
         src/Armor.abstract/Leggings.class/Leggings.cpp
         src/ArmorSet.class/ArmorSet.cpp
+        src/Weapon.abstract/Weapon.cpp
+        src/Weapon.abstract/Bow.class/Bow.cpp
+        src/Weapon.abstract/Sword.class/Sword.cpp
+        src/Weapon.abstract/Wand.class/Wand.cpp
+        src/Player.class/Player.cpp
+        src/Gui.class/Gui.cpp
 )
 
 add_executable(rpg
