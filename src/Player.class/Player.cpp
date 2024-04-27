@@ -27,6 +27,7 @@ Player::Player(std::string name, float health, unsigned short int maxInventorySi
     _itemCount = 0;
 
     _armor = new ArmorSet;
+    _equippedWeapon = nullptr;
 }
 
 Player::~Player()
@@ -141,6 +142,9 @@ void Player::equipWeapon(unsigned short int index)
 
 Weapon *Player::getEquippedWeapon()
 {
+    if (_equippedWeapon == nullptr) {
+        throw SlotEmptyException();
+    }
     return _equippedWeapon;
 }
 

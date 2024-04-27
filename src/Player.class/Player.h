@@ -36,7 +36,7 @@ private:
 
     InventorySlot *_inventory;
     ArmorSet *_armor;
-    Weapon *_equippedWeapon{};
+    Weapon *_equippedWeapon;
 
     unsigned short int getFirstFreeSlot();
 
