@@ -27,12 +27,6 @@ Player::Player(std::string name, float health, unsigned short int maxInventorySi
     _itemCount = 0;
 
     _armor = new ArmorSet;
-    _armor->helmet = nullptr;
-    _armor->chestplate = nullptr;
-    _armor->leggings = nullptr;
-    _armor->isHelmetEquipped = false;
-    _armor->isChestplateEquipped = false;
-    _armor->isLeggingsEquipped = false;
 }
 
 Player::~Player()
@@ -83,27 +77,6 @@ void Player::removeItemFromInventory(unsigned short int index)
     } else {
         throw SlotEmptyException();
     }
-}
-
-
-float Player::getEffectiveDefence()
-{
-    float effective = 0;
-    if (_armor->isHelmetEquipped)       { effective += _armor->helmet->getEffectiveDefence(); }
-    if (_armor->isChestplateEquipped)   { effective += _armor->chestplate->getEffectiveDefence(); }
-    if (_armor->isLeggingsEquipped)     { effective += _armor->leggings->getEffectiveDefence(); }
-
-    return effective;
-}
-
-float Player::getEffectiveResistance()
-{
-    float effective = 0;
-    if (_armor->isHelmetEquipped)       { effective += _armor->helmet->getEffectiveResistance(); }
-    if (_armor->isChestplateEquipped)   { effective += _armor->chestplate->getEffectiveResistance(); }
-    if (_armor->isLeggingsEquipped)     { effective += _armor->leggings->getEffectiveResistance(); }
-
-    return effective;
 }
 
 int Player::getItemCount() const
@@ -165,8 +138,7 @@ void Player::equipHelmet(unsigned short int index)
         throw WrongItemTypeException();
     }
 
-    _armor->helmet = (Helmet *) _inventory[index].itemPtr;
-    _armor->isHelmetEquipped = true;
+    _armor->equipHelmet((Helmet *) _inventory[index].itemPtr);
 
     _inventory[index].itemPtr = nullptr;
     _inventory[index].isOccupied = false;
@@ -180,8 +152,7 @@ void Player::equipChestplate(unsigned short int index)
         throw WrongItemTypeException();
     }
 
-    _armor->chestplate = (Chestplate *) _inventory[index].itemPtr;
-    _armor->isChestplateEquipped = true;
+    _armor->equipChestplate((Chestplate *) _inventory[index].itemPtr);
 
     _inventory[index].itemPtr = nullptr;
     _inventory[index].isOccupied = false;
@@ -195,34 +166,15 @@ void Player::equipLeggings(unsigned short int index)
         throw WrongItemTypeException();
     }
 
-    _armor->leggings = (Leggings *) _inventory[index].itemPtr;
-    _armor->isLeggingsEquipped = true;
+    _armor->equipLeggings((Leggings *) _inventory[index].itemPtr);
 
     _inventory[index].itemPtr = nullptr;
     _inventory[index].isOccupied = false;
 }
 
-Helmet *Player::getHelmetPtr() const
-{
-    if (!_armor->isHelmetEquipped) { throw SlotEmptyException(); }
-    return _armor->helmet;
-}
-
-Chestplate *Player::getChestplatePtr() const
-{
-    if (!_armor->isChestplateEquipped) { throw SlotEmptyException(); }
-    return _armor->chestplate;
-}
-
-Leggings *Player::getLeggingsPtr() const
-{
-    if (!_armor->isLeggingsEquipped) { throw SlotEmptyException(); }
-    return _armor->leggings;
-}
-
 void Player::unequipHelmet()
 {
-    if (!_armor->isHelmetEquipped) { throw SlotEmptyException(); }
+    if (!_armor->isHelmetEquipped()) { throw SlotEmptyException(); }
 
     if (_itemCount >= _inventorySize) {
         throw InventoryFullException();
@@ -236,16 +188,14 @@ void Player::unequipHelmet()
         }
     }
 
-    _inventory[emptySlotIndex].itemPtr = (Item *) _armor->helmet;
+    _inventory[emptySlotIndex].itemPtr = (Item *) _armor->unequipHelmet();
     _inventory[emptySlotIndex].isOccupied = true;
-    _armor->helmet = nullptr;
-    _armor->isHelmetEquipped = false;
 
 }
 
 void Player::unequipChestplate()
 {
-    if (!_armor->isChestplateEquipped) { throw SlotEmptyException(); }
+    if (!_armor->isChestplateEquipped()) { throw SlotEmptyException(); }
 
     if (_itemCount >= _inventorySize) {
         throw InventoryFullException();
@@ -259,15 +209,13 @@ void Player::unequipChestplate()
         }
     }
 
-    _inventory[emptySlotIndex].itemPtr = (Item *) _armor->chestplate;
+    _inventory[emptySlotIndex].itemPtr = (Item *) _armor->unequipChestplate();
     _inventory[emptySlotIndex].isOccupied = true;
-    _armor->chestplate = nullptr;
-    _armor->isChestplateEquipped = false;
 }
 
 void Player::unequipLeggings()
 {
-    if (!_armor->isLeggingsEquipped) { throw SlotEmptyException(); }
+    if (!_armor->isLeggingsEquipped()) { throw SlotEmptyException(); }
 
     if (_itemCount >= _inventorySize) {
         throw InventoryFullException();
@@ -281,8 +229,6 @@ void Player::unequipLeggings()
         }
     }
 
-    _inventory[emptySlotIndex].itemPtr = (Item *) _armor->leggings;
+    _inventory[emptySlotIndex].itemPtr = (Item *) _armor->unequipLeggings();
     _inventory[emptySlotIndex].isOccupied = true;
-    _armor->leggings = nullptr;
-    _armor->isLeggingsEquipped = false;
 }

@@ -13,6 +13,7 @@
 
 #include "Item.class/item.h"
 #include "Weapon.abstract/Weapon.h"
+#include "ArmorSet.class/ArmorSet.h"
 #include "Armor.abstract/Helmet.class/Helmet.h"
 #include "Armor.abstract/Chestplate.class/Chestplate.h"
 #include "Armor.abstract/Leggings.class/Leggings.h"
@@ -25,17 +26,6 @@ public:
         Item *itemPtr;
         bool isOccupied;
     } InventorySlot;
-
-    typedef struct
-    {
-        Helmet *helmet;
-        Chestplate *chestplate;
-        Leggings *leggings;
-
-        bool isHelmetEquipped;
-        bool isChestplateEquipped;
-        bool isLeggingsEquipped;
-    } ArmorSet;
 
 private:
     const std::string _name;
