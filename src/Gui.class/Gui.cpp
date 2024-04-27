@@ -79,7 +79,8 @@ void Gui::shopMenu(Player *player)
     try {
         switch (option) {
             case 1:
-                player->addItemToInventory(new Sword("Miecz", ":3", 25.6, Item::WEAPON, Item::COMMON, 20, 15, 3));
+                player->addItemToInventory(
+                        new Sword("Miecz", ":3", 25.6, Item::WEAPON, Item::COMMON, 20, 15, 3, 45, 2));
                 break;
             case 2:
                 player->addItemToInventory(new Bow("Łuk", "UwU", 35.1, Item::WEAPON, Item::RARE, 8, 5, 1));

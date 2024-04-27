@@ -27,7 +27,8 @@ int main()
 
     std::cout << "Max HP: " << player.getMaxHealth() << std::endl;
 
-    player.addItemToInventory(new Sword("Sword", "A sword", 10, Item::type::WEAPON, Item::rarity::COMMON, 10, 25, 5));
+    player.addItemToInventory(
+            new Sword("Sword", "A sword", 10, Item::type::WEAPON, Item::rarity::COMMON, 10, 25, 5, 55, 1.65));
 
     for (int i = 0; i < player._inventorySize; i++) {
         try {
