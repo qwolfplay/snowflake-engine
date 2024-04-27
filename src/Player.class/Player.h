@@ -37,26 +37,6 @@ public:
         bool isLeggingsEquipped;
     } ArmorSet;
 
-    class SlotEmptyException : public std::exception
-    {
-        std::string _message = "Slot is empty";
-    public:
-        [[nodiscard]] const char *what() const noexcept override
-        {
-            return _message.c_str();
-        }
-    };
-
-    class SlotAlreadyOccupiedException : public std::exception
-    {
-        std::string _message = "Slot is occupied";
-    public:
-        [[nodiscard]] const char *what() const noexcept override
-        {
-            return _message.c_str();
-        }
-    };
-
 private:
     const std::string _name;
     float _health;
@@ -70,25 +50,6 @@ private:
 
 public:
     const unsigned short int _inventorySize;
-    class InventoryFullException : public std::exception
-    {
-        std::string _message = "Inventory is full";
-    public:
-        [[nodiscard]] const char *what() const noexcept override
-        {
-            return _message.c_str();
-        }
-    };
-
-    class WrongItemTypeException : public std::exception
-    {
-        std::string _message = "Item is not a weapon";
-    public:
-        [[nodiscard]] const char *what() const noexcept override
-        {
-            return _message.c_str();
-        }
-    };
 
     Player(std::string name, float health, unsigned short int maxInventorySize);
 

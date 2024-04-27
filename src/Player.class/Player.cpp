@@ -6,6 +6,11 @@
 #include <string>
 #include <vector>
 
+#include "Exceptions/SlotEmptyException.h"
+#include "Exceptions/SlotAlreadyOccupiedException.h"
+#include "Exceptions/InventoryFullException.h"
+#include "Exceptions/WrongItemTypeException.h"
+
 #include "Player.h"
 
 Player::Player(std::string name, float health, unsigned short int maxInventorySize) :
