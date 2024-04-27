@@ -115,7 +115,7 @@ void Gui::inventoryMenu(Player *player)
 void Gui::fightScreen(Player *player, Enemy *enemy)
 {
     std::cout << "\n" << player->getName() << ": " << player->getHealth() << "\n";
-    std::cout << "Przeciwnik: " << enemy->getHealth() << " | " << enemy->getArmor() << "\n\n";
+    std::cout << "Przeciwnik: " << enemy->getHealth() << " | " << enemy->getArmorPtr()->getEffectiveDefence() << "\n\n";
 
     std::cout << "1. Atak" << "\n"
               << "2. Powrót" << "\n\n";
