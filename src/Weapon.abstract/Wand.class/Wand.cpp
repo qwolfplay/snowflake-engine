@@ -21,12 +21,14 @@ Wand::Wand(
         rarity,
         damage,
         armorPenetration,
-        attackSpeed
+        attackSpeed,
+        35,
+        2.3
 ) {}
 
 Wand::~Wand() = default;
 
 void Wand::attack(Enemy *target) {
     // TODO: damage formula
-    target->takeDamage(getDamage());
+    target->takeDamage(getDamage(), 0);
 }

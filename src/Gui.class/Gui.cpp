@@ -11,6 +11,7 @@
 #include "Weapon.abstract/Sword.class/Sword.h"
 #include "Weapon.abstract/Bow.class/Bow.h"
 #include "Weapon.abstract/Wand.class/Wand.h"
+#include "Exceptions/SlotEmptyException.h"
 
 void Gui::menu(Gui::menus selectedMenu, Player *player)
 {
@@ -163,7 +164,7 @@ void Gui::simulationMenu(Player *player)
     std::cin >> option;
     try {
         player->equipWeapon(option);
-    } catch (Player::SlotEmptyException &e) {
+    } catch (SlotEmptyException &e) {
         std::cout << "Error: " << e.what() << std::endl;
         // TODO: Change looping to method to a method that doesn't use goto (if possible)
         goto selectWeapon;
@@ -173,6 +174,6 @@ void Gui::simulationMenu(Player *player)
     float enemyHealth, enemyArmor;
     std::cin >> enemyHealth >> enemyArmor;
 
-    Gui::fightScreen(player, new Enemy(enemyHealth, enemyArmor));
+    Gui::fightScreen(player, new Enemy(enemyHealth));
 }
 

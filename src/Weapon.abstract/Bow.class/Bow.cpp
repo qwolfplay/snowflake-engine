@@ -24,12 +24,14 @@ Bow::Bow(
         rarity,
         damage,
         armorPenetration,
-        attackSpeed
+        attackSpeed,
+        24,
+        1.8
 ) {};
 
 Bow::~Bow() = default;
 
 void Bow::attack(Enemy *target) {
     // TODO: damage formula
-    target->takeDamage(getDamage());
+    target->takeDamage(getDamage(), 0);
 }
