@@ -6,6 +6,8 @@
 
 #include <utility>
 
+#include "Item.class/item.h"
+
 Weapon::Weapon(
         std::string name,
         std::string description,

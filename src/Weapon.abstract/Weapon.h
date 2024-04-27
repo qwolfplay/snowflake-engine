@@ -7,11 +7,12 @@
 
 #include <random>
 
-#include "Item.class/Item.h"
 #include "Enemy.class/Enemy.h"
+#include "Item.class/Item.h"
+
+class Enemy;
 
 class Weapon : public Item {
-private:
     float _baseDamage;
     float _armorPenetration;
     float _attackSpeed;
@@ -40,7 +41,9 @@ public:
     ~Weapon() = default;
 
     [[nodiscard]] float getDamage() const;
+
     [[nodiscard]] float getArmorPenetration() const;
+
     [[nodiscard]] float getAttackSpeed() const;
 
     virtual void attack(Enemy *target);
