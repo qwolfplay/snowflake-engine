@@ -38,6 +38,8 @@ private:
     ArmorSet *_armor;
     Weapon *_equippedWeapon{};
 
+    unsigned short int getFirstFreeSlot();
+
 public:
     const unsigned short int _inventorySize;
 

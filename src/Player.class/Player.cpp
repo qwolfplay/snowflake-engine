@@ -101,6 +101,21 @@ std::vector<unsigned short int> Player::getFreeSlots() const
     return freeSlots;
 }
 
+unsigned short int Player::getFirstFreeSlot()
+{
+    if (_itemCount >= _inventorySize) {
+        throw InventoryFullException();
+    }
+
+    for (int i = 0; i < _inventorySize; i++) {
+        if (!_inventory[i].isOccupied) {
+            return i;
+        }
+    }
+
+    return 0;
+}
+
 Item *Player::getItemPtr(unsigned short int index)
 {
     if (_inventory[index].isOccupied) {
@@ -122,7 +137,6 @@ void Player::equipWeapon(unsigned short int index)
         }
 
     }
-
 }
 
 Weapon *Player::getEquippedWeapon()
@@ -180,13 +194,7 @@ void Player::unequipHelmet()
         throw InventoryFullException();
     }
 
-    unsigned short int emptySlotIndex = 0;
-    for (unsigned short int i = 0; i < _inventorySize; ++i) {
-        if (!_inventory[i].isOccupied) {
-            emptySlotIndex = i;
-            break;
-        }
-    }
+    unsigned short int emptySlotIndex = getFirstFreeSlot();
 
     _inventory[emptySlotIndex].itemPtr = (Item *) _armor->unequipHelmet();
     _inventory[emptySlotIndex].isOccupied = true;
@@ -201,13 +209,7 @@ void Player::unequipChestplate()
         throw InventoryFullException();
     }
 
-    unsigned short int emptySlotIndex = 0;
-    for (unsigned short int i = 0; i < _inventorySize; ++i) {
-        if (!_inventory[i].isOccupied) {
-            emptySlotIndex = i;
-            break;
-        }
-    }
+    unsigned short int emptySlotIndex = getFirstFreeSlot();
 
     _inventory[emptySlotIndex].itemPtr = (Item *) _armor->unequipChestplate();
     _inventory[emptySlotIndex].isOccupied = true;
@@ -221,13 +223,7 @@ void Player::unequipLeggings()
         throw InventoryFullException();
     }
 
-    unsigned short int emptySlotIndex = 0;
-    for (unsigned short int i = 0; i < _inventorySize; ++i) {
-        if (!_inventory[i].isOccupied) {
-            emptySlotIndex = i;
-            break;
-        }
-    }
+    unsigned short int emptySlotIndex = getFirstFreeSlot();
 
     _inventory[emptySlotIndex].itemPtr = (Item *) _armor->unequipLeggings();
     _inventory[emptySlotIndex].isOccupied = true;
