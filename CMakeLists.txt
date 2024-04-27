@@ -14,13 +14,10 @@ set(SOURCE_FILES
         src/Player.class/Player.cpp
         src/Gui.class/Gui.cpp
         src/Armor.abstract/Armor.cpp
-        src/Armor.abstract/Armor.h
         src/Armor.abstract/Chestplate.class/Chestplate.cpp
-        src/Armor.abstract/Chestplate.class/Chestplate.h
         src/Armor.abstract/Helmet.class/Helmet.cpp
-        src/Armor.abstract/Helmet.class/Helmet.h
         src/Armor.abstract/Leggings.class/Leggings.cpp
-        src/Armor.abstract/Leggings.class/Leggings.h
+        src/ArmorSet.class/ArmorSet.cpp
 )
 
 add_executable(rpg
