@@ -71,6 +71,26 @@ bool ArmorSet::isLeggingsEquipped() const
     return _isLeggingsEquipped;
 }
 
+float ArmorSet::getEffectiveDefence()
+{
+    float effective = 0;
+    if (_isHelmetEquipped) { effective += _helmet->getEffectiveDefence(); }
+    if (_isChestplateEquipped) { effective += _chestplate->getEffectiveDefence(); }
+    if (_isLeggingsEquipped) { effective += _leggings->getEffectiveDefence(); }
+
+    return effective;
+}
+
+float ArmorSet::getEffectiveResistance()
+{
+    float effective = 0;
+    if (_isHelmetEquipped) { effective += _helmet->getEffectiveResistance(); }
+    if (_isChestplateEquipped) { effective += _chestplate->getEffectiveResistance(); }
+    if (_isLeggingsEquipped) { effective += _leggings->getEffectiveResistance(); }
+
+    return effective;
+}
+
 void ArmorSet::equipHelmet(Helmet *helmet)
 {
     if (_isHelmetEquipped) { throw SlotAlreadyOccupiedException(); }

@@ -39,6 +39,10 @@ public:
 
     [[nodiscard]] bool isLeggingsEquipped() const;
 
+    float getEffectiveDefence();
+
+    float getEffectiveResistance();
+
     void equipHelmet(Helmet *helmet);
 
     void equipChestplate(Chestplate *chestplate);
