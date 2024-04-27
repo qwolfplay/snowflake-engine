@@ -57,10 +57,6 @@ public:
 
     void removeItemFromInventory(unsigned short int index);
 
-    float getEffectiveDefence();
-
-    float getEffectiveResistance();
-
     [[nodiscard]] int getItemCount() const;
 
     [[nodiscard]] std::vector<unsigned short int> getFreeSlots() const;
@@ -74,12 +70,6 @@ public:
     void equipChestplate(unsigned short int index);
 
     void equipLeggings(unsigned short int index);
-
-    [[nodiscard]] Helmet *getHelmetPtr() const;
-
-    [[nodiscard]] Chestplate *getChestplatePtr() const;
-
-    [[nodiscard]] Leggings *getLeggingsPtr() const;
 
     void unequipHelmet();
 
