@@ -50,7 +50,7 @@ void Gui::printWeapon(Weapon *w)
 
 void Gui::mainMenu(Player *player)
 {
-    std::cout << "Polimorfizm" << "\n\n"
+    std::cout << "RPG" << "\n\n"
               << "1. Sklep" << "\n"
               << "2. Ekwipunek" << "\n"
               << "3. Symulacja ataku" << "\n"
