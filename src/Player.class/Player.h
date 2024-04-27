@@ -18,6 +18,8 @@
 #include "Armor.abstract/Chestplate.class/Chestplate.h"
 #include "Armor.abstract/Leggings.class/Leggings.h"
 
+class Weapon;
+
 class Player
 {
 public:

@@ -6,9 +6,6 @@
 #include "Weapon.abstract/Weapon.h"
 #include "Weapon.abstract/Sword.class/Sword.h"
 #include "Armor.abstract/Armor.h"
-#include "Armor.abstract/Helmet.class/Helmet.h"
-#include "Armor.abstract/Chestplate.class/Chestplate.h"
-#include "Armor.abstract/Leggings.class/Leggings.h"
 
 void describeArmor(Armor *item)
 {

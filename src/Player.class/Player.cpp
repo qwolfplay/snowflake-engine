@@ -2,16 +2,20 @@
 // Created by WolfPlay on 4/10/2024.
 //
 
+#include "Player.h"
+
 #include <stdexcept>
 #include <string>
 #include <vector>
 
+#include "Item.class/item.h"
+#include "Weapon.abstract/Weapon.h"
+#include "ArmorSet.class/ArmorSet.h"
 #include "Exceptions/SlotEmptyException.h"
 #include "Exceptions/SlotAlreadyOccupiedException.h"
 #include "Exceptions/InventoryFullException.h"
 #include "Exceptions/WrongItemTypeException.h"
 
-#include "Player.h"
 
 Player::Player(std::string name, float health, unsigned short int maxInventorySize) :
         _name(std::move(name)),
