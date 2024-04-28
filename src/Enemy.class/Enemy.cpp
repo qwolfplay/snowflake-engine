@@ -42,11 +42,13 @@ ArmorSet *Enemy::getArmorPtr() const
 
 void Enemy::takeDamage(float damage, float armorPenetration)
 {
-    // TODO: expand this function to include armor calculations
-    float resultingDamage = damage;
-    float damageReductionFactor =
-            _armor->getEffectiveDefence() - (_armor->getEffectiveDefence() * armorPenetration / 100.0);
+    float resultingDamage;
+    if (armorPenetration > 75) { armorPenetration = 75; }
 
+    resultingDamage = damage - (damage * (_armor->getDamageReduction(damage) *
+                                          ArmorSet::calculateArmorPeneterationFactor(armorPenetration)));
+
+    _health -= resultingDamage;
 }
 
 void Enemy::takeRawDamage(float damage)
