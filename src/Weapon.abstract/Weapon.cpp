@@ -31,7 +31,9 @@ Weapon::Weapon(
     _attackSpeed(attackSpeed),
     _critChance(critChance),
     _critDamageMultiplier(critDamageMult)
-{}
+{
+    _gen = std::mt19937(_rd());
+}
 
 bool Weapon::isHitCritical()
 {
