@@ -19,9 +19,7 @@ public:
         rarity rarity,
         float damage,
         float armorPenetration,
-        float attackSpeed,
-        float critChance,
-        float critDamageMult
+        float attackSpeed
         );
     ~Sword();
 

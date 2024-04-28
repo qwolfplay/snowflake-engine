@@ -18,9 +18,7 @@ Sword::Sword(
         rarity rarity,
         float damage,
         float armorPenetration,
-        float attackSpeed,
-        float critChance,
-        float critDamageMult
+        float attackSpeed
 ) : Weapon(
         std::move(name),
         std::move(description),
@@ -30,8 +28,8 @@ Sword::Sword(
         damage,
         armorPenetration,
         attackSpeed,
-        critChance,
-        critDamageMult
+        35.0f,
+        1.83f
 ) {}
 
 Sword::~Sword() = default;

@@ -22,8 +22,8 @@ Wand::Wand(
         damage,
         armorPenetration,
         attackSpeed,
-        35,
-        2.3
+        62.0f,
+        1.62f
 ) {}
 
 Wand::~Wand() = default;

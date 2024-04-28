@@ -19,7 +19,9 @@ public:
         float armorPenetration,
         float attackSpeed
         );
+
     ~Bow();
+
     void attack(Enemy *target) override;
 };
 
