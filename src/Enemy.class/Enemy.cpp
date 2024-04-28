@@ -46,7 +46,7 @@ void Enemy::takeDamage(float damage, float armorPenetration)
     if (armorPenetration > 75) { armorPenetration = 75; }
 
     resultingDamage = damage - (damage * (_armor->getDamageReduction(damage) *
-                                          ArmorSet::calculateArmorPeneterationFactor(armorPenetration)));
+            ArmorSet::calculateArmorPenetrationFactor(armorPenetration)));
 
     _health -= resultingDamage;
 }

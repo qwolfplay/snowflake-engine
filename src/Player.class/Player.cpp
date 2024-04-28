@@ -248,7 +248,7 @@ void Player::takeDamage(float damage, float armorPenetration)
     if (armorPenetration > 66) { armorPenetration = 66; }
 
     resultingDamage = damage - (damage * (_armor->getDamageReduction(damage) *
-                                          ArmorSet::calculateArmorPeneterationFactor(armorPenetration)));
+            ArmorSet::calculateArmorPenetrationFactor(armorPenetration)));
 
     _health -= resultingDamage;
 }
