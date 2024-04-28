@@ -82,6 +82,10 @@ public:
     void unequipLeggings();
 
     Weapon *getEquippedWeapon();
+
+    void takeDamage(float damage, float armorPenetration);
+
+    void takeRawDamage(float damage);
 };
 
 

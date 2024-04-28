@@ -241,3 +241,19 @@ void Player::unequipLeggings()
     _inventory[emptySlotIndex].itemPtr = (Item *) _armor->unequipLeggings();
     _inventory[emptySlotIndex].isOccupied = true;
 }
+
+void Player::takeDamage(float damage, float armorPenetration)
+{
+    float resultingDamage;
+    if (armorPenetration > 66) { armorPenetration = 66; }
+
+    resultingDamage = damage - (damage * (_armor->getDamageReduction(damage) *
+                                          ArmorSet::calculateArmorPeneterationFactor(armorPenetration)));
+
+    _health -= resultingDamage;
+}
+
+void Player::takeRawDamage(float damage)
+{
+    _health -= damage;
+}
