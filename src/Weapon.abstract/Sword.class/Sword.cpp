@@ -33,7 +33,3 @@ Sword::Sword(
 ) {}
 
 Sword::~Sword() = default;
-
-void Sword::attack(Enemy *target) {
-    target->takeDamage(Sword::getDamage(), Sword::getArmorPenetration());
-}

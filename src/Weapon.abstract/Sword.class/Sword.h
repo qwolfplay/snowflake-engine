@@ -21,9 +21,8 @@ public:
         float armorPenetration,
         float attackSpeed
         );
+    
     ~Sword();
-
-    void attack(Enemy *target);
 };
 
 
