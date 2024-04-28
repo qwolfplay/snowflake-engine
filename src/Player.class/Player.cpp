@@ -55,6 +55,11 @@ float Player::getMaxHealth() const
     return _maxHealth;
 }
 
+ArmorSet *Player::getArmorSetPtr()
+{
+    return _armor;
+}
+
 void Player::addItemToInventory(Item *item)
 {
     if (_itemCount < _inventorySize) {

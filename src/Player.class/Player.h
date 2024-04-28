@@ -55,6 +55,8 @@ public:
 
     [[nodiscard]] float getMaxHealth() const;
 
+    ArmorSet *getArmorSetPtr();
+
     void addItemToInventory(Item *item);
 
     void removeItemFromInventory(unsigned short int index);
