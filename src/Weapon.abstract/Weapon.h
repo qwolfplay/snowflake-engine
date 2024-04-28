@@ -34,7 +34,7 @@ public:
         float damage,
         float armorPenetration,
         float attackSpeed,
-        float critDamage,
+        float critChance,
         float critDamagMult
         );
 
