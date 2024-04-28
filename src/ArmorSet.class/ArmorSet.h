@@ -58,6 +58,8 @@ public:
     float getDamageReduction(float damage);
 
     float getDamageReductionMultiplier();
+
+    static float calculateArmorPeneterationFactor(float armorPenetration);
 };
 
 

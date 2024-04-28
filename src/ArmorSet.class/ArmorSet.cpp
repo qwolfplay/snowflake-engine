@@ -144,10 +144,15 @@ float ArmorSet::getEffectiveResistance()
 
 float ArmorSet::getDamageReduction(float damage)
 {
-    return damage - (damage * (1 - (1 / (0.05 * getEffectiveDefence() + 1))));
+    return damage - (damage * (1 - (1 / (0.05f * getEffectiveDefence() + 1))));
 }
 
 float ArmorSet::getDamageReductionMultiplier()
 {
-    return 1 / (0.05 * getEffectiveDefence() + 1);
+    return 1.0f / (0.05 * getEffectiveDefence() + 1);
+}
+
+float ArmorSet::calculateArmorPeneterationFactor(float armorPenetration)
+{
+    return 1 - (1 / ((0.03f * armorPenetration) + 1));
 }
