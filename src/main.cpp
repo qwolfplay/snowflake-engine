@@ -5,7 +5,9 @@
 
 #include "Weapon.abstract/Weapon.h"
 #include "Weapon.abstract/Sword.class/Sword.h"
-#include "Armor.abstract/Armor.h"
+#include "Armor.abstract/Helmet.class/Helmet.h"
+#include "Armor.abstract/Chestplate.class/Chestplate.h"
+#include "Armor.abstract/Leggings.class/Leggings.h"
 
 void describeArmor(Armor *item)
 {
@@ -15,27 +17,32 @@ void describeArmor(Armor *item)
     std::cout << "Rarity: " << item->getRarity() << std::endl;
     std::cout << "DEF: " << item->getEffectiveDefence() << std::endl;
     std::cout << "RES: " << item->getEffectiveResistance() << std::endl;
-    std::cout << std::endl;
+//    std::cout << std::endl;
 }
 
 int main()
 {
     Player player("Player", 50, 27);
 
-    std::cout << "Max HP: " << player.getMaxHealth() << std::endl;
+    player.addItemToInventory(new Helmet("Helmet", "A helmet", 25.6, Item::rarity::COMMON, 5.0, 3.0));
+    player.addItemToInventory(new Chestplate("Chestplate", "A chestplate", 50.0, Item::rarity::RARE, 10.0, 5.0));
+    player.addItemToInventory(new Leggings("Leggings", "A pair of leggings", 35.0, Item::rarity::UNCOMMON, 7.0, 4.0));
 
-    player.addItemToInventory(
-            new Sword("Sword", "A sword", 10, Item::type::WEAPON, Item::rarity::COMMON, 10, 25, 5, 55, 1.65));
-
-    for (int i = 0; i < player._inventorySize; i++) {
+    for (unsigned short i = 0; i < player._inventorySize; i++) {
         try {
-            std::string name = player.getItemPtr(i)->getName();
-            std::cout << "Index: " << i << " | Item: " << name << std::endl;
+            describeArmor((Armor *) (player.getItemPtr(i)));
+            printf("Index: %u\n\n", i);
         } catch (std::exception &e) {
+            continue;
         }
     }
 
-    Gui::mainMenu(&player);
+    player.equipHelmet(0);
+    player.equipChestplate(1);
+    player.equipLeggings(2);
+
+    printf("DEF: %f\n", player.getArmorSetPtr()->getEffectiveDefence());
+    printf("Dmg Reduction: %f%%\n", (player.getArmorSetPtr()->getDamageReductionMultiplier()) * 100.0f);
 
     return 0;
 }
