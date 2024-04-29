@@ -10,7 +10,7 @@
 #include "Armor.abstract/Leggings.class/Leggings.h"
 #include "Weapon.abstract/Sword.class/Sword.h"
 
-void describeArmor(Armor *item)
+void describeItem(Armor *item)
 {
     std::cout << "Name: " << item->getName() << std::endl;
     std::cout << "Desc: " << item->getDescription() << std::endl;
@@ -19,6 +19,25 @@ void describeArmor(Armor *item)
     std::cout << "DEF: " << item->getEffectiveDefence() << std::endl;
     std::cout << "RES: " << item->getEffectiveResistance() << std::endl;
 //    std::cout << std::endl;
+}
+
+void describeItem(Weapon *item)
+{
+    printf("Name: %s\n"
+           "Desc: %s\n"
+           "Price: %f\n"
+           "Rarity: %d\n"
+           "DMG: %f\n"
+           "AP: %f\n"
+           "AS: %f\n",
+           item->getName().c_str(),
+           item->getDescription().c_str(),
+           item->getPrice(),
+           item->getRarity(),
+           item->getDamage(),
+           item->getArmorPenetration(),
+           item->getAttackSpeed()/*,*/
+    );
 }
 
 int main()
@@ -32,10 +51,19 @@ int main()
 
     for (unsigned short i = 0; i < player._inventorySize; i++) {
         try {
-            describeArmor((Armor *) (player.getItemPtr(i)));
+            switch (player.getItemPtr(i)->getType()) {
+                case Item::type::WEAPON:
+                    describeItem((Weapon *) (player.getItemPtr(i)));
+                    break;
+                case Item::type::ARMOR:
+                    describeItem((Armor *) (player.getItemPtr(i)));
+                    break;
+                default:
+                    break;
+            }
             printf("Index: %u\n\n", i);
         } catch (std::exception &e) {
-            continue;
+            printf("Slot %u is empty\n\n", i);
         }
     }
 
@@ -47,7 +75,8 @@ int main()
     printf("DEF: %f\n", player.getArmorSetPtr()->getEffectiveDefence());
     printf("Dmg Reduction: %f%%\n", (player.getArmorSetPtr()->getDamageReductionMultiplier()) * 100.0f);
 
-    printf("Damage: %f\n",
+    printf("Damage: %f\n", player.getEquippedWeaponPtr()->getDamage());
+    printf("Damage Subtracted: %f\n",
            player.getArmorSetPtr()->getDamageReduction(
                    player.getEquippedWeaponPtr()->getDamage()
            )
