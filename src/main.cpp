@@ -63,7 +63,7 @@ int main()
             }
             printf("Index: %u\n\n", i);
         } catch (std::exception &e) {
-            printf("Slot %u is empty\n\n", i);
+            printf("Slot %u is empty\n", i);
         }
     }
 
