@@ -124,7 +124,7 @@ Leggings *ArmorSet::unequipLeggings()
 
 float ArmorSet::getEffectiveDefence()
 {
-    float effective = 0;
+    float effective = 0.0f;
     if (_isHelmetEquipped) { effective += _helmet->getEffectiveDefence(); }
     if (_isChestplateEquipped) { effective += _chestplate->getEffectiveDefence(); }
     if (_isLeggingsEquipped) { effective += _leggings->getEffectiveDefence(); }
@@ -144,7 +144,7 @@ float ArmorSet::getEffectiveResistance()
 
 float ArmorSet::getDamageReduction(float damage)
 {
-    return damage - (damage * (1 - (1 / (0.05f * getEffectiveDefence() + 1))));
+    return damage * (1 - (1 / (0.05f * getEffectiveDefence() + 1)));
 }
 
 float ArmorSet::getDamageReductionMultiplier()
