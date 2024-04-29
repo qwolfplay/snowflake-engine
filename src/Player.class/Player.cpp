@@ -149,7 +149,7 @@ void Player::equipWeapon(unsigned short int index)
     }
 }
 
-Weapon *Player::getEquippedWeapon()
+Weapon *Player::getEquippedWeaponPtr()
 {
     if (_equippedWeapon == nullptr) {
         throw SlotEmptyException();

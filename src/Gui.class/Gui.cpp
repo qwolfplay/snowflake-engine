@@ -126,7 +126,7 @@ void Gui::fightScreen(Player *player, Enemy *enemy)
 
     switch (option) {
         case 1:
-            player->getEquippedWeapon()->attack(enemy);
+            player->getEquippedWeaponPtr()->attack(enemy);
             std::cout << "Zadano obrażenia" << "\n";
             fightScreen(player, enemy);
             break;
