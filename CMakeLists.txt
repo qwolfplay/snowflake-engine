@@ -18,6 +18,10 @@ set(SOURCE_FILES
         src/Weapon.abstract/Wand.class/Wand.cpp
         src/Player.class/Player.cpp
         src/Gui.class/Gui.cpp
+        src/FightSystem/FightScene.class/FightScene.cpp
+        src/FightSystem/FightScene.class/FightScene.h
+        src/FightSystem/Event.class/Event.cpp
+        src/FightSystem/Event.class/Event.h
 )
 
 add_executable(rpg
