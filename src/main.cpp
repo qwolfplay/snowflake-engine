@@ -8,6 +8,7 @@
 #include "Armor.abstract/Helmet.class/Helmet.h"
 #include "Armor.abstract/Chestplate.class/Chestplate.h"
 #include "Armor.abstract/Leggings.class/Leggings.h"
+#include "Weapon.abstract/Sword.class/Sword.h"
 
 void describeArmor(Armor *item)
 {
@@ -27,6 +28,7 @@ int main()
     player.addItemToInventory(new Helmet("Helmet", "A helmet", 25.6, Item::rarity::COMMON, 5.0, 3.0));
     player.addItemToInventory(new Chestplate("Chestplate", "A chestplate", 50.0, Item::rarity::RARE, 10.0, 5.0));
     player.addItemToInventory(new Leggings("Leggings", "A pair of leggings", 35.0, Item::rarity::UNCOMMON, 7.0, 4.0));
+    player.addItemToInventory(new Sword("Sword", ":3", 2137.0f, Item::WEAPON, Item::rarity::LEGENDARY, 25, 14, 9));
 
     for (unsigned short i = 0; i < player._inventorySize; i++) {
         try {
@@ -40,9 +42,16 @@ int main()
     player.equipHelmet(0);
     player.equipChestplate(1);
     player.equipLeggings(2);
+    player.equipWeapon(3);
 
     printf("DEF: %f\n", player.getArmorSetPtr()->getEffectiveDefence());
     printf("Dmg Reduction: %f%%\n", (player.getArmorSetPtr()->getDamageReductionMultiplier()) * 100.0f);
+
+    printf("Damage: %f\n",
+           player.getArmorSetPtr()->getDamageReduction(
+                   player.getEquippedWeaponPtr()->getDamage()
+           )
+    );
 
     return 0;
 }
