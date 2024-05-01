@@ -9,6 +9,7 @@
 #include "Armor.abstract/Helmet.class/Helmet.h"
 #include "Armor.abstract/Chestplate.class/Chestplate.h"
 #include "Armor.abstract/Leggings.class/Leggings.h"
+#include "Window.class/window.h"
 
 void describeArmor(Armor *item)
 {
@@ -23,6 +24,7 @@ void describeArmor(Armor *item)
 
 int main()
 {
+    Window window(1024,1024,(char*) "Title", nullptr);
     Player player("Player", 50, 27);
 
     std::cout << "Max HP: " << player.getMaxHealth() << std::endl;
