@@ -21,7 +21,11 @@ set(SOURCE_FILES
         src/Armor.abstract/Helmet.class/Helmet.h
         src/Armor.abstract/Leggings.class/Leggings.cpp
         src/Armor.abstract/Leggings.class/Leggings.h
+        src/Window.class/Window.cpp
+        src/Window.class/Window.h
 )
+
+add_subdirectory(include/raylib)
 
 add_executable(rpg
         src/main.cpp
@@ -29,4 +33,4 @@ add_executable(rpg
 )
 
 target_include_directories(rpg PUBLIC src)
-
+target_link_libraries(rpg PUBLIC raylib)
