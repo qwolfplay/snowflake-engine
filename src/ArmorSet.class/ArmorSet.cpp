@@ -31,14 +31,19 @@ ArmorSet::ArmorSet(Helmet *helmet, Chestplate *chestplate, Leggings *leggings)
     _isLeggingsEquipped = leggings != nullptr;
 }
 
-//ArmorSet::~ArmorSet()
-//{
-//    if (_helmet != nullptr){ delete _helmet; }
-//    if (_chestplate != nullptr) { delete _chestplate; }
-//    if (_leggings != nullptr) { delete _leggings; }
-//}
+// FIXME: When deleting ArmorSet object where one of the slots is empty (item ptr points to nullptr) it causes a memory access violation
+//        I don't know why, I don't wanna know why I just want to have a working destructor :c (Maybe I want to know so i cna fix it :3)
+ArmorSet::~ArmorSet()
+{
+    printf("Deleting helmet...\n");
+    if (_helmet != nullptr && _isHelmetEquipped) { delete _helmet; }
+    printf("Deleting chestplate...\n");
+    if (_chestplate != nullptr) { delete _chestplate; }
+    printf("Deleting leggings...\n");
+    if (_leggings != nullptr) { delete _leggings; }
+}
 
-ArmorSet::~ArmorSet() = default;
+//ArmorSet::~ArmorSet() = default;
 
 Helmet *ArmorSet::getHelmetPtr() const
 {

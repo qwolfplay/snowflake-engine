@@ -22,7 +22,7 @@ public:
             float baseResistance
     );
 
-    ~Helmet();
+    ~Helmet() override;
 
     [[nodiscard]] float getEffectiveDefence() override;
 
