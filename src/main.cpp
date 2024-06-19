@@ -10,6 +10,8 @@
 #include "Armor.abstract/Leggings.class/Leggings.h"
 #include "Weapon.abstract/Sword.class/Sword.h"
 
+#include "FightSystem/FightScene.class/FightScene.h"
+
 void describeItem(Armor *item)
 {
     std::cout << "Name: " << item->getName() << std::endl;
@@ -39,6 +41,8 @@ void describeItem(Weapon *item)
            item->getAttackSpeed()
     );
 }
+
+
 
 int main()
 {
@@ -81,6 +85,14 @@ int main()
                    player.getEquippedWeaponPtr()->getDamage()
            )
     );
+
+    std::vector<Enemy>enemies;
+    enemies.emplace_back(1);
+    enemies.emplace_back(2);
+
+    FightScene fightScene(&player, enemies);
+
+    printf("\nFight Scene:\nPlayer: %s\nEnemies: %zu\n", fightScene.getPlayerPtr()->getName().c_str(), fightScene.getEnemiesPtr()->size());
 
     return 0;
 }

@@ -10,14 +10,14 @@
 #include "Player.class/Player.h"
 #include "Enemy.class/Enemy.h"
 
-enum PossiblePlayerActions
-{
-    ATTACK,
-    USE,
-    EQUIP,
-    UNEQUIP,
-    WAIT
-};
+//enum PossiblePlayerActions
+//{
+//    ATTACK,
+//    USE,
+//    EQUIP,
+//    UNEQUIP,
+//    WAIT
+//};
 
 // To future me:
 // good luck with debugging this code UwU
@@ -25,40 +25,17 @@ enum PossiblePlayerActions
 
 class FightScene
 {
-    typedef struct
-    {
-        Player *playerPtr;
-        unsigned short int actionDuration;
-    };
-    typedef struct
-    {
-        PossiblePlayerActions action;
-        unsigned short int targetIndex;
-    } PlayerAction;
-
     Player *_player;
-    Enemy **_enemies;
-
-    PlayerAction _selectedPlayerAction;
-
-    bool _endOfMove{};
-
-    unsigned long long int _passedTicks;
-
-    void performPlayerAction(PlayerAction action);
+    std::vector<Enemy> _enemies;
 
 public:
-    FightScene(Player *player, Enemy *enemies);
+    FightScene(Player *player, std::vector<Enemy> enemies);
 
-    ~FightScene();
+//    ~FightScene();
 
-    bool isAwaitingChoice();
+    Player* getPlayerPtr();
 
-    void selectAction(PossiblePlayerActions action, unsigned short int targetIndex);
-
-    void selectAction(PossiblePlayerActions action, unsigned short int targetIndex, void *additionalData);
-
-    void update();
+    std::vector<Enemy>* getEnemiesPtr();
 };
 
 

@@ -31,12 +31,14 @@ ArmorSet::ArmorSet(Helmet *helmet, Chestplate *chestplate, Leggings *leggings)
     _isLeggingsEquipped = leggings != nullptr;
 }
 
-ArmorSet::~ArmorSet()
-{
-    delete _helmet;
-    delete _chestplate;
-    delete _leggings;
-}
+//ArmorSet::~ArmorSet()
+//{
+//    if (_helmet != nullptr){ delete _helmet; }
+//    if (_chestplate != nullptr) { delete _chestplate; }
+//    if (_leggings != nullptr) { delete _leggings; }
+//}
+
+ArmorSet::~ArmorSet() = default;
 
 Helmet *ArmorSet::getHelmetPtr() const
 {

@@ -4,40 +4,14 @@
 
 #include "FightScene.h"
 
-bool FightScene::isAwaitingChoice()
+FightScene::FightScene(Player *player, std::vector<Enemy> enemies) : _player(player), _enemies(std::move(enemies)) {}
+
+Player *FightScene::getPlayerPtr()
 {
-    return _endOfMove;
+    return _player;
 }
 
-void FightScene::performPlayerAction(FightScene::PlayerAction action)
+std::vector<Enemy> *FightScene::getEnemiesPtr()
 {
-    switch (action.action) {
-        case PossiblePlayerActions::ATTACK:
-            _player->getEquippedWeaponPtr()->attack(_enemies[0]);
-        default:
-            break;
-    }
-}
-
-void FightScene::selectAction(PossiblePlayerActions action, unsigned short targetIndex)
-{
-    _selectedPlayerAction = PlayerAction(action, targetIndex);
-}
-
-void FightScene::selectAction(PossiblePlayerActions action, unsigned short targetIndex, void *additionalData)
-{
-    // im gonna leave it as is for now cause i dont really have an idea how to implement additional data for now=
-}
-
-void FightScene::update()
-{
-    try {
-        performPlayerAction(_selectedPlayerAction);
-    } catch (std::exception &e) {
-        printf("ERROR: %s", e.what());
-        return;
-    }
-
-    if (_endOfMove) { return; }
-    else { update(); }
+    return &_enemies;
 }
