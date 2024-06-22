@@ -20,16 +20,12 @@ class FightScene
 public:
     typedef struct {
         unsigned short size;
-        Enemy* enemies;
+        Enemy** enemies;
     } EnemiesCollection;
 
 private:
     Player *_player;
-
-    unsigned short _enemyCount;
-    Enemy* _enemies;
-
-    EnemiesCollection enemiesCollection;
+    std::vector<Enemy> enemies;
 
 public:
     FightScene(Player *player, EnemiesCollection enemiesCollection);

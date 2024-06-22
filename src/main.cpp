@@ -53,23 +53,23 @@ int main()
     player.addItemToInventory(new Leggings("Leggings", "A pair of leggings", 35.0, Item::rarity::UNCOMMON, 7.0, 4.0));
     player.addItemToInventory(new Sword("Sword", ":3", 2137.0f, Item::rarity::LEGENDARY, 25, 14, 9));
 
-    for (unsigned short i = 0; i < player._inventorySize; i++) {
-        try {
-            switch (player.getItemPtr(i)->getType()) {
-                case Item::type::WEAPON:
-                    describeItem((Weapon *) (player.getItemPtr(i)));
-                    break;
-                case Item::type::ARMOR:
-                    describeItem((Armor *) (player.getItemPtr(i)));
-                    break;
-                default:
-                    break;
-            }
-            printf("Index: %u\n\n", i);
-        } catch (std::exception &e) {
-            printf("Slot %u is empty\n", i);
-        }
-    }
+//    for (unsigned short i = 0; i < player._inventorySize; i++) {
+//        try {
+//            switch (player.getItemPtr(i)->getType()) {
+//                case Item::type::WEAPON:
+//                    describeItem((Weapon *) (player.getItemPtr(i)));
+//                    break;
+//                case Item::type::ARMOR:
+//                    describeItem((Armor *) (player.getItemPtr(i)));
+//                    break;
+//                default:
+//                    break;
+//            }
+//            printf("Index: %u\n\n", i);
+//        } catch (std::exception &e) {
+//            printf("Slot %u is empty\n", i);
+//        }
+//    }
 
     player.equipHelmet(0);
     player.equipChestplate(1);
@@ -86,13 +86,19 @@ int main()
            )
     );
 
-    std::vector<Enemy>enemies;
-    enemies.emplace_back(1);
-    enemies.emplace_back(2);
+    FightScene::EnemiesCollection collection;
 
-    FightScene fightScene(&player, enemies);
+    collection.size = 4;
+    collection.enemies = new Enemy*[4];
 
-    printf("\nFight Scene:\nPlayer: %s\nEnemies: %zu\n", fightScene.getPlayerPtr()->getName().c_str(), fightScene.getEnemiesPtr()->size());
+    collection.enemies[0] = new Enemy(1);
+    collection.enemies[1] = new Enemy(2);
+    collection.enemies[2] = new Enemy(3);
+    collection.enemies[3] = new Enemy(4);
+
+    FightScene fightScene(&player, collection);
+
+    delete collection.enemies;
 
     return 0;
 }

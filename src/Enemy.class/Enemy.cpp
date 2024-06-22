@@ -13,14 +13,14 @@ Enemy::Enemy(float health) :
     _maxHealth(health)
 {
     _armor = new ArmorSet;
-};
+}
 
 Enemy::Enemy(float health, Helmet *helmet, Chestplate *chestplate, Leggings *leggings) :
         _health(health),
         _maxHealth(health)
 {
     _armor = new ArmorSet(helmet, chestplate, leggings);
-};
+}
 
 Enemy::~Enemy()
 {
