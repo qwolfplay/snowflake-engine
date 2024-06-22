@@ -42,7 +42,15 @@ void describeItem(Weapon *item)
     );
 }
 
-
+void describeEnemy(Enemy *enemy) {
+    printf("HP: %f\n"
+           "Max HP: %i\n"
+           "DMG Red: %f\n",
+           enemy->getHealth(),
+           enemy->getMaxHealth(),
+           enemy->getArmorPtr()->getDamageReductionMultiplier()
+       );
+}
 
 int main()
 {
@@ -97,6 +105,10 @@ int main()
     collection.enemies[3] = new Enemy(4);
 
     FightScene fightScene(&player, collection);
+
+    for (unsigned short i = 0; i < fightScene.getEnemyCount(); i++) {
+        describeEnemy(fightScene.getEnemyPtr(i));
+    }
 
     delete collection.enemies;
 

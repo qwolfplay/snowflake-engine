@@ -19,3 +19,13 @@ Player *FightScene::getPlayerPtr()
     return _player;
 }
 
+Enemy *FightScene::getEnemyPtr(unsigned int index)
+{
+    return &enemies[index];
+}
+
+unsigned short FightScene::getEnemyCount()
+{
+    return enemies.size();
+}
+

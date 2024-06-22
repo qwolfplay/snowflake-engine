@@ -33,6 +33,10 @@ public:
     ~FightScene() = default;
 
     Player* getPlayerPtr();
+
+    Enemy* getEnemyPtr(unsigned int index);
+
+    unsigned short getEnemyCount();
 };
 
 
