@@ -34,7 +34,7 @@ public:
           float baseDefence,
           float baseResistance);
 
-    ~Armor();
+    virtual ~Armor() = default;
 
     [[nodiscard]] float getBaseDefence() const;
 

@@ -26,8 +26,6 @@ Armor::Armor(
     resistanceMultiplier(1.0)
 {}
 
-Armor::~Armor() = default;
-
 float Armor::getBaseDefence() const {
     return _baseDefence;
 }
