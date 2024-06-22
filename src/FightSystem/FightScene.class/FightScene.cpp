@@ -4,14 +4,12 @@
 
 #include "FightScene.h"
 
-FightScene::FightScene(Player *player, std::vector<Enemy> enemies) : _player(player), _enemies(std::move(enemies)) {}
+FightScene::FightScene(Player *player, EnemiesCollection enemiesCollection) :
+    _player(player),
+    _enemyCount(enemiesCollection.size),
+    _enemies(enemiesCollection.enemies) {}
 
 Player *FightScene::getPlayerPtr()
 {
     return _player;
-}
-
-std::vector<Enemy> *FightScene::getEnemiesPtr()
-{
-    return &_enemies;
 }

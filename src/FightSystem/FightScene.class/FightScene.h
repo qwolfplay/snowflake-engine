@@ -10,14 +10,6 @@
 #include "Player.class/Player.h"
 #include "Enemy.class/Enemy.h"
 
-//enum PossiblePlayerActions
-//{
-//    ATTACK,
-//    USE,
-//    EQUIP,
-//    UNEQUIP,
-//    WAIT
-//};
 
 // To future me:
 // good luck with debugging this code UwU
@@ -25,17 +17,26 @@
 
 class FightScene
 {
+public:
+    typedef struct {
+        unsigned short size;
+        Enemy* enemies;
+    } EnemiesCollection;
+
+private:
     Player *_player;
-    std::vector<Enemy> _enemies;
+
+    unsigned short _enemyCount;
+    Enemy* _enemies;
+
+    EnemiesCollection enemiesCollection;
 
 public:
-    FightScene(Player *player, std::vector<Enemy> enemies);
+    FightScene(Player *player, EnemiesCollection enemiesCollection);
 
-//    ~FightScene();
+    ~FightScene() = default;
 
     Player* getPlayerPtr();
-
-    std::vector<Enemy>* getEnemiesPtr();
 };
 
 
