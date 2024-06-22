@@ -35,12 +35,9 @@ ArmorSet::ArmorSet(Helmet *helmet, Chestplate *chestplate, Leggings *leggings)
 //        I don't know why, I don't wanna know why I just want to have a working destructor :c (Maybe I want to know so i cna fix it :3)
 ArmorSet::~ArmorSet()
 {
-    printf("Deleting helmet...\n");
-    if (_helmet != nullptr && _isHelmetEquipped) { delete _helmet; }
-    printf("Deleting chestplate...\n");
-    if (_chestplate != nullptr) { delete _chestplate; }
-    printf("Deleting leggings...\n");
-    if (_leggings != nullptr) { delete _leggings; }
+    delete _helmet;
+    delete _chestplate;
+    delete _leggings;
 }
 
 //ArmorSet::~ArmorSet() = default;
