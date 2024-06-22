@@ -11,7 +11,7 @@
 #include <stdexcept>
 #include <vector>
 
-#include "Item.class/item.h"
+#include "Item.class/Item.h"
 #include "Weapon.abstract/Weapon.h"
 #include "ArmorSet.class/ArmorSet.h"
 #include "Armor.abstract/Helmet.class/Helmet.h"
