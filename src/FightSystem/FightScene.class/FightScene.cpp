@@ -4,6 +4,8 @@
 
 #include "FightScene.h"
 
+#include "PlayerAction.h"
+
 FightScene::FightScene(Player *player, EnemiesCollection enemiesCollection) :
 _player(player) {
     enemies.reserve(enemiesCollection.size); // THIS LINE WAS THE SOLUTION TO A BUG THAT I BATTLE FOR OVER 4 FLUFFING HOURS 💀
