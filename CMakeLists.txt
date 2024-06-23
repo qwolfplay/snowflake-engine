@@ -23,6 +23,8 @@ set(SOURCE_FILES
         src/Armor.abstract/Leggings.class/Leggings.h
         src/Window.class/Window.cpp
         src/Window.class/Window.h
+        src/Sprite.class/Sprite.cpp
+        src/Sprite.class/Sprite.h
 )
 
 add_subdirectory(include/raylib)
