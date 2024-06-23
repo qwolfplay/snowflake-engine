@@ -16,7 +16,9 @@ protected:
 public:
     virtual void perform() = 0;
 
-    unsigned short getLength()
+    virtual ~PlayerAction() = default;
+
+    unsigned short getLength() const
     {
         return _lengthInTicks;
     }

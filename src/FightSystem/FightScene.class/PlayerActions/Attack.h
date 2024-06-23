@@ -15,6 +15,8 @@ class Attack : public PlayerAction
 public:
     Attack(unsigned short length, Player *player, Enemy *target);
 
+    ~Attack() override;
+
     void perform() override;
 
     Player *getPlayerPtr();

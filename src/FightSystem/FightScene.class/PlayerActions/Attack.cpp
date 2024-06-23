@@ -11,6 +11,8 @@ Attack::Attack(unsigned short length, Player *player, Enemy *target)
     _lengthInTicks = length;
 }
 
+Attack::~Attack() = default;
+
 void Attack::perform()
 {
     printf("Performing attack action | Target: %p | Damage: %f\n", _target, _player->getEquippedWeaponPtr()->getDamage());
