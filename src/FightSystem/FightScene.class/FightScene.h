@@ -23,14 +23,6 @@ public:
         Enemy** enemies;
     } EnemiesCollection;
 
-    typedef enum {
-        ATTACK,
-        USE,
-        EQUIP,
-        UNEQUIP,
-        WAIT
-    } PlayerAction;
-
 private:
     Player *_player;
     std::vector<Enemy> enemies;
