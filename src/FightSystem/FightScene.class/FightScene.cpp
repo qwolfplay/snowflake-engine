@@ -76,13 +76,11 @@ void FightScene::fightLoop()
     while (!shouldFightEnd()) {
         auto start = std::chrono::high_resolution_clock::now();
 
-        printf("\rTick: %i | Ticks left: %i   ", i, ticksLeftToCompletePlayerAction);
-
         if (ticksLeftToCompletePlayerAction <= 0) {
             bool isActionSelected;
 //            while (!isActionSelected) {
 //                // action selection screen
-//            }
+//              }
             selectedPlayerAction = createAttackActionPtr(0);
             printf("\nCreated new action\n");
             ticksLeftToCompletePlayerAction = selectedPlayerAction->getLength();
@@ -94,9 +92,11 @@ void FightScene::fightLoop()
         ticksLeftToCompletePlayerAction--;
 
         auto execTime = std::chrono::high_resolution_clock::now() - start;
+        printf("\rTick: %i | Tick time: %lli | Ticks left: %i   ", i, std::chrono::duration_cast<std::chrono::microseconds>(execTime).count(), ticksLeftToCompletePlayerAction);
         if (execTime < frameDuration) {
             std::this_thread::sleep_for(frameDuration - execTime);
         }
+
     }
 }
 
