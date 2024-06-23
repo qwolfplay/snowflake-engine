@@ -77,8 +77,6 @@ void FightScene::fightLoop()
         auto start = std::chrono::high_resolution_clock::now();
 
         printf("\rTick: %i | Ticks left: %i   ", i, ticksLeftToCompletePlayerAction);
-        i++;
-        ticksLeftToCompletePlayerAction--;
 
         if (ticksLeftToCompletePlayerAction <= 0) {
             bool isActionSelected;
@@ -91,6 +89,9 @@ void FightScene::fightLoop()
             selectedPlayerAction->perform();
             delete selectedPlayerAction;
         }
+
+        i++;
+        ticksLeftToCompletePlayerAction--;
 
         auto execTime = std::chrono::high_resolution_clock::now() - start;
         if (execTime < frameDuration) {
