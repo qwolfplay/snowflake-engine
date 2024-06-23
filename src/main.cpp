@@ -119,6 +119,8 @@ int main()
         describeEnemy(fightScene.getEnemyPtr(i));
     }
 
+    fightScene.fightLoop();
+
     delete collection.enemies;
 
     return 0;

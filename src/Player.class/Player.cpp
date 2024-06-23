@@ -257,3 +257,8 @@ void Player::takeRawDamage(float damage)
 {
     _health -= damage;
 }
+
+bool Player::isDead()
+{
+    return _health <= 0;
+}
