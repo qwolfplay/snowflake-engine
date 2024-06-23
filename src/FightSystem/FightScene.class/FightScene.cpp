@@ -5,6 +5,7 @@
 #include "FightScene.h"
 
 #include "PlayerAction.h"
+#include "PlayerActions/Attack.h"
 
 FightScene::FightScene(Player *player, EnemiesCollection enemiesCollection) :
 _player(player) {
@@ -27,5 +28,19 @@ Enemy *FightScene::getEnemyPtr(unsigned int index)
 unsigned short FightScene::getEnemyCount()
 {
     return enemies.size();
+}
+
+void FightScene::performPlayerAction(PlayerAction &action)
+{
+    try {
+        action.perform();
+    } catch (std::exception &e) {
+        printf("Error");
+    }
+}
+
+Attack FightScene::createAttackAction(unsigned short enemyIndex)
+{
+    return {26, _player, getEnemyPtr(enemyIndex)};
 }
 

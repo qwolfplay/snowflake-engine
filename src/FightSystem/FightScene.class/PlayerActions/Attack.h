@@ -7,9 +7,8 @@
 
 #include "FightSystem/FightScene.class/PlayerAction.h"
 #include "Enemy.class/Enemy.h"
-#include "FightSystem/FightScene.class/FightScene.h"
 
-class Attack : private PlayerAction
+class Attack : public PlayerAction
 {
     Enemy *_target;
 
@@ -17,7 +16,10 @@ public:
     Attack(unsigned short length, Player *player, Enemy *target);
 
     void perform() override;
-};
 
+    Player *getPlayerPtr();
+
+    Enemy *getTargetPtr();
+};
 
 #endif //RPG_ATTACK_H

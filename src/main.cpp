@@ -105,13 +105,10 @@ int main()
 
     FightScene::EnemiesCollection collection;
 
-    collection.size = 4;
-    collection.enemies = new Enemy*[4];
+    collection.size = 1;
+    collection.enemies = new Enemy*[1];
 
     collection.enemies[0] = new Enemy(18);
-    collection.enemies[1] = new Enemy(14);
-    collection.enemies[2] = new Enemy(25);
-    collection.enemies[3] = new Enemy(19);
 
     FightScene fightScene(&player, collection);
 
@@ -121,8 +118,6 @@ int main()
     for (unsigned short i = 0; i < fightScene.getEnemyCount(); i++) {
         describeEnemy(fightScene.getEnemyPtr(i));
     }
-
-
 
     delete collection.enemies;
 

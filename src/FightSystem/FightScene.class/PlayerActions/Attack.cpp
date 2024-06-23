@@ -16,3 +16,13 @@ void Attack::perform()
     printf("Performing attack action | Target: %p | Damage: %f\n", _target, _player->getEquippedWeaponPtr()->getDamage());
     _player->getEquippedWeaponPtr()->attack(_target);
 }
+
+Player *Attack::getPlayerPtr()
+{
+    return _player;
+}
+
+Enemy *Attack::getTargetPtr()
+{
+    return _target;
+}

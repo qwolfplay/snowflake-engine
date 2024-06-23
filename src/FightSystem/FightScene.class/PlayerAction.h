@@ -15,6 +15,11 @@ protected:
 
 public:
     virtual void perform() = 0;
+
+    unsigned short getLength()
+    {
+        return _lengthInTicks;
+    }
 };
 
 
