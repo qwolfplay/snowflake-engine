@@ -8,6 +8,11 @@
 
 class Window
 {
+private:
+    int height;
+    int width;
+    char* title;
+    char* iconPath;
 public:
     Window(int height, int width, char* title, char* iconPath);
 };

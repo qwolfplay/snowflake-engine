@@ -5,9 +5,13 @@
 #include "Window.h"
 #include "raylib.h"
 
-Window::Window(int height, int width, char* title, char* iconPath)
+Window::Window(int pHeight, int pWidth, char* pTitle, char* pIconPath)
 {
-    InitWindow(height, width, title);
+    height = pHeight;
+    width = pWidth;
+    title = pTitle;
+    iconPath = pIconPath;
+    InitWindow(width, height, title);
     Image icon(iconPath);
     SetWindowIcon(icon);
 }
