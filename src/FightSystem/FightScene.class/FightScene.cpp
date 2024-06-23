@@ -44,7 +44,12 @@ void FightScene::performPlayerAction(PlayerAction &action)
 
 Attack FightScene::createAttackAction(unsigned short enemyIndex)
 {
-    return {26, _player, getEnemyPtr(enemyIndex)};
+    return {128, _player, getEnemyPtr(enemyIndex)};
+}
+
+Attack *FightScene::createAttackActionPtr(unsigned short enemyIndex)
+{
+    return new Attack(128, _player, getEnemyPtr(enemyIndex));
 }
 
 bool FightScene::shouldFightEnd()
@@ -64,7 +69,6 @@ void FightScene::fightLoop()
 
     PlayerAction *selectedPlayerAction{};
     unsigned short ticksLeftToCompletePlayerAction = 0;
-    bool isPlayerActionDone;
 
     unsigned short i = 0;
 
@@ -72,7 +76,21 @@ void FightScene::fightLoop()
     while (!shouldFightEnd()) {
         auto start = std::chrono::high_resolution_clock::now();
 
+        printf("\rTick: %i | Ticks left: %i   ", i, ticksLeftToCompletePlayerAction);
+        i++;
+        ticksLeftToCompletePlayerAction--;
 
+        if (ticksLeftToCompletePlayerAction <= 0) {
+            bool isActionSelected;
+//            while (!isActionSelected) {
+//                // action selection screen
+//            }
+            selectedPlayerAction = createAttackActionPtr(0);
+            printf("\nCreated new action\n");
+            ticksLeftToCompletePlayerAction = selectedPlayerAction->getLength();
+            selectedPlayerAction->perform();
+            delete selectedPlayerAction;
+        }
 
         auto execTime = std::chrono::high_resolution_clock::now() - start;
         if (execTime < frameDuration) {
@@ -80,5 +98,6 @@ void FightScene::fightLoop()
         }
     }
 }
+
 
 

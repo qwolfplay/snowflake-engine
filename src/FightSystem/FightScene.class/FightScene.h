@@ -44,6 +44,8 @@ public:
 
     Attack createAttackAction(unsigned short enemyIndex);
 
+    Attack *createAttackActionPtr(unsigned short enemyIndex);
+
     bool shouldFightEnd();
 
     void fightLoop();
