@@ -42,10 +42,19 @@ void describeItem(Weapon *item)
     );
 }
 
+void describePlayer(Player &player) {
+    printf("Name: %s | HP: %f | Max HP: %f | Inv Size: %i | DEF: %f | Damage Red: %f\n",
+           player.getName().c_str(),
+           player.getHealth(),
+           player.getMaxHealth(),
+           player._inventorySize,
+           player.getArmorSetPtr()->getEffectiveDefence(),
+           player.getArmorSetPtr()->getDamageReductionMultiplier()
+           );
+}
+
 void describeEnemy(Enemy *enemy) {
-    printf("HP: %f\n"
-           "Max HP: %i\n"
-           "DMG Red: %f\n",
+    printf("HP: %f | Max HP: %i | DMG Red: %f\n",
            enemy->getHealth(),
            enemy->getMaxHealth(),
            enemy->getArmorPtr()->getDamageReductionMultiplier()
@@ -84,31 +93,36 @@ int main()
     player.equipLeggings(2);
     player.equipWeapon(3);
 
-    printf("DEF: %f\n", player.getArmorSetPtr()->getEffectiveDefence());
-    printf("Dmg Reduction: %f%%\n", (player.getArmorSetPtr()->getDamageReductionMultiplier()) * 100.0f);
-
-    printf("Damage: %f\n", player.getEquippedWeaponPtr()->getDamage());
-    printf("Damage Subtracted: %f\n",
-           player.getArmorSetPtr()->getDamageReduction(
-                   player.getEquippedWeaponPtr()->getDamage()
-           )
-    );
+//    printf("DEF: %f\n", player.getArmorSetPtr()->getEffectiveDefence());
+//    printf("Dmg Reduction: %f%%\n", (player.getArmorSetPtr()->getDamageReductionMultiplier()) * 100.0f);
+//
+//    printf("Damage: %f\n", player.getEquippedWeaponPtr()->getDamage());
+//    printf("Damage Subtracted: %f\n",
+//           player.getArmorSetPtr()->getDamageReduction(
+//                   player.getEquippedWeaponPtr()->getDamage()
+//           )
+//    );
 
     FightScene::EnemiesCollection collection;
 
     collection.size = 4;
     collection.enemies = new Enemy*[4];
 
-    collection.enemies[0] = new Enemy(1);
-    collection.enemies[1] = new Enemy(2);
-    collection.enemies[2] = new Enemy(3);
-    collection.enemies[3] = new Enemy(4);
+    collection.enemies[0] = new Enemy(18);
+    collection.enemies[1] = new Enemy(14);
+    collection.enemies[2] = new Enemy(25);
+    collection.enemies[3] = new Enemy(19);
 
     FightScene fightScene(&player, collection);
+
+    describePlayer(player);
+    printf("\n");
 
     for (unsigned short i = 0; i < fightScene.getEnemyCount(); i++) {
         describeEnemy(fightScene.getEnemyPtr(i));
     }
+
+
 
     delete collection.enemies;
 
