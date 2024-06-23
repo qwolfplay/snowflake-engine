@@ -22,6 +22,8 @@ set(SOURCE_FILES
         src/FightSystem/FightScene.class/FightScene.h
         src/FightSystem/Event.class/Event.cpp
         src/FightSystem/Event.class/Event.h
+        src/FightSystem/FightScene.class/PlayerActions/Attack.cpp
+        src/FightSystem/FightScene.class/PlayerActions/Attack.h
 )
 
 add_executable(rpg
