@@ -1,4 +1,5 @@
 #include <iostream>
+#include "raylib.h"
 
 #include "Player.class/Player.h"
 #include "Gui.class/Gui.h"
@@ -9,7 +10,8 @@
 #include "Armor.abstract/Helmet.class/Helmet.h"
 #include "Armor.abstract/Chestplate.class/Chestplate.h"
 #include "Armor.abstract/Leggings.class/Leggings.h"
-#include "Window.class/window.h"
+#include "Window.class/Window.h"
+#include "Sprite.class/Sprite.h"
 
 void describeArmor(Armor *item)
 {
@@ -24,8 +26,10 @@ void describeArmor(Armor *item)
 
 int main()
 {
-    Window window(1024,1024,(char*) "Title", nullptr);
+    Window window(720,1280,(char*) "Title", nullptr);
     Player player("Player", 50, 27);
+
+
 
     std::cout << "Max HP: " << player.getMaxHealth() << std::endl;
 
@@ -86,6 +90,20 @@ int main()
             std::cout << "Index: " << i << " | Item: " << name << std::endl;
         } catch (std::exception &e) {
         }
+    }
+
+    Color color = GetColor(000000);
+    Sprite enemy("assets/textures/sans.png");
+    Sprite playerSprite("assets/textures/Frisk_1.png");
+
+    playerSprite.changeTexture("assets/textures/Frisk_2.png");
+    while (!WindowShouldClose())
+    {
+        BeginDrawing();
+        ClearBackground(BLACK);
+        enemy.DrawSprite(500,0,WHITE);
+        playerSprite.DrawSprite(0,0,WHITE);
+        EndDrawing();
     }
 
     return 0;
