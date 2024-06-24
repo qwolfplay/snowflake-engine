@@ -105,10 +105,14 @@ int main()
 
     FightScene::EnemiesCollection collection;
 
-    collection.size = 1;
-    collection.enemies = new Enemy*[1];
+    collection.size = 5;
+    collection.enemies = new Enemy*[collection.size];
 
-    collection.enemies[0] = new Enemy(18);
+    collection.enemies[0] = new Enemy(165);
+    collection.enemies[1] = new Enemy(128);
+    collection.enemies[2] = new Enemy(90);
+    collection.enemies[3] = new Enemy(183);
+    collection.enemies[4] = new Enemy(105);
 
     FightScene fightScene(&player, collection);
 
