@@ -7,6 +7,8 @@
 #include <chrono>
 #include <thread>
 
+#include "core.h"
+
 #include "PlayerAction.h"
 #include "PlayerActions/Attack.h"
 
@@ -55,9 +57,11 @@ Attack *FightScene::createAttackActionPtr(unsigned short enemyIndex)
 bool FightScene::shouldFightEnd()
 {
     if (_player->isDead())  { return true; }
-    if (_enemies.empty())   { return true; }
+    for (const Enemy &enemy : _enemies) {
+        if (!enemy.isDead()) { return false; }
+    }
 
-    return false;
+    return true;
 }
 
 // so the fight should update 64 times a second (so 64 tick per second)
@@ -69,37 +73,38 @@ void FightScene::fightLoop()
 
     PlayerAction *selectedPlayerAction;
     unsigned short ticksLeftToCompletePlayerAction = 0;
+    auto *ticksLeftToCompleteEnemyAction = new unsigned short[_enemies.size()];
+    core::fillArrayWithZeros(ticksLeftToCompleteEnemyAction, _enemies.size(), sizeof(unsigned short));
 
     unsigned short tickCount = 0;
 
     const std::chrono::milliseconds frameDuration(1000 / 60);
-    while (!shouldFightEnd()) {
+    do {
         auto start = std::chrono::high_resolution_clock::now();
 
         if (ticksLeftToCompletePlayerAction <= 0) {
             unsigned short a = 0;
             printf("\n");
             for (Enemy &j : _enemies) {
-                printf("Enemy %i | HP: %f\n", a, j.getHealth());
+                printf("Enemy %i | HP: %f | Dead: %s\n", a, j.getHealth(), j.isDead() ? "true" : "false");
                 a++;
             }
             printf("Select enemy to attack: ");
-//            unsigned short enemyIndex;
-//            scanf("%hi", &enemyIndex);
-            selectedPlayerAction = createAttackActionPtr(0);
+            unsigned short enemyIndex;
+            scanf("%hi", &enemyIndex);
+            selectedPlayerAction = createAttackActionPtr(enemyIndex);
             printf("\nCreated new action\n");
             ticksLeftToCompletePlayerAction = selectedPlayerAction->getLength();
             selectedPlayerAction->perform();
             delete selectedPlayerAction;
         }
 
-//        for (int i = 0; i < _enemies.size(); i++) {
-//            if (_enemies[i].isDead()) {
-//                _enemies.erase(_enemies.begin() + i);
-//                _enemies.shrink_to_fit();
-//            }
-//        }
+        for (int i = 0; i < _enemies.size(); i++) {
+            if (ticksLeftToCompleteEnemyAction[i] <= 0) {
 
+            }
+        }
+        
         tickCount++;
         ticksLeftToCompletePlayerAction--;
 
@@ -109,5 +114,5 @@ void FightScene::fightLoop()
             std::this_thread::sleep_for(frameDuration - execTime);
         }
 
-    }
+    } while (!shouldFightEnd());
 }
