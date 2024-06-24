@@ -44,12 +44,12 @@ void FightScene::performPlayerAction(PlayerAction &action)
 
 Attack FightScene::createAttackAction(unsigned short enemyIndex)
 {
-    return {128, _player, getEnemyPtr(enemyIndex)};
+    return {30, _player, getEnemyPtr(enemyIndex)};
 }
 
 Attack *FightScene::createAttackActionPtr(unsigned short enemyIndex)
 {
-    return new Attack(128, _player, getEnemyPtr(enemyIndex));
+    return new Attack(30, _player, getEnemyPtr(enemyIndex));
 }
 
 bool FightScene::shouldFightEnd()
@@ -67,20 +67,25 @@ bool FightScene::shouldFightEnd()
 void FightScene::fightLoop()
 {
 
-    PlayerAction *selectedPlayerAction{};
+    PlayerAction *selectedPlayerAction;
     unsigned short ticksLeftToCompletePlayerAction = 0;
 
-    unsigned short i = 0;
+    unsigned short tickCount = 0;
 
-    const std::chrono::milliseconds frameDuration(1000 / 64);
+    const std::chrono::milliseconds frameDuration(1000 / 60);
     while (!shouldFightEnd()) {
         auto start = std::chrono::high_resolution_clock::now();
 
         if (ticksLeftToCompletePlayerAction <= 0) {
-            bool isActionSelected;
-//            while (!isActionSelected) {
-//                // action selection screen
-//              }
+            unsigned short a = 0;
+            printf("\n");
+            for (Enemy &j : _enemies) {
+                printf("Enemy %i | HP: %f\n", a, j.getHealth());
+                a++;
+            }
+            printf("Select enemy to attack: ");
+//            unsigned short enemyIndex;
+//            scanf("%hi", &enemyIndex);
             selectedPlayerAction = createAttackActionPtr(0);
             printf("\nCreated new action\n");
             ticksLeftToCompletePlayerAction = selectedPlayerAction->getLength();
@@ -88,17 +93,21 @@ void FightScene::fightLoop()
             delete selectedPlayerAction;
         }
 
-        i++;
+//        for (int i = 0; i < _enemies.size(); i++) {
+//            if (_enemies[i].isDead()) {
+//                _enemies.erase(_enemies.begin() + i);
+//                _enemies.shrink_to_fit();
+//            }
+//        }
+
+        tickCount++;
         ticksLeftToCompletePlayerAction--;
 
         auto execTime = std::chrono::high_resolution_clock::now() - start;
-        printf("\rTick: %i | Tick time: %lli | Ticks left: %i   ", i, std::chrono::duration_cast<std::chrono::microseconds>(execTime).count(), ticksLeftToCompletePlayerAction);
+        printf("\rTick: %lli | Tick time: %lli | Ticks left: %lli                ", tickCount, std::chrono::duration_cast<std::chrono::microseconds>(execTime).count(), ticksLeftToCompletePlayerAction);
         if (execTime < frameDuration) {
             std::this_thread::sleep_for(frameDuration - execTime);
         }
 
     }
 }
-
-
-
