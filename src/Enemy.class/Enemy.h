@@ -33,7 +33,7 @@ public:
 
     void takeRawDamage(float damage);
 
-    bool isDead();
+    bool isDead() const;
 };
 
 
