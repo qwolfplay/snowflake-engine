@@ -1,0 +1,3 @@
+[submodule "include/cpp-core"]
+	path = include/cpp-core
+	url = https://github.com/qwolfplay/cpp-core.git

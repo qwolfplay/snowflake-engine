@@ -3,6 +3,8 @@ project(rpg)
 
 set(CMAKE_CXX_STANDARD 23)
 
+add_subdirectory(include/cpp-core)
+
 set(SOURCE_FILES
         src/Item.class/Food.class/Food.cpp
         src/Item.class/Item.cpp
@@ -32,4 +34,6 @@ add_executable(rpg
 )
 
 target_include_directories(rpg PUBLIC src)
+target_include_directories(rpg PRIVATE include/cpp-core/src)
 
+target_link_libraries(rpg PRIVATE core)
