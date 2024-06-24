@@ -55,3 +55,8 @@ void Enemy::takeRawDamage(float damage)
 {
     _health -= damage;
 }
+
+bool Enemy::isDead()
+{
+    return _health <= 0;
+}

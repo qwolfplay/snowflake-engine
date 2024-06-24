@@ -32,6 +32,8 @@ public:
     void takeDamage(float damage, float armorPenetration);
 
     void takeRawDamage(float damage);
+
+    bool isDead();
 };
 
 
