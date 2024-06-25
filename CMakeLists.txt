@@ -30,6 +30,8 @@ set(SOURCE_FILES
         src/FightSystem/Event.class/Event.h
         src/FightSystem/FightScene.class/PlayerActions/Attack.cpp
         src/FightSystem/FightScene.class/PlayerActions/Attack.h
+        src/FightSystem/FightScene.class/PlayerActions/Equip.cpp
+        src/FightSystem/FightScene.class/PlayerActions/Equip.h
 )
 
 add_executable(snowflake
