@@ -53,9 +53,13 @@ public:
     ~Item() = default;
 
     [[nodiscard]] std::string getName() const;
+
     [[nodiscard]] std::string getDescription() const;
+
     [[nodiscard]] float getPrice() const;
+
     [[nodiscard]] type getType() const;
+
     [[nodiscard]] rarity getRarity() const;
 
     void setPrice(float price);
