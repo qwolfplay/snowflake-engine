@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.27)
-project(rpg)
+project(snowflake)
 
 set(CMAKE_CXX_STANDARD 23)
 
@@ -15,10 +15,10 @@ set(SOURCE_FILES
         src/Gui.class/Gui.cpp
 )
 
-add_executable(rpg
+add_executable(snowflake
         src/main.cpp
         ${SOURCE_FILES}
 )
 
-target_include_directories(rpg PUBLIC src)
+target_include_directories(snowflake PUBLIC src)
 
