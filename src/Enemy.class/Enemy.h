@@ -38,6 +38,8 @@ public:
     [[nodiscard]] bool isDead() const;
 
     void attackPlayer(Player *player);
+
+    float getBaseDamage() const;
 };
 
 

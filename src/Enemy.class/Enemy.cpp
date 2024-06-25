@@ -67,3 +67,8 @@ void Enemy::attackPlayer(Player *player)
 {
     player->takeDamage(_baseDamege, 5 /* test value */);
 }
+
+float Enemy::getBaseDamage() const
+{
+    return _baseDamege;
+}
