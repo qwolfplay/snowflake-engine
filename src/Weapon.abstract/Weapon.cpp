@@ -66,3 +66,13 @@ void Weapon::attack(Enemy *target)
     printf("Weapon: Attacking 0x%p | Damage: %f | Crit: %s\n", target, resultingDamage, crit ? "true" : "false");
     target->takeDamage(resultingDamage, Weapon::_armorPenetration);
 }
+
+void Weapon::attack(Player *target)
+{
+    float resultingDamage = Weapon::_baseDamage;
+    bool crit = Weapon::isHitCritical();
+    if (crit) { resultingDamage *= Weapon::_critDamageMultiplier; }
+    printf("Weapon: Attacking 0x%p | Damage: %f | Crit: %s\n", target, resultingDamage, crit ? "true" : "false");
+    target->takeDamage(resultingDamage, Weapon::_armorPenetration);
+}
+

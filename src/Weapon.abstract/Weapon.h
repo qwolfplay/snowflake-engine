@@ -47,6 +47,8 @@ public:
     [[nodiscard]] float getAttackSpeed() const;
 
     virtual void attack(Enemy *target);
+
+    virtual void attack(Player *target);
 };
 
 
