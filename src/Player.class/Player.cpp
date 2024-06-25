@@ -275,3 +275,9 @@ bool Player::isDead()
 {
     return _health <= 0;
 }
+
+void Player::heal(float amount)
+{
+    _health += amount;
+    if (_health > _maxHealth) { _health = _maxHealth; }
+}

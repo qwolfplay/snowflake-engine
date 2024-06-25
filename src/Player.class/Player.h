@@ -90,6 +90,8 @@ public:
     void takeRawDamage(float damage);
 
     bool isDead();
+
+    void heal(float amount);
 };
 
 
