@@ -10,19 +10,23 @@
 #include "Armor.abstract/Chestplate.class/Chestplate.h"
 #include "Armor.abstract/Leggings.class/Leggings.h"
 #include "ArmorSet.class/ArmorSet.h"
+#include "Weapon.abstract/Weapon.h"
 
 class Player;
+class Weapon;
 class Enemy {
     float _health;
     unsigned int _maxHealth;
-    ArmorSet *_armor;
 
-    float _baseDamage;
+    ArmorSet *_armor;
+    Weapon *_weapon;
 
 public:
-    explicit Enemy(float health, float damage);
+    explicit Enemy(float health);
 
-    Enemy(float health, float damage, Helmet *helmet, Chestplate *chestplate, Leggings *leggings);
+    Enemy(float health, Weapon *weapon);
+
+    Enemy(float health, Weapon *weapon, Helmet *helmet, Chestplate *chestplate, Leggings *leggings);
 
     ~Enemy();
 
@@ -38,9 +42,7 @@ public:
 
     [[nodiscard]] bool isDead() const;
 
-    void attackPlayer(Player *player);
-
-    [[nodiscard]] float getBaseDamage() const;
+    void attackPlayer(Player *target);
 };
 
 

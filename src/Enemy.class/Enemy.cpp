@@ -6,20 +6,29 @@
 
 #include "Exceptions/SlotEmptyException.h"
 #include "Exceptions/SlotAlreadyOccupiedException.h"
+#include "Exceptions/WeaponSlotEmptyException.h"
 #include "ArmorSet.class/ArmorSet.h"
 
-Enemy::Enemy(float health, float damage) :
-        _health(health),
-        _maxHealth(health),
-        _baseDamage(damage)
+Enemy::Enemy(float health) :
+_health(health),
+_maxHealth(health),
+_weapon(nullptr)
 {
     _armor = new ArmorSet;
 }
 
-Enemy::Enemy(float health, float damage, Helmet *helmet, Chestplate *chestplate, Leggings *leggings) :
+Enemy::Enemy(float health, Weapon *weapon) :
         _health(health),
         _maxHealth(health),
-        _baseDamage(damage)
+        _weapon(weapon)
+{
+    _armor = new ArmorSet;
+}
+
+Enemy::Enemy(float health, Weapon *weapon, Helmet *helmet, Chestplate *chestplate, Leggings *leggings) :
+        _health(health),
+        _maxHealth(health),
+        _weapon(weapon)
 {
     _armor = new ArmorSet(helmet, chestplate, leggings);
 }
@@ -63,12 +72,8 @@ bool Enemy::isDead() const
     return _health <= 0;
 }
 
-void Enemy::attackPlayer(Player *player)
+void Enemy::attackPlayer(Player *target)
 {
-    player->takeDamage(_baseDamage, 5 /* test value */);
-}
-
-float Enemy::getBaseDamage() const
-{
-    return _baseDamage;
+    if (!_weapon) { throw WeaponSlotEmptyException(); }
+    _weapon->attackPlayer(target);
 }

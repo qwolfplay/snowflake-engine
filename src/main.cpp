@@ -108,11 +108,11 @@ int main()
     collection.size = 5;
     collection.enemies = new Enemy*[collection.size];
 
-    collection.enemies[0] = new Enemy(25, 10);
-    collection.enemies[1] = new Enemy(25, 10);
-    collection.enemies[2] = new Enemy(25, 10);
-    collection.enemies[3] = new Enemy(25, 10);
-    collection.enemies[4] = new Enemy(25, 10);
+    collection.enemies[0] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::rarity::COMMON, 8, 13, 1));
+    collection.enemies[1] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::rarity::COMMON, 8, 13, 1));
+    collection.enemies[2] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::rarity::COMMON, 8, 13, 1));
+    collection.enemies[3] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::rarity::COMMON, 8, 13, 1));
+    collection.enemies[4] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::rarity::COMMON, 8, 13, 1));
 
     FightScene fightScene(&player, collection);
 
