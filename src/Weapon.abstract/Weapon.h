@@ -11,6 +11,7 @@
 #include "Item.class/Item.h"
 
 class Enemy;
+class Player;
 
 class Weapon : public Item {
     float _baseDamage;
