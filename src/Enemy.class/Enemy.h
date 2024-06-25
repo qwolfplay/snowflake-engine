@@ -16,10 +16,12 @@ class Enemy {
     unsigned int _maxHealth;
     ArmorSet *_armor;
 
-public:
-    explicit Enemy(float health);
+    float _baseDamege;
 
-    Enemy(float health, Helmet *helmet, Chestplate *chestplate, Leggings *leggings);
+public:
+    explicit Enemy(float health, float damage);
+
+    Enemy(float health, float damage, Helmet *helmet, Chestplate *chestplate, Leggings *leggings);
 
     ~Enemy();
 
@@ -33,7 +35,9 @@ public:
 
     void takeRawDamage(float damage);
 
-    bool isDead() const;
+    [[nodiscard]] bool isDead() const;
+
+    void attackPlayer(Player *player);
 };
 
 

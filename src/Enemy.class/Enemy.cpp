@@ -8,16 +8,18 @@
 #include "Exceptions/SlotAlreadyOccupiedException.h"
 #include "ArmorSet.class/ArmorSet.h"
 
-Enemy::Enemy(float health) :
+Enemy::Enemy(float health, float damage) :
     _health(health),
-    _maxHealth(health)
+    _maxHealth(health),
+    _baseDamege(damage)
 {
     _armor = new ArmorSet;
 }
 
-Enemy::Enemy(float health, Helmet *helmet, Chestplate *chestplate, Leggings *leggings) :
+Enemy::Enemy(float health, float damage, Helmet *helmet, Chestplate *chestplate, Leggings *leggings) :
         _health(health),
-        _maxHealth(health)
+        _maxHealth(health),
+        _baseDamege(damage)
 {
     _armor = new ArmorSet(helmet, chestplate, leggings);
 }
@@ -59,4 +61,9 @@ void Enemy::takeRawDamage(float damage)
 bool Enemy::isDead() const
 {
     return _health <= 0;
+}
+
+void Enemy::attackPlayer(Player *player)
+{
+    player->takeDamage(_baseDamege, 5 /* test value */);
 }
