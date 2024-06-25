@@ -10,7 +10,6 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 endif()
 
 set(SOURCE_FILES
-        src/Item.class/Food.class/Food.cpp
         src/Item.class/Item.cpp
         src/Enemy.class/Enemy.cpp
         src/Armor.abstract/Armor.cpp
@@ -32,6 +31,8 @@ set(SOURCE_FILES
         src/FightSystem/FightScene.class/PlayerActions/Attack.h
         src/FightSystem/FightScene.class/PlayerActions/Equip.cpp
         src/FightSystem/FightScene.class/PlayerActions/Equip.h
+        src/Item.class/Usable.class/Usable.cpp
+        src/Item.class/Usable.class/Usable.h
 )
 
 add_executable(snowflake
