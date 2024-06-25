@@ -61,7 +61,8 @@ float Weapon::getAttackSpeed() const {
 void Weapon::attack(Enemy *target)
 {
     float resultingDamage = Weapon::_baseDamage;
-    if (Weapon::isHitCritical()) { resultingDamage *= Weapon::_critDamageMultiplier; }
-
+    bool crit = Weapon::isHitCritical();
+    if (crit) { resultingDamage *= Weapon::_critDamageMultiplier; }
+    printf("Weapon: Attacking 0x%p | Damage: %f | Crit: %s\n", target, resultingDamage, crit ? "true" : "false");
     target->takeDamage(resultingDamage, Weapon::_armorPenetration);
 }

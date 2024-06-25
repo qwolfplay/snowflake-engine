@@ -250,6 +250,8 @@ void Player::takeDamage(float damage, float armorPenetration)
     resultingDamage = damage - (damage * (_armor->getDamageReduction(damage) *
             ArmorSet::calculateArmorPenetrationFactor(armorPenetration)));
 
+    printf("Player: Taking %f damage | Base Damage: %f\n", resultingDamage, damage);
+
     _health -= resultingDamage;
 }
 
