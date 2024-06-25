@@ -149,6 +149,17 @@ void Player::equipWeapon(unsigned short int index)
     }
 }
 
+void Player::unequipWeapon()
+{
+    if (_equippedWeapon == nullptr) { throw SlotEmptyException(); }
+    if (_itemCount >= _inventorySize) { throw InventoryFullException(); }
+
+    unsigned short freeSlot = getFirstFreeSlot();
+    _inventory[freeSlot].itemPtr = _equippedWeapon;
+    _inventory[freeSlot].isOccupied = true;
+    _equippedWeapon = nullptr;
+}
+
 Weapon *Player::getEquippedWeaponPtr()
 {
     if (_equippedWeapon == nullptr) {

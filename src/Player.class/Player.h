@@ -69,6 +69,8 @@ public:
 
     void equipWeapon(unsigned short int index);
 
+    void unequipWeapon();
+
     void equipHelmet(unsigned short int index);
 
     void equipChestplate(unsigned short int index);
