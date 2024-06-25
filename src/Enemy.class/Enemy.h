@@ -17,7 +17,7 @@ class Enemy {
     ArmorSet *_armor;
 
 public:
-    Enemy(float health);
+    explicit Enemy(float health);
 
     Enemy(float health, Helmet *helmet, Chestplate *chestplate, Leggings *leggings);
 
@@ -27,7 +27,7 @@ public:
 
     [[nodiscard]] unsigned int getMaxHealth() const;
 
-    ArmorSet *getArmorPtr() const;
+    [[nodiscard]] ArmorSet *getArmorPtr() const;
 
     void takeDamage(float damage, float armorPenetration);
 
