@@ -36,6 +36,8 @@ public:
 
     [[nodiscard]] ArmorSet *getArmorPtr() const;
 
+    [[nodiscard]] Weapon *getWeaponPtr() const;
+
     void takeDamage(float damage, float armorPenetration);
 
     void takeRawDamage(float damage);

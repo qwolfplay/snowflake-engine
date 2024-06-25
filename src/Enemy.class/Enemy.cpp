@@ -51,6 +51,11 @@ ArmorSet *Enemy::getArmorPtr() const
     return _armor;
 }
 
+Weapon *Enemy::getWeaponPtr() const
+{
+    return _weapon;
+}
+
 void Enemy::takeDamage(float damage, float armorPenetration)
 {
     float resultingDamage;
