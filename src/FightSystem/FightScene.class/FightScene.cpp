@@ -16,7 +16,7 @@ FightScene::FightScene(Player *player, EnemiesCollection enemiesCollection) :
 _player(player) {
     _enemies.reserve(enemiesCollection.size); // THIS LINE WAS THE SOLUTION TO A BUG THAT I BATTLE FOR OVER 4 FLUFFING HOURS 💀
     for(unsigned short i = 0; i < enemiesCollection.size; i++) {
-        _enemies.emplace_back(enemiesCollection.enemies[i]->getMaxHealth());
+        _enemies.emplace_back(enemiesCollection.enemies[i]->getMaxHealth(), enemiesCollection.enemies[i]->getBaseDamage());
     }
 }
 
@@ -56,7 +56,7 @@ Attack *FightScene::createAttackActionPtr(unsigned short enemyIndex)
 
 bool FightScene::shouldFightEnd()
 {
-    if (_player->isDead())  { return true; }
+    if (_player->isDead())  { printf("\nThe player is dead!\n"); return true; }
     for (const Enemy &enemy : _enemies) {
         if (!enemy.isDead()) { return false; }
     }
@@ -81,12 +81,15 @@ void FightScene::fightLoop()
     const std::chrono::milliseconds frameDuration(1000 / 60);
     do {
         auto start = std::chrono::high_resolution_clock::now();
+        auto selectionTime =  std::chrono::duration<long long, std::nano>::zero();
 
         if (ticksLeftToCompletePlayerAction <= 0) {
+            auto selectionStart = std::chrono::high_resolution_clock::now();
             unsigned short a = 0;
-            printf("\n");
+            printf("\nPlayer: %s | HP:%f | Dead: %s\n\n", _player->getName().c_str(), _player->getHealth(), _player->isDead() ? "true" : "false");
+//            printf("\n");
             for (Enemy &j : _enemies) {
-                printf("Enemy %i | HP: %f | Dead: %s\n", a, j.getHealth(), j.isDead() ? "true" : "false");
+                printf("Enemy %i | HP: %f | Dead: %s | Ticks left: %i\n", a, j.getHealth(), j.isDead() ? "true" : "false", ticksLeftToCompleteEnemyAction[a]);
                 a++;
             }
             printf("Select enemy to attack: ");
@@ -97,19 +100,29 @@ void FightScene::fightLoop()
             ticksLeftToCompletePlayerAction = selectedPlayerAction->getLength();
             selectedPlayerAction->perform();
             delete selectedPlayerAction;
+            selectionTime = std::chrono::high_resolution_clock::now() - selectionStart;
         }
 
         for (int i = 0; i < _enemies.size(); i++) {
             if (ticksLeftToCompleteEnemyAction[i] <= 0) {
-
+                Enemy *enemyPtr = getEnemyPtr(i);
+                printf("Enemy: Attacking player with %f damage\n", enemyPtr->getBaseDamage());
+                enemyPtr->attackPlayer(_player);
+                ticksLeftToCompleteEnemyAction[i] = 60;
+            } else {
+                ticksLeftToCompleteEnemyAction[i]--;
             }
         }
         
         tickCount++;
         ticksLeftToCompletePlayerAction--;
 
-        auto execTime = std::chrono::high_resolution_clock::now() - start;
-        printf("\rTick: %lli | Tick time: %lli | Ticks left: %lli                ", tickCount, std::chrono::duration_cast<std::chrono::microseconds>(execTime).count(), ticksLeftToCompletePlayerAction);
+        auto execTime = std::chrono::high_resolution_clock::now() - start - selectionTime;
+        printf("Tick: %hu | Tick time: %llius | Selection time: %llims | Ticks left: %hu\n",
+               tickCount,
+               std::chrono::duration_cast<std::chrono::microseconds>(execTime).count(),
+               std::chrono::duration_cast<std::chrono::milliseconds>(selectionTime).count(),
+               ticksLeftToCompletePlayerAction);
         if (execTime < frameDuration) {
             std::this_thread::sleep_for(frameDuration - execTime);
         }
