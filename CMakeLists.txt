@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.26)
-project(rpg)
+project(snowflake)
 
 set(CMAKE_CXX_STANDARD 23)
 
@@ -28,12 +28,12 @@ set(SOURCE_FILES
         src/FightSystem/FightScene.class/PlayerActions/Attack.h
 )
 
-add_executable(rpg
+add_executable(snowflake
         src/main.cpp
         ${SOURCE_FILES}
 )
 
-target_include_directories(rpg PUBLIC src)
-target_include_directories(rpg PRIVATE include/cpp-core/src)
+target_include_directories(snowflake PUBLIC src)
+target_include_directories(snowflake PRIVATE include/cpp-core/src)
 
-target_link_libraries(rpg PRIVATE core)
+target_link_libraries(snowflake PRIVATE core)
