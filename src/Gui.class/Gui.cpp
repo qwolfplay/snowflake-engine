@@ -174,6 +174,6 @@ void Gui::simulationMenu(Player *player)
     float enemyHealth, enemyArmor;
     std::cin >> enemyHealth >> enemyArmor;
 
-    Gui::fightScreen(player, new Enemy(enemyHealth));
+    Gui::fightScreen(player, new Enemy(enemyHealth, 0));
 }
 
