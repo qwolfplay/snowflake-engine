@@ -5,6 +5,10 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_subdirectory(include/cpp-core)
 
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libstdc++")
+endif()
+
 set(SOURCE_FILES
         src/Item.class/Food.class/Food.cpp
         src/Item.class/Item.cpp
