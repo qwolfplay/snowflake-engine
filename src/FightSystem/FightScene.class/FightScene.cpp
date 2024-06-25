@@ -16,7 +16,7 @@ FightScene::FightScene(Player *player, EnemiesCollection enemiesCollection) :
 _player(player) {
     _enemies.reserve(enemiesCollection.size); // THIS LINE WAS THE SOLUTION TO A BUG THAT I BATTLE FOR OVER 4 FLUFFING HOURS 💀
     for(unsigned short i = 0; i < enemiesCollection.size; i++) {
-        _enemies.emplace_back(enemiesCollection.enemies[i]->getMaxHealth(), enemiesCollection.enemies[i]->getBaseDamage());
+        _enemies.emplace_back(enemiesCollection.enemies[i]->getMaxHealth(), enemiesCollection.enemies[i]->getWeaponPtr());
     }
 }
 
@@ -106,7 +106,7 @@ void FightScene::fightLoop()
         for (int i = 0; i < _enemies.size(); i++) {
             if (ticksLeftToCompleteEnemyAction[i] <= 0) {
                 Enemy *enemyPtr = getEnemyPtr(i);
-                printf("Enemy: Attacking player with %f damage\n", enemyPtr->getBaseDamage());
+                printf("Enemy: Attacking player with %f damage\n", enemyPtr->getWeaponPtr()->getDamage());
                 enemyPtr->attackPlayer(_player);
                 ticksLeftToCompleteEnemyAction[i] = 60;
             } else {
