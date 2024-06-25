@@ -9,9 +9,9 @@
 #include "ArmorSet.class/ArmorSet.h"
 
 Enemy::Enemy(float health, float damage) :
-    _health(health),
-    _maxHealth(health),
-    _baseDamege(damage)
+        _health(health),
+        _maxHealth(health),
+        _baseDamage(damage)
 {
     _armor = new ArmorSet;
 }
@@ -19,7 +19,7 @@ Enemy::Enemy(float health, float damage) :
 Enemy::Enemy(float health, float damage, Helmet *helmet, Chestplate *chestplate, Leggings *leggings) :
         _health(health),
         _maxHealth(health),
-        _baseDamege(damage)
+        _baseDamage(damage)
 {
     _armor = new ArmorSet(helmet, chestplate, leggings);
 }
@@ -65,10 +65,10 @@ bool Enemy::isDead() const
 
 void Enemy::attackPlayer(Player *player)
 {
-    player->takeDamage(_baseDamege, 5 /* test value */);
+    player->takeDamage(_baseDamage, 5 /* test value */);
 }
 
 float Enemy::getBaseDamage() const
 {
-    return _baseDamege;
+    return _baseDamage;
 }

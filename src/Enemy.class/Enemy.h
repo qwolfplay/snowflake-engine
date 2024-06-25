@@ -11,12 +11,13 @@
 #include "Armor.abstract/Leggings.class/Leggings.h"
 #include "ArmorSet.class/ArmorSet.h"
 
+class Player;
 class Enemy {
     float _health;
     unsigned int _maxHealth;
     ArmorSet *_armor;
 
-    float _baseDamege;
+    float _baseDamage;
 
 public:
     explicit Enemy(float health, float damage);
@@ -39,7 +40,7 @@ public:
 
     void attackPlayer(Player *player);
 
-    float getBaseDamage() const;
+    [[nodiscard]] float getBaseDamage() const;
 };
 
 
