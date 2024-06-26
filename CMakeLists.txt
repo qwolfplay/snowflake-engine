@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.26)
-project(rpg)
+project(snowflake)
 
 set(CMAKE_CXX_STANDARD 23)
+
+add_subdirectory(include/raylib)
 
 set(SOURCE_FILES
         src/Weapon.abstract/Bow.class/Bow.cpp
@@ -27,12 +29,12 @@ set(SOURCE_FILES
         src/Sprite.class/Sprite.h
 )
 
-add_subdirectory(include/raylib)
-
-add_executable(rpg
+add_executable(snowflake
         src/main.cpp
         ${SOURCE_FILES}
 )
 
-target_include_directories(rpg PUBLIC src)
-target_link_libraries(rpg PUBLIC raylib)
+target_include_directories(snowflake PUBLIC src)
+target_include_directories(snowflake PRIVATE include/raylib/src)
+
+target_link_libraries(snowflake PUBLIC raylib)
