@@ -4,3 +4,9 @@
 [submodule "include/spdlog"]
 	path = include/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "include/fmt"]
+	path = include/fmt
+	url = https://github.com/fmtlib/fmt.git
+[submodule "include/snowball-core"]
+	path = include/snowball-core
+	url = https://github.com/qwolfPlaY/snowball-core.git
