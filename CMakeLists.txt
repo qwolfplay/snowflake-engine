@@ -3,7 +3,7 @@ project(snowflake)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_subdirectory(include/cpp-core)
+add_subdirectory(include/snowball-core)
 
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static-libstdc++")
@@ -39,6 +39,6 @@ add_executable(snowflake
 )
 
 target_include_directories(snowflake PUBLIC src)
-target_include_directories(snowflake PRIVATE include/cpp-core/src)
+target_include_directories(snowflake PRIVATE include/snowball-core/src)
 
-target_link_libraries(snowflake PRIVATE core)
+target_link_libraries(snowflake PRIVATE snowball)

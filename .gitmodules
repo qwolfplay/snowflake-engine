@@ -1,0 +1,3 @@
+[submodule "include/snowball-core"]
+	path = include/snowball-core
+	url = https://github.com/QWolfPlaY/snowball-core.git
