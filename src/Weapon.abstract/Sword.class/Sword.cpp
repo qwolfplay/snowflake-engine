@@ -14,7 +14,7 @@ Sword::Sword(
         std::string name,
         std::string description,
         float price,
-        rarity rarity,
+        Rarity rarity,
         float damage,
         float armorPenetration,
         float attackSpeed
@@ -22,7 +22,7 @@ Sword::Sword(
         std::move(name),
         std::move(description),
         price,
-        Item::type::WEAPON,
+        Item::ItemType::WEAPON,
         rarity,
         damage,
         armorPenetration,

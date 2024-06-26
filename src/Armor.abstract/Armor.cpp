@@ -9,7 +9,7 @@ Armor::Armor(
         std::string description,
         float price,
         armorType type,
-        rarity rarity,
+        Rarity rarity,
         float baseDefence,
         float baseResistance
 ) : Item(

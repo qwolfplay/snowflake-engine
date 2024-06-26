@@ -65,18 +65,18 @@ int main()
 {
     Player player("Player", 50, 27);
 
-    player.addItemToInventory(new Helmet("Helmet", "A helmet", 25.6, Item::rarity::COMMON, 5.0, 3.0));
-    player.addItemToInventory(new Chestplate("Chestplate", "A chestplate", 50.0, Item::rarity::RARE, 10.0, 5.0));
-    player.addItemToInventory(new Leggings("Leggings", "A pair of leggings", 35.0, Item::rarity::UNCOMMON, 7.0, 4.0));
-    player.addItemToInventory(new Sword("Sword", ":3", 2137.0f, Item::rarity::LEGENDARY, 25, 14, 9));
+    player.addItemToInventory(new Helmet("Helmet", "A helmet", 25.6, Item::Rarity::COMMON, 5.0, 3.0));
+    player.addItemToInventory(new Chestplate("Chestplate", "A chestplate", 50.0, Item::Rarity::RARE, 10.0, 5.0));
+    player.addItemToInventory(new Leggings("Leggings", "A pair of leggings", 35.0, Item::Rarity::UNCOMMON, 7.0, 4.0));
+    player.addItemToInventory(new Sword("Sword", ":3", 2137.0f, Item::Rarity::LEGENDARY, 25, 14, 9));
 
 //    for (unsigned short i = 0; i < player._inventorySize; i++) {
 //        try {
 //            switch (player.getItemPtr(i)->getType()) {
-//                case Item::type::WEAPON:
+//                case Item::ItemType::WEAPON:
 //                    describeItem((Weapon *) (player.getItemPtr(i)));
 //                    break;
-//                case Item::type::ARMOR:
+//                case Item::ItemType::ARMOR:
 //                    describeItem((Armor *) (player.getItemPtr(i)));
 //                    break;
 //                default:
@@ -108,11 +108,11 @@ int main()
     collection.size = 5;
     collection.enemies = new Enemy*[collection.size];
 
-    collection.enemies[0] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::rarity::COMMON, 8, 13, 1));
-    collection.enemies[1] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::rarity::COMMON, 8, 13, 1));
-    collection.enemies[2] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::rarity::COMMON, 8, 13, 1));
-    collection.enemies[3] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::rarity::COMMON, 8, 13, 1));
-    collection.enemies[4] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::rarity::COMMON, 8, 13, 1));
+    collection.enemies[0] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::Rarity::COMMON, 8, 13, 1));
+    collection.enemies[1] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::Rarity::COMMON, 8, 13, 1));
+    collection.enemies[2] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::Rarity::COMMON, 8, 13, 1));
+    collection.enemies[3] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::Rarity::COMMON, 8, 13, 1));
+    collection.enemies[4] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::Rarity::COMMON, 8, 13, 1));
 
     FightScene fightScene(&player, collection);
 

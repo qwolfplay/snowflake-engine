@@ -12,13 +12,13 @@
 class Sword : public Weapon {
 public:
     Sword(
-        std::string name,
-        std::string description,
-        float price,
-        rarity rarity,
-        float damage,
-        float armorPenetration,
-        float attackSpeed
+            std::string name,
+            std::string description,
+            float price,
+            Rarity rarity,
+            float damage,
+            float armorPenetration,
+            float attackSpeed
         );
     
     ~Sword();

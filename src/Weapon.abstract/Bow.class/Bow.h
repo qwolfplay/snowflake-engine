@@ -10,14 +10,14 @@
 class Bow : public Weapon {
 public:
     Bow(
-        std::string name,
-        std::string description,
-        float price,
-        type type,
-        rarity rarity,
-        float damage,
-        float armorPenetration,
-        float attackSpeed
+            std::string name,
+            std::string description,
+            float price,
+            ItemType type,
+            Rarity rarity,
+            float damage,
+            float armorPenetration,
+            float attackSpeed
         );
 
     ~Bow();

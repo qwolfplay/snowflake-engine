@@ -140,7 +140,7 @@ void Player::equipWeapon(unsigned short int index)
     if (!_inventory[index].isOccupied) {
         throw SlotEmptyException();
     } else {
-        if (_inventory[index].itemPtr->getType() == Item::type::WEAPON) {
+        if (_inventory[index].itemPtr->getType() == Item::ItemType::WEAPON) {
             _equippedWeapon = (Weapon *) (_inventory[index].itemPtr);
         } else {
             throw WrongItemTypeException();
@@ -171,7 +171,7 @@ Weapon *Player::getEquippedWeaponPtr()
 void Player::equipHelmet(unsigned short int index)
 {
     if (!_inventory[index].isOccupied) { throw SlotEmptyException(); }
-    if (_inventory[index].itemPtr->getType() != Item::type::ARMOR ||
+    if (_inventory[index].itemPtr->getType() != Item::ItemType::ARMOR ||
         ((Armor *) _inventory[index].itemPtr)->getArmorType() != Armor::HELMET) {
         throw WrongItemTypeException();
     }
@@ -185,7 +185,7 @@ void Player::equipHelmet(unsigned short int index)
 void Player::equipChestplate(unsigned short int index)
 {
     if (!_inventory[index].isOccupied) { throw SlotEmptyException(); }
-    if (_inventory[index].itemPtr->getType() != Item::type::ARMOR ||
+    if (_inventory[index].itemPtr->getType() != Item::ItemType::ARMOR ||
         ((Armor *) _inventory[index].itemPtr)->getArmorType() != Armor::CHESTPLATE) {
         throw WrongItemTypeException();
     }
@@ -199,7 +199,7 @@ void Player::equipChestplate(unsigned short int index)
 void Player::equipLeggings(unsigned short int index)
 {
     if (!_inventory[index].isOccupied) { throw SlotEmptyException(); }
-    if (_inventory[index].itemPtr->getType() != Item::type::ARMOR ||
+    if (_inventory[index].itemPtr->getType() != Item::ItemType::ARMOR ||
         ((Armor *) _inventory[index].itemPtr)->getArmorType() != Armor::LEGGINGS) {
         throw WrongItemTypeException();
     }

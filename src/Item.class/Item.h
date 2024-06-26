@@ -9,7 +9,7 @@
 
 class Item {
 public:
-    enum rarity {
+    enum Rarity {
         COMMON,
         UNCOMMON,
         RARE,
@@ -17,14 +17,14 @@ public:
         LEGENDARY
     };
 
-    enum type {
+    enum ItemType {
         WEAPON,
         ARMOR,
         CONSUMABLE,
         MATERIAL
     };
 
-    static std::string to_string(rarity rarity) {
+    static std::string to_string(Rarity rarity) {
         switch (rarity) {
             case COMMON:
                 return "Common";
@@ -44,12 +44,12 @@ public:
 private:
     const std::string   _name;
     const std::string   _description;
-    const rarity        _rarity;
-    const type          _type;
+    const Rarity        _rarity;
+    const ItemType          _type;
     float               _price;
 
 public:
-    Item(std::string name, std::string description, float price, type type, rarity rarity);
+    Item(std::string name, std::string description, float price, ItemType type, Rarity rarity);
     ~Item() = default;
 
     [[nodiscard]] std::string getName() const;
@@ -58,9 +58,9 @@ public:
 
     [[nodiscard]] float getPrice() const;
 
-    [[nodiscard]] type getType() const;
+    [[nodiscard]] ItemType getType() const;
 
-    [[nodiscard]] rarity getRarity() const;
+    [[nodiscard]] Rarity getRarity() const;
 
     void setPrice(float price);
 };

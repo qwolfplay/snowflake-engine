@@ -27,16 +27,16 @@ class Weapon : public Item {
 
 public:
     Weapon(
-        std::string name,
-        std::string description,
-        float price,
-        type type,
-        rarity rarity,
-        float damage,
-        float armorPenetration,
-        float attackSpeed,
-        float critChance,
-        float critDamagMult
+            std::string name,
+            std::string description,
+            float price,
+            ItemType type,
+            Rarity rarity,
+            float damage,
+            float armorPenetration,
+            float attackSpeed,
+            float critChance,
+            float critDamagMult
         );
 
     ~Weapon() = default;

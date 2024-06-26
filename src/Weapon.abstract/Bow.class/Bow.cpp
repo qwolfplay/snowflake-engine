@@ -11,8 +11,8 @@ Bow::Bow(
         std::string name,
         std::string description,
         float price,
-        type type,
-        rarity rarity,
+        ItemType type,
+        Rarity rarity,
         float damage,
         float armorPenetration,
         float attackSpeed

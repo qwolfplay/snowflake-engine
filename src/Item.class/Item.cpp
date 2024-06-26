@@ -4,7 +4,7 @@
 
 #include "Item.h"
 
-Item::Item(std::string name, std::string description, float price, Item::type type, rarity rarity) :
+Item::Item(std::string name, std::string description, float price, Item::ItemType type, Rarity rarity) :
     _name(std::move(name)),
     _description(std::move(description)),
     _price(price),
@@ -24,11 +24,11 @@ float Item::getPrice() const {
     return _price;
 }
 
-Item::rarity Item::getRarity() const {
+Item::Rarity Item::getRarity() const {
     return _rarity;
 }
 
-Item::type Item::getType() const {
+Item::ItemType Item::getType() const {
     return _type;
 }
 

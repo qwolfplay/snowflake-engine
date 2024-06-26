@@ -17,7 +17,7 @@ public:
             std::string name,
             std::string description,
             float price,
-            rarity rarity,
+            Rarity rarity,
             float baseDefence,
             float baseResistance
         );
