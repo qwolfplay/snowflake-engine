@@ -9,6 +9,7 @@
 #include "Armor.abstract/Chestplate.class/Chestplate.h"
 #include "Armor.abstract/Leggings.class/Leggings.h"
 #include "Weapon.abstract/Sword.class/Sword.h"
+#include "Item.class/Consumable.abstract/HealingConsumable.class/HealingConsumable.h"
 
 #include "FightSystem/FightScene.class/FightScene.h"
 
@@ -42,6 +43,17 @@ void describeItem(Weapon *item)
     );
 }
 
+void describeItem(Consumable *item){
+    printf("Name: %s\n"
+           "Desc: %s\n"
+           "Price: %f\n"
+           "Rarity: %d\n",
+           item->getName().c_str(),
+           item->getDescription().c_str(),
+           item->getPrice(),
+           item->getRarity());
+}
+
 void describePlayer(Player &player) {
     printf("Name: %s | HP: %f | Max HP: %f | Inv Size: %i | DEF: %f | Damage Red: %f\n",
            player.getName().c_str(),
@@ -69,24 +81,27 @@ int main()
     player.addItemToInventory(new Chestplate("Chestplate", "A chestplate", 50.0, Item::Rarity::RARE, 10.0, 5.0));
     player.addItemToInventory(new Leggings("Leggings", "A pair of leggings", 35.0, Item::Rarity::UNCOMMON, 7.0, 4.0));
     player.addItemToInventory(new Sword("Sword", ":3", 2137.0f, Item::Rarity::LEGENDARY, 25, 14, 9));
+    player.addItemToInventory(new HealingConsumable("Apple", "UwU", 0, Item::Rarity::COMMON, 15));
 
-//    for (unsigned short i = 0; i < player._inventorySize; i++) {
-//        try {
-//            switch (player.getItemPtr(i)->getType()) {
-//                case Item::ItemType::WEAPON:
-//                    describeItem((Weapon *) (player.getItemPtr(i)));
-//                    break;
-//                case Item::ItemType::ARMOR:
-//                    describeItem((Armor *) (player.getItemPtr(i)));
-//                    break;
-//                default:
-//                    break;
-//            }
-//            printf("Index: %u\n\n", i);
-//        } catch (std::exception &e) {
-//            printf("Slot %u is empty\n", i);
-//        }
-//    }
+    for (unsigned short i = 0; i < player._inventorySize; i++) {
+        try {
+            switch (player.getItemPtr(i)->getType()) {
+                case Item::ItemType::WEAPON:
+                    describeItem((Weapon *) (player.getItemPtr(i)));
+                    break;
+                case Item::ItemType::ARMOR:
+                    describeItem((Armor *) (player.getItemPtr(i)));
+                    break;
+                case Item::ItemType::CONSUMABLE:
+                    describeItem((Consumable *) (player.getItemPtr(i)));
+                default:
+                    break;
+            }
+            printf("Index: %u\n\n", i);
+        } catch (std::exception &e) {
+            printf("Slot %u is empty\n", i);
+        }
+    }
 
     player.equipHelmet(0);
     player.equipChestplate(1);
@@ -103,29 +118,13 @@ int main()
 //           )
 //    );
 
-    FightScene::EnemiesCollection collection;
-
-    collection.size = 5;
-    collection.enemies = new Enemy*[collection.size];
-
-    collection.enemies[0] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::Rarity::COMMON, 8, 13, 1));
-    collection.enemies[1] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::Rarity::COMMON, 8, 13, 1));
-    collection.enemies[2] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::Rarity::COMMON, 8, 13, 1));
-    collection.enemies[3] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::Rarity::COMMON, 8, 13, 1));
-    collection.enemies[4] = new Enemy(25.0f, new Sword("Sword", "", 0, Item::Rarity::COMMON, 8, 13, 1));
-
-    FightScene fightScene(&player, collection);
-
     describePlayer(player);
-    printf("\n");
 
-    for (unsigned short i = 0; i < fightScene.getEnemyCount(); i++) {
-        describeEnemy(fightScene.getEnemyPtr(i));
-    }
-
-    fightScene.fightLoop();
-
-    delete collection.enemies;
+    player.takeRawDamage(49);
+    describePlayer(player);
+    auto *testPtr = (HealingConsumable *)player.getItemPtr(4);
+    testPtr->use(&player);
+    describePlayer(player);
 
     return 0;
 }
