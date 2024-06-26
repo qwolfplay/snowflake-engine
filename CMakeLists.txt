@@ -4,6 +4,7 @@ project(snowflake)
 set(CMAKE_CXX_STANDARD 23)
 
 add_subdirectory(include/raylib)
+add_subdirectory(include/spdlog)
 
 set(SOURCE_FILES
         src/Weapon.abstract/Bow.class/Bow.cpp
@@ -25,6 +26,10 @@ set(SOURCE_FILES
         src/Armor.abstract/Leggings.class/Leggings.h
         src/Renderer.class/Renderer.cpp
         src/Renderer.class/Renderer.h
+        src/Renderer.class/GameScene.class/GameScene.cpp
+        src/Renderer.class/GameScene.class/GameScene.h
+        src/Renderer.class/GuiElement.class/GuiElement.cpp
+        src/Renderer.class/GuiElement.class/GuiElement.h
 )
 
 add_executable(snowflake
@@ -34,5 +39,7 @@ add_executable(snowflake
 
 target_include_directories(snowflake PUBLIC src)
 target_include_directories(snowflake PRIVATE include/raylib/src)
+target_include_directories(snowflake PRIVATE include/spdlog/include)
 
 target_link_libraries(snowflake PUBLIC raylib)
+target_link_libraries(snowflake PRIVATE spdlog)
