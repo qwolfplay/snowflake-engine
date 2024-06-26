@@ -23,10 +23,8 @@ set(SOURCE_FILES
         src/Armor.abstract/Helmet.class/Helmet.h
         src/Armor.abstract/Leggings.class/Leggings.cpp
         src/Armor.abstract/Leggings.class/Leggings.h
-        src/Window.class/Window.cpp
-        src/Window.class/Window.h
-        src/Sprite.class/Sprite.cpp
-        src/Sprite.class/Sprite.h
+        src/Renderer.class/Renderer.cpp
+        src/Renderer.class/Renderer.h
 )
 
 add_executable(snowflake

@@ -8,7 +8,7 @@ int main()
     const unsigned short WIDTH  = 800;
     const unsigned short HEIGHT = 600;
 
-    InitWindow(800, 600, ":3");
+    InitWindow(1920, 1080, ":3");
 
     while(!WindowShouldClose()) {
         BeginDrawing();
@@ -18,6 +18,8 @@ int main()
 
         EndDrawing();
     }
+
+    CloseWindow();
 
     return 0;
 }
