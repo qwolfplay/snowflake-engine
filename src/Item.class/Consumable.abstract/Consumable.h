@@ -6,6 +6,7 @@
 #define SNOWFLAKE_CONSUMABLE_H
 
 #include "Item.class/Item.h"
+#include "Player.class/Player.h"
 
 class Consumable : public Item
 {
@@ -17,7 +18,10 @@ public:
     };
 
 protected:
-    virtual void use() = 0;
+    Consumable(std::string name, std::string description, float price, ConsumableType type, Item::Rarity rarity) :
+        Item(std::move(name), std::move(description), price, ItemType::CONSUMABLE, rarity) {};
+
+    virtual void use(Player *player) = 0;
 };
 
 
