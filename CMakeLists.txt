@@ -31,6 +31,8 @@ set(SOURCE_FILES
         src/FightSystem/FightScene.class/PlayerActions/Attack.h
         src/FightSystem/FightScene.class/PlayerActions/Equip.cpp
         src/FightSystem/FightScene.class/PlayerActions/Equip.h
+        src/Item.class/Consumable.abstract/HealingConsumable.class/HealingConsumable.cpp
+        src/Item.class/Consumable.abstract/HealingConsumable.class/HealingConsumable.h
 )
 
 add_executable(snowflake
