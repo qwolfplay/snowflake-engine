@@ -29,6 +29,10 @@ set(SOURCE_FILES
         src/Renderer/Renderer.h
         src/Logger.class/Logger.cpp
         src/Logger.class/Logger.h
+        src/Renderer/Scene.class/Scene.cpp
+        src/Renderer/Scene.class/Scene.h
+        src/Renderer/UIElement.class/UIElement.cpp
+        src/Renderer/UIElement.class/UIElement.h
 )
 
 add_executable(snowflake
