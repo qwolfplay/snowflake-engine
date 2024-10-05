@@ -1,25 +1,28 @@
 #include <cstdlib>
 
-// i hate this include syntax but i cant change it so im just stuck with this :/
+// i hate this include syntax but i cant change it so im just gonna stick with this :/
 #include "raylib.h"
+
+#include "Renderer/Renderer.h"
 
 int main()
 {
-    const unsigned short WIDTH  = 800;
-    const unsigned short HEIGHT = 600;
+    auto *renderer = new Snowflake::Renderer();
 
-    InitWindow(1920, 1080, ":3");
+    renderer->CreateWindow(1920, 1080, ":3c", 60);
 
-    while(!WindowShouldClose()) {
+    while (!WindowShouldClose()) {
         BeginDrawing();
 
-        ClearBackground(DARKGRAY);
-        DrawText(":3 nya~~", 400, 300, 40, RAYWHITE);
+        ClearBackground(RAYWHITE);
+
+        DrawText("Hello World :3c", 0, 0, 20, LIGHTGRAY);
 
         EndDrawing();
     }
 
-    CloseWindow();
+    renderer->DestroyWindow();
+    delete renderer;
 
     return 0;
 }
