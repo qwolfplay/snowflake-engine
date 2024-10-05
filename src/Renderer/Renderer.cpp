@@ -6,6 +6,8 @@
 
 #include "raylib.h"
 
+namespace Snowflake {
+
 void Renderer::CreateWindow(unsigned short width, unsigned short height, const char *title, int targetFps)
 {
     InitWindow(width, height, title);
@@ -13,7 +15,8 @@ void Renderer::CreateWindow(unsigned short width, unsigned short height, const c
     _wasWindowCreated = true;
 }
 
-void Renderer::CreateWindow(unsigned short width, unsigned short height, const char *title, const char *iconPath, int targetFps)
+void Renderer::CreateWindow(unsigned short width, unsigned short height, const char *title, const char *iconPath,
+                            int targetFps)
 {
     InitWindow(width, height, title);
     SetWindowIcon(LoadImage(iconPath));
@@ -21,7 +24,9 @@ void Renderer::CreateWindow(unsigned short width, unsigned short height, const c
     _wasWindowCreated = true;
 }
 
-void Renderer::DestroyWindow()
+void Renderer::DestroyWindow() const
 {
     if (_wasWindowCreated) { CloseWindow(); }
+}
+
 }

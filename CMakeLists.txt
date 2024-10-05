@@ -25,8 +25,8 @@ set(SOURCE_FILES
         src/Armor.abstract/Helmet.class/Helmet.h
         src/Armor.abstract/Leggings.class/Leggings.cpp
         src/Armor.abstract/Leggings.class/Leggings.h
-        src/Renderer.class/Renderer.cpp
-        src/Renderer.class/Renderer.h
+        src/Renderer/Renderer.cpp
+        src/Renderer/Renderer.h
         src/Logger.class/Logger.cpp
         src/Logger.class/Logger.h
 )
