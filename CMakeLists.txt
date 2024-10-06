@@ -48,6 +48,7 @@ set(SOURCE_FILES
         src/Renderer/Scene.class/Scene.h
         src/Renderer/UIElement.class/UIElement.cpp
         src/Renderer/UIElement.class/UIElement.h
+        src/Exceptions/LoggerNotInitialized.h
 )
 
 add_executable(snowflake
