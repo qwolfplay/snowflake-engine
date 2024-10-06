@@ -3,6 +3,21 @@ project(snowflake)
 
 set(CMAKE_CXX_STANDARD 23)
 
+if(CMAKE_CONFIGURATION_TYPES)   # Multi-config generator
+    add_definitions(-DCURRENT_BUILD_TYPE=\"$<CONFIG>\")
+else()                          # Single-config generator
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        add_definitions(-DDEBUG_BUILD)
+    elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
+        add_definitions(-DRELEASE_BUILD)
+    elseif(CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
+        add_definitions(-DRELWITHDEBINFO_BUILD)
+    elseif(CMAKE_BUILD_TYPE STREQUAL "MinSizeRel")
+        add_definitions(-DMINSIZEREL_BUILD)
+    endif()
+endif()
+
+
 add_subdirectory(include/raylib)
 add_subdirectory(include/spdlog)
 #add_subdirectory(include/snowball-core)
