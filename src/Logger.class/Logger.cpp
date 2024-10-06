@@ -9,17 +9,20 @@
 
 #include "spdlog/async.h"
 #include "spdlog/fmt/chrono.h"
+#include "spdlog/sinks/stdout_color_sinks-inl.h"
 #include "spdlog/sinks/ansicolor_sink.h"
-#include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/sinks/basic_file_sink.h"
+#include "spdlog/pattern_formatter.h"
 
 // TODO: class GlobalLoggerController
 // static std::shared_ptr<spdlog::async_logger> &getInstance();
 // static std::shared_ptr<spdlog::async_logger> *getInstancePtr();
 
+const std::string LOGGER_PATTERN = "[%T:%f] [p:%P/t:%t] [%n] [%^%l%$]: %v";
+
 namespace Snowflake
 {
-Logger::Logger(): _name("Logger") {
+Logger::Logger(): _name("main") {
 #ifdef DEBUG_BUILD
     _loggingLevel = DEBUG;
 #else
@@ -30,16 +33,12 @@ Logger::Logger(): _name("Logger") {
     std::vector<spdlog::sink_ptr> sinks;
 
     const auto stdoutSinkSharedPtr = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-
-    // Idea: Add ability to read level colors from a config file
-    stdoutSinkSharedPtr->set_color(spdlog::level::err, 0xff0000);
-    stdoutSinkSharedPtr->set_pattern(""); //TODO
-
+    stdoutSinkSharedPtr->set_pattern(LOGGER_PATTERN);
     sinks.push_back(stdoutSinkSharedPtr);
 
-    // FIXME: This sink causes a (non-critical) 0xe06d7363 exception when called
-    // const auto fileSinkSharedPtr   = std::make_shared<spdlog::sinks::basic_file_sink_mt>(fmt::format("{:%F-%T.log}", t));
-    // sinks.push_back(fileSinkSharedPtr);
+    const auto fileSinkSharedPtr = std::make_shared<spdlog::sinks::basic_file_sink_mt>(fmt::format("{:%F_%H-%M-%S}.log", t));
+    fileSinkSharedPtr->set_pattern(LOGGER_PATTERN);
+    sinks.push_back(fileSinkSharedPtr);
 
     spdlog::init_thread_pool(10240, 2);
     _asyncLogger = std::make_shared<spdlog::async_logger>(
@@ -49,6 +48,9 @@ Logger::Logger(): _name("Logger") {
                                                           spdlog::thread_pool(),
                                                           spdlog::async_overflow_policy::block
                                                          );
+
+    _asyncLogger->flush_on(spdlog::level::debug);
+    _asyncLogger->set_level(spdlog::level::debug);
 }
 
 Logger::Logger(std::string name): _name(std::move(name)) {
@@ -61,8 +63,13 @@ Logger::Logger(std::string name): _name(std::move(name)) {
     auto t = std::chrono::system_clock::now();
     std::vector<spdlog::sink_ptr> sinks;
 
-    sinks.push_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
-    sinks.push_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>(fmt::format("{:%F-%T.log}", t)));
+    const auto stdoutSinkSharedPtr = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+    stdoutSinkSharedPtr->set_pattern(LOGGER_PATTERN);
+    sinks.push_back(stdoutSinkSharedPtr);
+
+    const auto fileSinkSharedPtr = std::make_shared<spdlog::sinks::basic_file_sink_mt>(fmt::format("{:%F_%H-%M-%S}.log", t));
+    fileSinkSharedPtr->set_pattern(LOGGER_PATTERN);
+    sinks.push_back(fileSinkSharedPtr);
 
     _asyncLogger = std::make_shared<spdlog::async_logger>(
                                                           _name,
@@ -71,6 +78,9 @@ Logger::Logger(std::string name): _name(std::move(name)) {
                                                           spdlog::thread_pool(),
                                                           spdlog::async_overflow_policy::block
                                                          );
+
+    _asyncLogger->flush_on(spdlog::level::debug);
+    _asyncLogger->set_level(spdlog::level::debug);
 }
 }
 

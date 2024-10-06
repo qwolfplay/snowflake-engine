@@ -3,10 +3,13 @@
 // i hate this include syntax but i cant change it so im just gonna stick with this :/
 #include "raylib.h"
 
+#include "Logger.class/Logger.h"
 #include "Renderer/Renderer.h"
 
 int main()
 {
+    auto *logger = new Snowflake::Logger();
+
     auto *renderer = new Snowflake::Renderer();
 
     renderer->CreateWindow(1920, 1080, ":3c", 60);
@@ -23,6 +26,7 @@ int main()
 
     renderer->DestroyWindow();
     delete renderer;
+    delete logger;
 
     return 0;
 }
