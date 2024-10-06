@@ -15,10 +15,8 @@ namespace Snowflake
     public:
         enum LOGGING_LEVEL
         {
-            SILLY,
             TRACE,
             DEBUG,
-            LOG,
             INFO,
             WARN,
             ERROR,
