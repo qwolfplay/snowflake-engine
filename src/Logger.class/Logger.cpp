@@ -67,7 +67,7 @@ Logger::Logger(std::string name): _name(std::move(name)) {
     stdoutSinkSharedPtr->set_pattern(LOGGER_PATTERN);
     sinks.push_back(stdoutSinkSharedPtr);
 
-    const auto fileSinkSharedPtr = std::make_shared<spdlog::sinks::basic_file_sink_mt>(fmt::format("{:%F_%H-%M-%S}.log", t));
+    const auto fileSinkSharedPtr = std::make_shared<spdlog::sinks::basic_file_sink_mt>(fmt::format("{}_{:%F_%H-%M-%S}.log", _name, t));
     fileSinkSharedPtr->set_pattern(LOGGER_PATTERN);
     sinks.push_back(fileSinkSharedPtr);
 

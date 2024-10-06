@@ -10,6 +10,8 @@ int main()
 {
     auto *logger = new Snowflake::Logger();
 
+    auto *namedLogger = new Snowflake::Logger("test");
+
     auto *renderer = new Snowflake::Renderer();
 
     renderer->CreateWindow(1920, 1080, ":3c", 60);
@@ -27,6 +29,7 @@ int main()
     renderer->DestroyWindow();
     delete renderer;
     delete logger;
+    delete namedLogger;
 
     return 0;
 }
