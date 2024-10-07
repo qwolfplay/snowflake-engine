@@ -9,6 +9,7 @@
 int main()
 {
     auto *logger = new Snowflake::Logger();
+    logger->initRaylibLogger();
 
     auto *namedLogger = new Snowflake::Logger("test");
 
