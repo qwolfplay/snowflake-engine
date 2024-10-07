@@ -5,6 +5,7 @@
 #ifndef SNOWFLAKE_LOGGER_H
 #define SNOWFLAKE_LOGGER_H
 
+#include "raylib.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/async_logger.h"
 
@@ -29,12 +30,22 @@ namespace Snowflake
         LOGGING_LEVEL _loggingLevel;
         std::string _name;
 
+        static Logger* s_instancePtr;
 
+        static std::shared_ptr<spdlog::async_logger> getLoggerInstance();
+
+        void customRaylibLog(int logLevel, const char* text, va_list args);
+
+        static void s_customRaylibLog(int logLevel, const char* text, va_list args);
 
     public:
         Logger();
 
-        Logger(std::string name);
+        explicit Logger(std::string name);
+
+        void initRaylibLogger();
+
+        static void initRaylibLogger(Logger *logger);
 
         void setLoggingLevel(LOGGING_LEVEL loggingLevel);
 
