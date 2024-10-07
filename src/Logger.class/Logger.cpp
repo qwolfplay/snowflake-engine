@@ -41,7 +41,9 @@ Logger::Logger(): _name("main") {
         std::filesystem::create_directory("logs");
     }
 
-    const auto fileSinkSharedPtr = std::make_shared<spdlog::sinks::basic_file_sink_mt>(fmt::format("logs/{:%F_%H-%M-%S}.log", t));
+    const auto fileSinkSharedPtr = std::make_shared<spdlog::sinks::basic_file_sink_mt>(
+         fmt::format("logs/{:%F_%H-%M-%S}.log", t)
+        );
     fileSinkSharedPtr->set_pattern(LOGGER_PATTERN);
     sinks.push_back(fileSinkSharedPtr);
 
@@ -56,6 +58,8 @@ Logger::Logger(): _name("main") {
 
     _asyncLogger->flush_on(spdlog::level::debug);
     _asyncLogger->set_level(spdlog::level::debug);
+
+    register_logger(_asyncLogger);
 }
 
 Logger::Logger(std::string name): _name(std::move(name)) {
@@ -72,7 +76,9 @@ Logger::Logger(std::string name): _name(std::move(name)) {
     stdoutSinkSharedPtr->set_pattern(LOGGER_PATTERN);
     sinks.push_back(stdoutSinkSharedPtr);
 
-    const auto fileSinkSharedPtr = std::make_shared<spdlog::sinks::basic_file_sink_mt>(fmt::format("{}_{:%F_%H-%M-%S}.log", _name, t));
+    const auto fileSinkSharedPtr = std::make_shared<spdlog::sinks::basic_file_sink_mt>(
+         fmt::format("{}_{:%F_%H-%M-%S}.log", _name, t)
+        );
     fileSinkSharedPtr->set_pattern(LOGGER_PATTERN);
     sinks.push_back(fileSinkSharedPtr);
 
@@ -88,4 +94,3 @@ Logger::Logger(std::string name): _name(std::move(name)) {
     _asyncLogger->set_level(spdlog::level::debug);
 }
 }
-
