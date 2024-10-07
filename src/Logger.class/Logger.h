@@ -30,7 +30,7 @@ namespace Snowflake
         LOGGING_LEVEL _loggingLevel;
         std::string _name;
 
-        static Logger* s_instancePtr;
+        static Logger *s_instancePtr;
 
         static std::shared_ptr<spdlog::async_logger> getLoggerInstance();
 

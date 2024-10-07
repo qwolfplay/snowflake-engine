@@ -12,11 +12,12 @@
 #include "spdlog/async.h"
 #include "spdlog/pattern_formatter.h"
 #include "spdlog/fmt/chrono.h"
-#include "spdlog/sinks/ansicolor_sink.h"
 #include "spdlog/sinks/basic_file_sink.h"
 #include "spdlog/sinks/stdout_color_sinks-inl.h"
 #include "Exceptions/LoggerNotInitialized.h"
+#include "spdlog/fmt/bundled/printf.h"
 
+#define RAYLIB_LOG_BUFFER_SIZE 128
 
 // TODO: class GlobalLoggerController
 // static std::shared_ptr<spdlog::async_logger> &getInstance();
@@ -26,30 +27,34 @@ const std::string LOGGER_PATTERN = "[%T:%f] [p:%P/t:%t] [%n] [%^%l%$]: %v";
 
 namespace Snowflake
 {
+
+Logger *Logger::s_instancePtr = nullptr;
+
 void Logger::customRaylibLog(int logLevel, const char *text, va_list args) {
-    auto formattedString = fmt::vformat(text, fmt::make_format_args(args));
+    char buffer[RAYLIB_LOG_BUFFER_SIZE];
+    vsprintf_s(buffer, RAYLIB_LOG_BUFFER_SIZE, text, args);
 
     switch (logLevel) {
         case LOG_TRACE:
-            _asyncLogger->trace(formattedString);
+            _asyncLogger->trace(buffer);
             break;
         case LOG_DEBUG:
-            _asyncLogger->debug(formattedString);
+            _asyncLogger->debug(buffer);
             break;
         case LOG_INFO:
-            _asyncLogger->info(formattedString);
+            _asyncLogger->info(buffer);
             break;
         case LOG_WARNING:
-            _asyncLogger->warn(formattedString);
+            _asyncLogger->warn(buffer);
             break;
         case LOG_ERROR:
-            _asyncLogger->error(formattedString);
+            _asyncLogger->error(buffer);
             break;
         case LOG_FATAL:
-            _asyncLogger->critical(formattedString);
+            _asyncLogger->critical(buffer);
             break;
         default:
-            _asyncLogger->error("[Wrong log level!] {}", formattedString);
+            _asyncLogger->error("[Wrong log level!] {}", buffer);
     }
 }
 
@@ -131,8 +136,6 @@ Logger::Logger(std::string name): _name(std::move(name)) {
 
     _asyncLogger->flush_on(spdlog::level::debug);
     _asyncLogger->set_level(spdlog::level::debug);
-
-    s_instancePtr = this;
 }
 
 void Logger::initRaylibLogger() {
