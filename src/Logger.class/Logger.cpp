@@ -6,6 +6,7 @@
 
 #include <chrono>
 #include <utility>
+#include <filesystem>
 
 #include "spdlog/async.h"
 #include "spdlog/fmt/chrono.h"
@@ -36,7 +37,11 @@ Logger::Logger(): _name("main") {
     stdoutSinkSharedPtr->set_pattern(LOGGER_PATTERN);
     sinks.push_back(stdoutSinkSharedPtr);
 
-    const auto fileSinkSharedPtr = std::make_shared<spdlog::sinks::basic_file_sink_mt>(fmt::format("{:%F_%H-%M-%S}.log", t));
+    if (!std::filesystem::exists("logs")) {
+        std::filesystem::create_directory("logs");
+    }
+
+    const auto fileSinkSharedPtr = std::make_shared<spdlog::sinks::basic_file_sink_mt>(fmt::format("logs/{:%F_%H-%M-%S}.log", t));
     fileSinkSharedPtr->set_pattern(LOGGER_PATTERN);
     sinks.push_back(fileSinkSharedPtr);
 
