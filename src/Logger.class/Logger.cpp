@@ -32,7 +32,11 @@ Logger *Logger::s_instancePtr = nullptr;
 
 void Logger::customRaylibLog(int logLevel, const char *text, va_list args) {
     char buffer[RAYLIB_LOG_BUFFER_SIZE];
+#ifdef _MSC_VER
     vsprintf_s(buffer, RAYLIB_LOG_BUFFER_SIZE, text, args);
+#else
+    vsprintf(buffer, text, args);
+#endif
 
     switch (logLevel) {
         case LOG_TRACE:
