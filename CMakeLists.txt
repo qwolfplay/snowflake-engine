@@ -31,7 +31,7 @@ set(SOURCE_FILES
         src/Weapon.abstract/Weapon.cpp
         src/Enemy.class/Enemy.cpp
         src/Player.class/Player.cpp
-        src/Gui.class/Gui.cpp
+        src/Renderer/Gui.class/Gui.cpp
         src/Armor.abstract/Armor.cpp
         src/Armor.abstract/Armor.h
         src/Armor.abstract/Chestplate.class/Chestplate.cpp
