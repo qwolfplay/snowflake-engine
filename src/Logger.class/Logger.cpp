@@ -19,15 +19,10 @@
 
 #define RAYLIB_LOG_BUFFER_SIZE 128
 
-// TODO: class GlobalLoggerController
-// static std::shared_ptr<spdlog::async_logger> &getInstance();
-// static std::shared_ptr<spdlog::async_logger> *getInstancePtr();
-
 const std::string LOGGER_PATTERN = "[%T:%f] [p:%P/t:%t] [%n] [%^%l%$]: %v";
 
 namespace Snowflake
 {
-
 Logger *Logger::s_instancePtr = nullptr;
 
 void Logger::customRaylibLog(int logLevel, const char *text, va_list args) {
@@ -71,12 +66,6 @@ void Logger::s_customRaylibLog(int logLevel, const char *text, va_list args) {
 }
 
 Logger::Logger(): _name("main") {
-#ifdef DEBUG_BUILD
-    _loggingLevel = DEBUG;
-#else
-    _loggingLevel = INFO;
-#endif
-
     auto t = std::chrono::system_clock::now();
     std::vector<spdlog::sink_ptr> sinks;
 
@@ -111,12 +100,6 @@ Logger::Logger(): _name("main") {
 }
 
 Logger::Logger(std::string name): _name(std::move(name)) {
-#ifdef DEBUG_BUILD
-    _loggingLevel = DEBUG;
-#else
-    _loggingLevel = INFO;
-#endif
-
     auto t = std::chrono::system_clock::now();
     std::vector<spdlog::sink_ptr> sinks;
 
@@ -152,4 +135,11 @@ void Logger::initRaylibLogger(Logger *logger) {
     SetTraceLogCallback(s_customRaylibLog);
 }
 
+void Logger::setLoggingLevel(spdlog::level::level_enum loggingLevel) const {
+    _asyncLogger->set_level(loggingLevel);
+}
+
+spdlog::level::level_enum Logger::getLoggingLevel() const {
+    return _asyncLogger->level();
+}
 }

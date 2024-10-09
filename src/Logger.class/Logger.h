@@ -1,4 +1,4 @@
-    //
+//
 // Created by WolfPlay on 6/26/2024.
 //
 
@@ -11,60 +11,44 @@
 
 namespace Snowflake
 {
-    class Logger
-    {
-    public:
-        enum LOGGING_LEVEL
-        {
-            TRACE,
-            DEBUG,
-            INFO,
-            WARN,
-            ERROR,
-            CRITICAL
-        };
+class Logger
+{
+    std::shared_ptr<spdlog::async_logger> _asyncLogger;
+    std::string _name;
 
-    private:
-        std::shared_ptr<spdlog::async_logger> _asyncLogger;
+    static Logger *s_instancePtr;
 
-        LOGGING_LEVEL _loggingLevel;
-        std::string _name;
+    static std::shared_ptr<spdlog::async_logger> getLoggerInstance();
 
-        static Logger *s_instancePtr;
+    void customRaylibLog(int logLevel, const char *text, va_list args);
 
-        static std::shared_ptr<spdlog::async_logger> getLoggerInstance();
+    static void s_customRaylibLog(int logLevel, const char *text, va_list args);
 
-        void customRaylibLog(int logLevel, const char* text, va_list args);
+public:
+    Logger();
 
-        static void s_customRaylibLog(int logLevel, const char* text, va_list args);
+    explicit Logger(std::string name);
 
-    public:
-        Logger();
+    void initRaylibLogger();
 
-        explicit Logger(std::string name);
+    static void initRaylibLogger(Logger *logger);
 
-        void initRaylibLogger();
+    void setLoggingLevel(spdlog::level::level_enum loggingLevel) const;
 
-        static void initRaylibLogger(Logger *logger);
+    [[nodiscard]] spdlog::level::level_enum getLoggingLevel() const;
 
-        void setLoggingLevel(LOGGING_LEVEL loggingLevel);
+    void trace(const char *message);
 
-        LOGGING_LEVEL getLoggingLevel(LOGGING_LEVEL loggingLevel);
+    void debug(const char *message);
 
-        void silly(const char *message);
+    void info(const char *message);
 
-        void debug(const char *message);
+    void warn(const char *message);
 
-        void log(const char *message);
+    void error(const char *message);
 
-        void info(const char *message);
-
-        void warn(const char *message);
-
-        void error(const char *message);
-
-        void critical(const char *message);
-    };
+    void critical(const char *message);
+};
 }
 
 
