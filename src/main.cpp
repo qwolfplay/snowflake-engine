@@ -15,7 +15,7 @@ int main()
 
     auto *renderer = new Snowflake::Renderer();
 
-    renderer->CreateWindow(1920, 1080, ":3c", 60);
+    renderer->CreateWindow(800, 600, ":3c", 60);
 
     while (!WindowShouldClose()) {
         BeginDrawing();
