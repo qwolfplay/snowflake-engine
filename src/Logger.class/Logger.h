@@ -37,17 +37,17 @@ public:
 
     [[nodiscard]] spdlog::level::level_enum getLoggingLevel() const;
 
-    void trace(const char *message);
+    void trace(const char *message) const;
 
-    void debug(const char *message);
+    void debug(const char *message) const;
 
-    void info(const char *message);
+    void info(const char *message) const;
 
-    void warn(const char *message);
+    void warn(const char *message) const;
 
-    void error(const char *message);
+    void error(const char *message) const;
 
-    void critical(const char *message);
+    void critical(const char *message) const;
 };
 }
 

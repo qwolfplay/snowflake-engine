@@ -142,4 +142,28 @@ void Logger::setLoggingLevel(spdlog::level::level_enum loggingLevel) const {
 spdlog::level::level_enum Logger::getLoggingLevel() const {
     return _asyncLogger->level();
 }
+
+void Logger::trace(const char *message) const {
+    _asyncLogger->trace(message);
+}
+
+void Logger::debug(const char *message) const {
+    _asyncLogger->debug(message);
+}
+
+void Logger::info(const char *message) const {
+    _asyncLogger->info(message);
+}
+
+void Logger::warn(const char *message) const {
+    _asyncLogger->warn(message);
+}
+
+void Logger::error(const char *message) const {
+    _asyncLogger->error(message);
+}
+
+void Logger::critical(const char *message) const {
+    _asyncLogger->critical(message);
+}
 }
