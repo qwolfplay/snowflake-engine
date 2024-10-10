@@ -2,8 +2,8 @@
 // Created by WolfPlay on 4/10/2024.
 //
 
-#ifndef POLYMORPHISM_SWORD_H
-#define POLYMORPHISM_SWORD_H
+#ifndef SNOWFLAKE_SWORD_H
+#define SNOWFLAKE_SWORD_H
 
 #include "Enemy.class/Enemy.h"
 #include "Item.class/Item.h"
@@ -26,4 +26,4 @@ public:
 };
 
 
-#endif //POLYMORPHISM_SWORD_H
+#endif //SNOWFLAKE_SWORD_H

@@ -2,8 +2,8 @@
 // Created by WolfPlay on 4/15/2024.
 //
 
-#ifndef RPG_LEGGINGS_H
-#define RPG_LEGGINGS_H
+#ifndef SNOWFLAKE_LEGGINGS_H
+#define SNOWFLAKE_LEGGINGS_H
 
 #include "Armor.abstract/Armor.h"
 
@@ -34,4 +34,4 @@ public:
 };
 
 
-#endif //RPG_LEGGINGS_H
+#endif //SNOWFLAKE_LEGGINGS_H

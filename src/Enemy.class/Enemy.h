@@ -2,8 +2,8 @@
 // Created by WolfPlay on 4/10/2024.
 //
 
-#ifndef POLYMORPHISM_ENEMY_H
-#define POLYMORPHISM_ENEMY_H
+#ifndef SNOWFLAKE_ENEMY_H
+#define SNOWFLAKE_ENEMY_H
 
 class Enemy {
     float _health;
@@ -22,4 +22,4 @@ public:
 };
 
 
-#endif //POLYMORPHISM_ENEMY_H
+#endif //SNOWFLAKE_ENEMY_H
