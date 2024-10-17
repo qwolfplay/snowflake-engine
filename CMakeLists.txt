@@ -18,6 +18,7 @@ else()                          # Single-config generator
 endif()
 
 
+
 add_subdirectory(include/raylib)
 add_subdirectory(include/spdlog)
 #add_subdirectory(include/snowball-core)
@@ -46,8 +47,8 @@ set(SOURCE_FILES
         src/Logger.class/Logger.h
         src/Renderer/Scene.class/Scene.cpp
         src/Renderer/Scene.class/Scene.h
-        src/Renderer/UIElement.class/UIElement.cpp
-        src/Renderer/UIElement.class/UIElement.h
+        src/Renderer/UI/UIElement.abstract/UIElement.cpp
+        src/Renderer/UI/UIElement.abstract/UIElement.h
         src/Exceptions/LoggerNotInitialized.h
 )
 
