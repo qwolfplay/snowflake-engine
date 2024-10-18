@@ -9,9 +9,8 @@
 int main()
 {
     auto *logger = new Snowflake::Logger();
-    logger->initRaylibLogger();
-
-    auto *namedLogger = new Snowflake::Logger("test");
+    auto *raylibLogger = new Snowflake::Logger("raylib");
+    raylibLogger->initRaylibLogger();
 
     auto *renderer = new Snowflake::Renderer();
 
@@ -30,7 +29,7 @@ int main()
     renderer->DestroyWindow();
     delete renderer;
     delete logger;
-    delete namedLogger;
+    delete raylibLogger;
 
     return 0;
 }

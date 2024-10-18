@@ -50,6 +50,10 @@ set(SOURCE_FILES
         src/Renderer/UI/UIElement.abstract/UIElement.cpp
         src/Renderer/UI/UIElement.abstract/UIElement.h
         src/Exceptions/LoggerNotInitialized.h
+        src/Renderer/UI/InteractableUIElement.abstract/InteractableUIElement.cpp
+        src/Renderer/UI/InteractableUIElement.abstract/InteractableUIElement.h
+        src/Renderer/UI/Button.class/Button.cpp
+        src/Renderer/UI/Button.class/Button.h
 )
 
 add_executable(snowflake

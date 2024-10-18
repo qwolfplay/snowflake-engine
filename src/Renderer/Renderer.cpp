@@ -5,11 +5,13 @@
 #include "Renderer.h"
 
 #include "raylib.h"
+#include "spdlog/spdlog.h"
 
 namespace Snowflake {
 
 void Renderer::CreateWindow(unsigned short width, unsigned short height, const char *title, int targetFps)
 {
+    spdlog::info("Creating window W:{} H:{} FPS:{}", width, height, targetFps);
     InitWindow(width, height, title);
     SetTargetFPS(targetFps);
     _wasWindowCreated = true;
