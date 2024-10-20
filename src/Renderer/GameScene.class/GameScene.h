@@ -8,7 +8,7 @@
 namespace Snowflake
 {
 
-    class Scene
+    class GameScene
     {
 
         void update();

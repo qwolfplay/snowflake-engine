@@ -45,8 +45,8 @@ set(SOURCE_FILES
         src/Renderer/Renderer.h
         src/Logger.class/Logger.cpp
         src/Logger.class/Logger.h
-        src/Renderer/Scene.class/Scene.cpp
-        src/Renderer/Scene.class/Scene.h
+        src/Renderer/GameScene.class/GameScene.cpp
+        src/Renderer/GameScene.class/GameScene.h
         src/Renderer/UI/UIElement.abstract/UIElement.cpp
         src/Renderer/UI/UIElement.abstract/UIElement.h
         src/Exceptions/LoggerNotInitialized.h
