@@ -5,20 +5,19 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
-namespace Snowflake {
-
-class GameObject {
-
+namespace Snowflake
+{
+class GameObject
+{
 public:
     GameObject() = default;
 
     virtual ~GameObject() = default;
 
-    virtual void updateState();
+    virtual void updateState() = 0;
 
-    virtual void draw();
+    virtual void draw() = 0;
 };
-
 } // Snowflake
 
 #endif //GAMEOBJECT_H
