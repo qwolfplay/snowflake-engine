@@ -11,9 +11,14 @@ namespace Snowflake
     class GameScene
     {
 
-        void update();
-
     public:
+        GameScene();
+
+        GameScene()
+
+        void createGameObject();
+
+        void update();
 
         void render();
     };

@@ -45,8 +45,8 @@ set(SOURCE_FILES
         src/Renderer/Renderer.h
         src/Logger.class/Logger.cpp
         src/Logger.class/Logger.h
-        src/Renderer/GameScene.class/GameScene.cpp
-        src/Renderer/GameScene.class/GameScene.h
+        src/GameScene.class/GameScene.cpp
+        src/GameScene.class/GameScene.h
         src/Renderer/UI/UIElement.abstract/UIElement.cpp
         src/Renderer/UI/UIElement.abstract/UIElement.h
         src/Exceptions/LoggerNotInitialized.h
@@ -54,6 +54,7 @@ set(SOURCE_FILES
         src/Renderer/UI/InteractableUIElement.abstract/InteractableUIElement.h
         src/Renderer/UI/Button.class/Button.cpp
         src/Renderer/UI/Button.class/Button.h
+        src/GameObject.abstract/GameObject.h
 )
 
 add_executable(snowflake
