@@ -4,25 +4,31 @@
 
 #ifndef SNOWFLAKE_SCENE_H
 #define SNOWFLAKE_SCENE_H
+#include <vector>
+
+#include "GameObject.abstract/GameObject.h"
+#include "Renderer/UI/UIElement.abstract/UIElement.h"
 
 namespace Snowflake
 {
+class GameScene
+{
+    std::vector<GameObject *> _gameObjects;
+    std::vector<UI::UIElement *> _uiElements;
 
-    class GameScene
-    {
+public:
+    GameScene(const std::vector<GameObject *> &gameObjects, const std::vector<UI::UIElement *> &uiElements);
 
-    public:
-        GameScene();
+    virtual ~GameScene();
 
-        GameScene()
+    void addGameObject(GameObject* gameObject);
 
-        void createGameObject();
+    void addUIiElement(UI::UIElement* uiElement);
 
-        void update();
+    virtual void update();
 
-        void render();
-    };
-
+    virtual void render();
+};
 } // Snowflake
 
 #endif //SNOWFLAKE_SCENE_H
