@@ -5,11 +5,11 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
-#include "Renderer/UI/InteractableUIElement.abstract/InteractableUIElement.h"
+#include "Renderer/UI/InteractiveUIElement.abstract/InteractiveUIElement.h"
 
 namespace Snowflake::UI {
 
-class Button : InteractableUIElement {
+class Button : InteractiveUIElement {
 
 public:
 };

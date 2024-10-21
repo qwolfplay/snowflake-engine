@@ -10,10 +10,10 @@
 #include "Renderer/UI/UIElement.abstract/UIElement.h"
 
 namespace Snowflake::UI {
-class InteractableUIElement : UIElement {
+class InteractiveUIElement : UIElement {
 
 public:
-    InteractableUIElement(Vector2 pos, Vector2 size);
+    InteractiveUIElement(Vector2 pos, Vector2 size): UIElement(pos, size) {};
 
     virtual void checkInteraction();
 
