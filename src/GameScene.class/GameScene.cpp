@@ -6,6 +6,8 @@
 
 #include <algorithm>
 
+#include "raylib.h"
+
 namespace Snowflake
 {
 GameScene::GameScene(const std::vector<GameObject *> &gameObjects, const std::vector<UI::UIElement *> &uiElements) {
@@ -42,11 +44,17 @@ void GameScene::update() {
 }
 
 void GameScene::render() {
+    BeginDrawing();
+
+    ClearBackground(BLACK);
+
     for (GameObject* object : _gameObjects) {
         object->draw();
     }
     for (UI::UIElement* element : _uiElements) {
         element->draw();
     }
+
+    EndDrawing();
 }
 } // Snowflake
