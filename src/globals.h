@@ -7,6 +7,6 @@
 
 #include "raylib.h"
 
-Vector2 g_mousePos;
+inline Vector2 g_mousePos;
 
 #endif //GLOBALS_H
