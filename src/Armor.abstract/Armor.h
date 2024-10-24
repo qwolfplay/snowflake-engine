@@ -2,8 +2,8 @@
 // Created by WolfPlay on 4/14/2024.
 //
 
-#ifndef RPG_ARMOR_H
-#define RPG_ARMOR_H
+#ifndef SNOWFLAKE_ARMOR_H
+#define SNOWFLAKE_ARMOR_H
 
 #include "Item.class/Item.h"
 
@@ -53,4 +53,4 @@ public:
 };
 
 
-#endif //RPG_ARMOR_H
+#endif //SNOWFLAKE_ARMOR_H

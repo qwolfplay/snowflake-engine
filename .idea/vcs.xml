@@ -2,5 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/raylib" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/snowball-core" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/include/spdlog" vcs="Git" />
   </component>
 </project>

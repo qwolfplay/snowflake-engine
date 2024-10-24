@@ -2,13 +2,14 @@
 // Created by WolfPlay on 4/11/2024.
 //
 
-#ifndef POLYMORPHISM_GUI_H
-#define POLYMORPHISM_GUI_H
+#ifndef SNOWFLAKE_GUI_H
+#define SNOWFLAKE_GUI_H
 
 #include "Player.class/Player.h"
 #include "Weapon.abstract/Weapon.h"
 #include "Enemy.class/Enemy.h"
 
+namespace Snowflake {
 class Gui {
 public:
     enum menus {
@@ -26,6 +27,7 @@ public:
     static void simulationMenu(Player *player);
     static void attackScreen(Player *player, Enemy *enemy);
 };
+}
 
 
-#endif //POLYMORPHISM_GUI_H
+#endif //SNOWFLAKE_GUI_H

@@ -2,8 +2,8 @@
 // Created by WolfPlay on 4/10/2024.
 //
 
-#ifndef POLYMORPHISM_ITEM_H
-#define POLYMORPHISM_ITEM_H
+#ifndef SNOWFLAKE_ITEM_H
+#define SNOWFLAKE_ITEM_H
 
 #include <string>
 
@@ -62,4 +62,4 @@ public:
 };
 
 
-#endif //POLYMORPHISM_ITEM_H
+#endif //SNOWFLAKE_ITEM_H

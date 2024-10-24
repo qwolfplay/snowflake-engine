@@ -2,8 +2,8 @@
 // Created by WolfPlay on 4/15/2024.
 //
 
-#ifndef RPG_HELMET_H
-#define RPG_HELMET_H
+#ifndef SNOWFLAKE_HELMET_H
+#define SNOWFLAKE_HELMET_H
 
 #include "Armor.abstract/Armor.h"
 
@@ -34,4 +34,4 @@ public:
 };
 
 
-#endif //RPG_HELMET_H
+#endif //SNOWFLAKE_HELMET_H

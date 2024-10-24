@@ -2,8 +2,8 @@
 // Created by WolfPlay on 4/10/2024.
 //
 
-#ifndef POLYMORPHISM_WAND_H
-#define POLYMORPHISM_WAND_H
+#ifndef SNOWFLAKE_WAND_H
+#define SNOWFLAKE_WAND_H
 
 #include "Weapon.abstract/Weapon.h"
 
@@ -24,4 +24,4 @@ public:
 };
 
 
-#endif //POLYMORPHISM_WAND_H
+#endif //SNOWFLAKE_WAND_H

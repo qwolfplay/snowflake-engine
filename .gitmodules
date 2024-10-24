@@ -1,0 +1,9 @@
+[submodule "include/raylib"]
+	path = include/raylib
+	url = https://github.com/raysan5/raylib.git
+[submodule "include/spdlog"]
+	path = include/spdlog
+	url = https://github.com/gabime/spdlog.git
+[submodule "include/snowball-core"]
+	path = include/snowball-core
+	url = https://github.com/qwolfPlaY/snowball-core.git

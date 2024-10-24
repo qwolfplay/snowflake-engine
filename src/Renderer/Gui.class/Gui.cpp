@@ -12,7 +12,7 @@
 #include "Weapon.abstract/Bow.class/Bow.h"
 #include "Weapon.abstract/Wand.class/Wand.h"
 
-void Gui::menu(Gui::menus selectedMenu, Player *player) {
+void Snowflake::Gui::menu(menus selectedMenu, Player *player) {
     switch (selectedMenu) {
         case MAIN_MENU:
             mainMenu(player);
@@ -34,7 +34,7 @@ void Gui::menu(Gui::menus selectedMenu, Player *player) {
     }
 }
 
-void Gui::printWeapon(Weapon *w) {
+void Snowflake::Gui::printWeapon(Weapon *w) {
     std::cout << "Name: " << w->getName()
               << " | Desc: " << w->getDescription()
               << " | Price: " << w->getPrice()
@@ -45,7 +45,7 @@ void Gui::printWeapon(Weapon *w) {
               << " | ATKSPD: " << w->getAttackSpeed() << std::endl;
 }
 
-void Gui::mainMenu(Player *player) {
+void Snowflake::Gui::mainMenu(Player *player) {
     std::cout << "Polimorfizm" << "\n\n"
               << "1. Sklep" << "\n"
               << "2. Ekwipunek" << "\n"
@@ -63,7 +63,7 @@ void Gui::mainMenu(Player *player) {
     }
 }
 
-void Gui::shopMenu(Player *player) {
+void Snowflake::Gui::shopMenu(Player *player) {
     std::cout << "Sklep" << "\n\n"
               << "1. Miecz"<< "\n"
               << "2. Łuk" << "\n"
@@ -94,7 +94,7 @@ void Gui::shopMenu(Player *player) {
     menu(MAIN_MENU, player);
 }
 
-void Gui::inventoryMenu(Player *player) {
+void Snowflake::Gui::inventoryMenu(Player *player) {
     std::cout << "Ekwipunek" << "\n\n";
 
     for (int i = 0; i < player->getItemCount(); i++) {
@@ -105,7 +105,7 @@ void Gui::inventoryMenu(Player *player) {
     menu(MAIN_MENU, player);
 }
 
-void Gui::attackScreen(Player *player, Enemy *enemy) {
+void Snowflake::Gui::attackScreen(Player *player, Enemy *enemy) {
     std::cout << "\n" << player->getName() << ": " << player->getHealth() << "\n";
     std::cout << "Przeciwnik: " << enemy->getHealth() << " | " << enemy->getArmor() << "\n\n";
 
@@ -131,7 +131,7 @@ void Gui::attackScreen(Player *player, Enemy *enemy) {
 
 }
 
-void Gui::simulationMenu(Player *player) {
+void Snowflake::Gui::simulationMenu(Player *player) {
     std::cout << "Symulacja ataku" << "\n\n";
 
     for (int i = 0; i < player->getItemCount(); i++) {

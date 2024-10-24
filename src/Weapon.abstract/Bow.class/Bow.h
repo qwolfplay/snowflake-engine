@@ -2,8 +2,8 @@
 // Created by WolfPlay on 4/10/2024.
 //
 
-#ifndef POLYMORPHISM_BOW_H
-#define POLYMORPHISM_BOW_H
+#ifndef SNOWFLAKE_BOW_H
+#define SNOWFLAKE_BOW_H
 
 #include "Weapon.abstract/Weapon.h"
 
@@ -24,4 +24,4 @@ public:
 };
 
 
-#endif //POLYMORPHISM_BOW_H
+#endif //SNOWFLAKE_BOW_H

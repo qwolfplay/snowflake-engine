@@ -2,8 +2,8 @@
 // Created by WolfPlay on 4/15/2024.
 //
 
-#ifndef RPG_CHESTPLATE_H
-#define RPG_CHESTPLATE_H
+#ifndef SNOWFLAKE_CHESTPLATE_H
+#define SNOWFLAKE_CHESTPLATE_H
 
 #include "Armor.abstract/Armor.h"
 
@@ -34,4 +34,4 @@ public:
 };
 
 
-#endif //RPG_CHESTPLATE_H
+#endif //SNOWFLAKE_CHESTPLATE_H
