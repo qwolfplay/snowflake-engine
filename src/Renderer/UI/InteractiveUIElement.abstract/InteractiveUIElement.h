@@ -1,9 +1,9 @@
 //
-// Created by wolfplay on 10/17/24.
+// Created by wolfplay on 10/21/24.
 //
 
-#ifndef INTERACTABLEUIELEMENT_H
-#define INTERACTABLEUIELEMENT_H
+#ifndef INTERACTIVEUIELEMENT_H
+#define INTERACTIVEUIELEMENT_H
 
 #include "raylib.h"
 
@@ -11,16 +11,27 @@
 
 namespace Snowflake::UI {
 class InteractiveUIElement : UIElement {
+public:
+    enum ELEMENT_STATE
+    {
+        RELEASED,
+        HOVER,
+        LEFT_CLICK,
+        RIGHT_CLICK
+    };
+
+protected:
+    Rectangle _bounds{};
+    ELEMENT_STATE _state;
 
 public:
-    InteractiveUIElement(Vector2 pos, Vector2 size): UIElement(pos, size) {};
+    InteractiveUIElement(Vector2 pos, Vector2 size);
 
-    virtual void checkInteraction();
+    void updateState() override;
 
     virtual void execute() = 0;
 };
-}
 
+} // Snowflake
 
-
-#endif //INTERACTABLEUIELEMENT_H
+#endif //INTERACTIVEUIELEMENT_H
