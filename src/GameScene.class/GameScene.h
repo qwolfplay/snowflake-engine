@@ -17,13 +17,15 @@ class GameScene
     std::vector<UI::UIElement *> _uiElements;
 
 public:
+    GameScene();
+
     GameScene(const std::vector<GameObject *> &gameObjects, const std::vector<UI::UIElement *> &uiElements);
 
     virtual ~GameScene();
 
     void addGameObject(GameObject* gameObject);
 
-    void addUIiElement(UI::UIElement* uiElement);
+    void addUIElement(UI::UIElement* uiElement);
 
     virtual void update();
 

@@ -10,6 +10,8 @@
 
 namespace Snowflake
 {
+GameScene::GameScene() = default;
+
 GameScene::GameScene(const std::vector<GameObject *> &gameObjects, const std::vector<UI::UIElement *> &uiElements) {
     _gameObjects.reserve(_gameObjects.size());
     _gameObjects.reserve(_uiElements.size());
@@ -30,7 +32,7 @@ void GameScene::addGameObject(GameObject* gameObject) {
     _gameObjects.push_back(gameObject);
 }
 
-void GameScene::addUIiElement(UI::UIElement* uiElement) {
+void GameScene::addUIElement(UI::UIElement* uiElement) {
     _uiElements.push_back(uiElement);
 }
 
@@ -44,17 +46,11 @@ void GameScene::update() {
 }
 
 void GameScene::render() {
-    BeginDrawing();
-
-    ClearBackground(BLACK);
-
     for (GameObject* object : _gameObjects) {
         object->draw();
     }
     for (UI::UIElement* element : _uiElements) {
         element->draw();
     }
-
-    EndDrawing();
 }
 } // Snowflake
