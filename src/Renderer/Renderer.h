@@ -5,17 +5,24 @@
 #ifndef SNOWFLAKE_RENDERER_H
 #define SNOWFLAKE_RENDERER_H
 
+#include <chrono>
+
 #include "raylib.h"
+
+#include "GameScene.class/GameScene.h"
+
+#define FRAME_TIME_AVG_ARR_LEN 256
 
 namespace Snowflake
 {
-    class Renderer
-    {
+    class Renderer {
         bool _wasWindowCreated;
+        GameScene* _gameScenePtr;
 
+        std::chrono::time_point<std::chrono::milliseconds> _frameTime;
 
     public:
-        Renderer() = default;
+        Renderer();
 
         void initRenderer(); // TODO
 
@@ -25,6 +32,11 @@ namespace Snowflake
                           int targetFps);
 
         void DestroyWindow() const;
+
+        void loadGameScene(GameScene* gameScene);
+
+        void gameLoop() const;
+
     };
 }
 
