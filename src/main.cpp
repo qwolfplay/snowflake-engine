@@ -5,6 +5,8 @@
 
 #include "Logger.class/Logger.h"
 #include "Renderer/Renderer.h"
+#include "Renderer/UI/UIElement.abstract/UIElement.h"
+#include "Renderer/UI/Button.class/Button.h"
 
 int main()
 {
@@ -14,17 +16,13 @@ int main()
 
     auto *renderer = new Snowflake::Renderer();
 
-    renderer->CreateWindow(800, 600, ":3c", 60);
+    renderer->CreateWindow(800, 600, "Snowflake", 60);
 
-    while (!WindowShouldClose()) {
-        BeginDrawing();
+    Snowflake::GameScene gameScene{};
+    gameScene.addUIElement(new Snowflake::UI::Button({100, 100}, {400, 300}));
 
-        ClearBackground(RAYWHITE);
-
-        DrawText("Hello World :3c", 0, 0, 20, LIGHTGRAY);
-
-        EndDrawing();
-    }
+    renderer->loadGameScene(&gameScene);
+    renderer->gameLoop();
 
     renderer->DestroyWindow();
     delete renderer;
