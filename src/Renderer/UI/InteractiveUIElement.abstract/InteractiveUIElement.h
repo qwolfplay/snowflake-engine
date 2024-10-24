@@ -10,7 +10,7 @@
 #include "Renderer/UI/UIElement.abstract/UIElement.h"
 
 namespace Snowflake::UI {
-class InteractiveUIElement : UIElement {
+class InteractiveUIElement : public UIElement {
 public:
     enum ELEMENT_STATE
     {

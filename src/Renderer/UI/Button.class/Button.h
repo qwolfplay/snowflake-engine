@@ -9,7 +9,7 @@
 
 namespace Snowflake::UI {
 
-class Button : InteractiveUIElement {
+class Button : public InteractiveUIElement {
 
 public:
     Button(Vector2 pos, Vector2 size);
