@@ -27,6 +27,8 @@ class Logger
 public:
     Logger();
 
+    ~Logger();
+
     explicit Logger(std::string name);
 
     void initRaylibLogger();

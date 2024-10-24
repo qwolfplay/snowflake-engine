@@ -23,9 +23,9 @@ const std::string LOGGER_PATTERN = "[%T:%f] [p:%P/t:%t] [%n] [%^%l%$]: %v";
 
 namespace Snowflake
 {
-Logger *Logger::s_instancePtr = nullptr;
+Logger* Logger::s_instancePtr = nullptr;
 
-void Logger::customRaylibLog(int logLevel, const char *text, va_list args) {
+void Logger::customRaylibLog(int logLevel, const char* text, va_list args) {
     char buffer[RAYLIB_LOG_BUFFER_SIZE];
 #ifdef _MSC_VER
     vsprintf_s(buffer, RAYLIB_LOG_BUFFER_SIZE, text, args);
@@ -57,7 +57,7 @@ void Logger::customRaylibLog(int logLevel, const char *text, va_list args) {
     }
 }
 
-void Logger::s_customRaylibLog(int logLevel, const char *text, va_list args) {
+void Logger::s_customRaylibLog(int logLevel, const char* text, va_list args) {
     if (s_instancePtr) {
         s_instancePtr->customRaylibLog(logLevel, text, args);
     } else {
@@ -92,11 +92,15 @@ Logger::Logger(): _name("main") {
                                                           spdlog::async_overflow_policy::block
                                                          );
 
-    _asyncLogger->flush_on(spdlog::level::debug);
+    _asyncLogger->flush_on(spdlog::level::info);
     _asyncLogger->set_level(spdlog::level::debug);
 
     s_instancePtr = this;
-    register_logger(_asyncLogger);
+    set_default_logger(_asyncLogger);
+}
+
+Logger::~Logger() {
+    _asyncLogger->flush();
 }
 
 Logger::Logger(std::string name): _name(std::move(name)) {
@@ -107,8 +111,12 @@ Logger::Logger(std::string name): _name(std::move(name)) {
     stdoutSinkSharedPtr->set_pattern(LOGGER_PATTERN);
     sinks.push_back(stdoutSinkSharedPtr);
 
+    if (!std::filesystem::exists("logs")) {
+        std::filesystem::create_directory("logs");
+    }
+
     const auto fileSinkSharedPtr = std::make_shared<spdlog::sinks::basic_file_sink_mt>(
-         fmt::format("{}_{:%F_%H-%M-%S}.log", _name, t)
+         fmt::format("logs/{}_{:%F_%H-%M-%S}.log", _name, t)
         );
     fileSinkSharedPtr->set_pattern(LOGGER_PATTERN);
     sinks.push_back(fileSinkSharedPtr);
@@ -121,7 +129,7 @@ Logger::Logger(std::string name): _name(std::move(name)) {
                                                           spdlog::async_overflow_policy::block
                                                          );
 
-    _asyncLogger->flush_on(spdlog::level::debug);
+    _asyncLogger->flush_on(spdlog::level::info);
     _asyncLogger->set_level(spdlog::level::debug);
 }
 
@@ -130,7 +138,7 @@ void Logger::initRaylibLogger() {
     SetTraceLogCallback(s_customRaylibLog);
 }
 
-void Logger::initRaylibLogger(Logger *logger) {
+void Logger::initRaylibLogger(Logger* logger) {
     s_instancePtr = logger;
     SetTraceLogCallback(s_customRaylibLog);
 }
@@ -143,27 +151,27 @@ spdlog::level::level_enum Logger::getLoggingLevel() const {
     return _asyncLogger->level();
 }
 
-void Logger::trace(const char *message) const {
+void Logger::trace(const char* message) const {
     _asyncLogger->trace(message);
 }
 
-void Logger::debug(const char *message) const {
+void Logger::debug(const char* message) const {
     _asyncLogger->debug(message);
 }
 
-void Logger::info(const char *message) const {
+void Logger::info(const char* message) const {
     _asyncLogger->info(message);
 }
 
-void Logger::warn(const char *message) const {
+void Logger::warn(const char* message) const {
     _asyncLogger->warn(message);
 }
 
-void Logger::error(const char *message) const {
+void Logger::error(const char* message) const {
     _asyncLogger->error(message);
 }
 
-void Logger::critical(const char *message) const {
+void Logger::critical(const char* message) const {
     _asyncLogger->critical(message);
 }
 }
