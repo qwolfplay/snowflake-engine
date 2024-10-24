@@ -16,11 +16,16 @@ void InteractiveUIElement::updateState() {
     if (CheckCollisionPointRec(g_mousePos, _bounds)) {
         if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
             _state = LEFT_CLICK;
+
         } else {
             _state = HOVER;
         }
     } else {
         _state = RELEASED;
+    }
+
+    if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+        execute();
     }
 }
 } // Snowflake

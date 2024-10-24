@@ -4,6 +4,7 @@
 
 #include "Button.h"
 
+#include "spdlog/spdlog.h"
 
 namespace Snowflake::UI
 {
@@ -21,6 +22,10 @@ Button::Button(Vector2 pos, Vector2 size) : InteractiveUIElement(pos, size) {}
                 DrawRectangleRec(_bounds, BLUE);
                 break;
         }
+    }
+
+    void Button::execute() {
+        spdlog::info("Clicked :3");
     }
 } // UI
 // Snowflake
